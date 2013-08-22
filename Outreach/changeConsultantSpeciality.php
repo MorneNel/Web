@@ -33,7 +33,7 @@ for ($i = 1; $i < (count($specialityDDSQL)+1); $i++) {
 
 //var_dump($specialityDDArray);
 foreach($specialityDDArray as $key => $val) {
-    $selected = ($speciality['MDS_SPECIALITY'] == $val) ? "selected" : "";
+    $selected = (strtoupper($speciality['MDS_SPECIALITY']) == strtoupper($val)) ? "selected" : "";
     echo "<option value='".$val."' $selected>".$val."</option>";
 }
 echo "</select>";
