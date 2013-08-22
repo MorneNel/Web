@@ -110,7 +110,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
 
         $operationID = filter_var($_REQUEST['row'], FILTER_SANITIZE_NUMBER_INT);
         $lnkID = filter_var($_REQUEST['lnk'], FILTER_SANITIZE_NUMBER_INT);
-        $opr_query="SELECT Oper_Code, OPER_Date, OPER_Comments, OPER_Classification,
+        $opr_query="SELECT Oper_Code, DATE_TO_CHAR(OPER_Date,'yyyy-Mm-Dd') AS OPER_DATE, OPER_Comments, OPER_Classification,
 		    Anea1, Anea2, Type, IncisionType, Technique, Outcome
 		    FROM OPER_PatOperations
 		    WHERE OPER_ID=$operationID AND OPER_lnkID=$lnkID";

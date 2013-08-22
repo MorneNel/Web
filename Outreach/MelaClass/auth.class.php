@@ -373,9 +373,16 @@ class Auth
         $this->deleteExistingSessions($uid);
 
         $ip = $this->getIp();
+        
+        /* I'd love to set this using self::SESSION_LENGTH like it was supposed to but it seems no
+         * server has their date set correctly, even my local setting is an hour behind (maybe due to BST but I don't practically
+         * see hospitals keeping on top of this), and if I set it any less than
+         * 2 days ahead 4D determines the session must end spot on 18:00:00 for some reason no matter what time of day you set it
+         */ 
+        $expiryDate = strtotime('now + 2 days');
 
-        //$data['expire'] = date("Y-m-d H:i:s", strtotime(self::SESSION_LENGTH));
-        $data['expire'] = "2033-10-10 05:05:05";
+        $data['expire'] = date("Y-m-d H:i:s", $expiryDate);
+        //$data['expire'] = "2033-10-10 05:05:05";
         $data['cookie_crc'] = sha1($data['hash'] . $this->config->sitekey);
 
         //$licenceID = 1; //$$$ hardcoded for now, will be used to limit sessions per licence ??????????????????????????????????
