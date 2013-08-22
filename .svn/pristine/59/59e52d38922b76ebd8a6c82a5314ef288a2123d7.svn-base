@@ -1,0 +1,125 @@
+
+.groupsItemsList{
+font-family: 'Open+Sans' sans-serif;
+margin: 5px 0;
+padding: 0;
+width:  300px; /*  WIDTH  */
+border: 1px solid #9A9A9A;
+border-bottom-width: 0;
+}
+
+.ac-menu,
+.ac-menu ul,
+.ac-menu li,
+.ac-menu a,
+.ac-menu span {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+}
+
+.ac-menu li {
+	list-style: none;
+}
+
+/* Accordian Style */
+.ac-menu li > a {
+	display: block;
+	position: relative;
+	min-width: auto; /*  WIDTH  */
+	
+	text-align: left;
+	padding-left: 10px;
+	color: #FFFFFF !important;
+	font: Normal 14px/26px 'Open+Sans' sans-serif;
+	text-decoration: none;
+	
+	background: #66A3FF url("../img/glossyback.gif") repeat-x bottom left;
+}
+
+.ac-menu > li:hover > a,
+.ac-menu > li:target > a {
+	text-shadow: 1px 1px 1px rgba(255,255,255, .2);
+	background: #66A3FF url("../img/glossyback2.gif") repeat-x bottom left;
+}
+
+
+
+/* Sub-Menu */
+.sub-menu li:hover a { 
+	background: #f6f5f5 !important;
+	 }
+
+
+.sub-menu li label {
+	font: Normal 14px/20px 'Open+Sans' sans-serif;
+	color: #333333 !important;
+	text-shadow: 1px 1px 0px rgba(255,255,255, .2);
+}
+
+
+.sub-menu li:hover,
+.sub-menu li:hover label { 
+	background: #E1E1E1;
+ }
+
+.sub-menu li label{
+	background: #F3F3F3 !important;
+	margin: 20px;
+}
+
+
+
+
+.sub-menu { /*DIV that contains each sub menu*/
+background: #F3F3F3 !important;
+list-style-type: none !important;
+margin: 0;
+padding: 0;
+}
+
+
+
+.sub-menu li{
+border-bottom: 1px solid #BBBBBB;
+}
+
+
+/* Accordian Function */
+.ac-menu li > .sub-menu {
+	height: 0;
+	overflow: hidden;
+
+}
+
+
+.ac-menu li:target > .sub-menu {
+	height: auto;
+}
+
+
+.sub-menu li input[type=radio] {
+	position: absolute;
+	opacity: 0;
+}
+
+
+.sub_item{
+	background: #F3F3F3 !important;
+}
+
+.sub_item:hover,
+.sub_item:hover label{
+	background: #E1E1E1!important;
+}
+
+
+.CO_Table,
+.CO_TableRow,
+.CO_TableCell{
+	height: auto;
+}
+
+
+

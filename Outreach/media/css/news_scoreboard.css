@@ -1,0 +1,51 @@
+
+
+
+.half {
+    font-family: 'Open+Sans' sans-serif;
+  	font-size: 1em;
+    display: block;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+}
+
+.alertbox {
+	font-family: 'Open+Sans' sans-serif;
+  	font-size: 1em;
+	margin-left: 120px;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 0;
+    padding-bottom: 5px;
+    border: 1px solid black;
+    width: 250px;
+    color: #222;
+}
+
+.alertbox-top {
+    border-bottom: 1px solid black;
+    padding: 4px;
+}
+
+.alertbox-middle {
+    border-bottom: 1px solid black;
+    padding: 4px;
+}
+
+.alertbox-bottom {
+    padding: 4px;
+}
+
+.severe {
+    background-color: #FF7F7F;
+}
+
+.moderate {
+    background-color: #FFFFA0;
+}
+
+.okay {
+    background-color: #A7FFA0;
+}

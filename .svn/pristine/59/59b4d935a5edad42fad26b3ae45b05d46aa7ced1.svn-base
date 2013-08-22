@@ -1,0 +1,569 @@
+
+/*custom font for text*/
+			/*@import url(http://fonts.googleapis.com/css?family=Nunito);*/
+			/*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
+			/*@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);*/
+
+			/*Basic reset*/
+			#reset {
+				margin: 0; 
+				padding: 0;
+				font-family: 'Open+Sans' sans-serif;
+				font-weight: normal;
+			}
+
+
+			#accordian {
+				background: #F9F9F9;
+				width: 270px;
+				border:none;
+				margin: 0;
+				padding:0;
+				overflow-y: auto;
+				overflow-x: none;/*Horizontal*/
+				padding-left: 1px;
+			}
+
+
+			/*heading styles*/
+			#accordian h3 {
+				font-size: 14px;
+				line-height: 18px;
+				color:#fff;
+				/*border-top: 1px solid #a6a6a6;*/  
+				background: #f0f0f0; 
+				padding: 2px 2px; 
+				-webkit-border-radius: 3px 3px 0 0; 
+				-moz-border-radius: 3px 3px 0 0;  
+				border-radius: 3px 3px 0 0;  
+				-webkit-box-shadow: 0 1px 0 rgba(210,210,210,0.6); 
+				-moz-box-shadow: 0 1px 0 rgba(210,210,210,0.6) ;
+				box-shadow: 0 1px 0 rgba(210,210,210,0.6) ;
+				text-decoration: none; 
+				vertical-align: middle;
+
+
+				/*padding: 5px 20px;*/
+				position: relative;
+				z-index: 20;
+				display: block;
+				/*height: 30px;*/
+				cursor: pointer;
+				color: #777;
+				text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+				/*line-height: 33px;*/
+				/*font-size: 19px;*/
+				background: #ffffff;
+				background: -moz-linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea));
+				background: -webkit-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: -o-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 );
+				box-shadow: 
+					0px 0px 0px 1px rgba(155,155,155,0.3), 
+					1px 0px 0px 0px rgba(255,255,255,0.9) inset, 
+					0px 2px 2px rgba(0,0,0,0.1);
+
+			}
+
+
+
+
+
+			.MediAccordian{
+				background: #ffffff;
+				background: -moz-linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea));
+				background: -webkit-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: -o-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				background: linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 );
+				box-shadow: 
+					0px 0px 0px 1px rgba(155,155,155,0.3), 
+					1px 0px 0px 0px rgba(255,255,255,0.9) inset, 
+					0px 2px 2px rgba(0,0,0,0.1);
+
+				border:none !important;
+			}
+
+
+
+
+
+
+
+
+
+
+			/*heading hover effect*/
+			#accordian h3:hover {
+				background-color: #fffacd; 
+				/*background: #f0f0f0;
+			    background: -webkit-gradient(linear, left top, left bottom, from(#cfcfcf), to(#f6f6f6)); 
+				background: -moz-linear-gradient(top, #cfcfcf, #f6f6f6);*/
+			}
+
+			/*iconfont styles*/
+			#accordian h3 span{
+				font-size: 16px;
+			}
+
+			#accordian h3 span a{
+				font-weight: normal;
+			}
+
+
+
+			/*list items*/
+			#accordian li {
+				/*list-style-type: none;*/
+				display: list-item;
+			}
+
+
+			/*links*/
+			#accordian ul ul li a,
+			#accordian ul ul li label {
+				font-size: 11px;
+				line-height: auto;
+				display: block;
+				/*transition for smooth hover animation*/
+				transition: all 0.15s;
+			}
+
+			.grp_header{
+				/*color:#fff;*/
+				background: transparent;
+			}
+
+
+			.grp_list a{
+				font-size: 12px !important;
+			} 
+
+			.grp_list h3{
+				display:block !important;
+			} 
+
+
+			/*hover effect on links*/
+			.grp_list h3,
+			.grp_list h3 span,
+			.grp_list h3 span a{
+				width: 98%;
+				/*color:#fff;*/
+				background: transparent;
+			}
+
+
+			.grp_list h3:hover,
+			.grp_list h3 span:hover,
+			.grp_list h3 span a:hover{
+				width: 98%;
+				/*color:#fff;*/
+				background: transparent;	
+			}
+
+
+
+			/*Lets hide the non active LIs by default*/
+			#accordian ul ul {
+				display: none;
+			}
+			#accordian li.active ul {
+				display: block;
+			}
+
+
+
+			.sub-menu li input[type=radio] {
+				position: absolute;
+				opacity: 0;
+			}
+
+
+			.sub-menu a {
+				text-decoration: none;
+				border:none;
+			}
+
+
+			.sub-menu{
+				margin-left: -20px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+
+
+			.grp_list a{
+				margin-left: 10px;
+			}
+
+			.sub-menu label{
+				margin-left: 20px;
+			}
+
+
+			.sub-menu li{
+				display: list-item;
+				background-color: transparent;
+				background-image: none !important;
+				margin-left: -20px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+
+			.sub-menu li h3{
+				margin-left: 0px;
+				margin-top: 1px;
+				margin-bottom: 1px;
+			}
+
+			.sub-menu li h3 a{
+				color: #1f1f1f !important;
+				font: normal 12px;
+			}
+
+
+			.sub_item{
+				/*height:20px;*/
+				padding-top: 2px;
+				padding-bottom: 4px;
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+			}
+
+			.sub_item:hover{
+				color:#000 !important;
+				/*background: #ddd !important;*/
+				background: #fffacd !important;;
+				border-bottom: 1px solid #ccc;
+			}				
+
+			.sub_item{
+				border-bottom: 1px solid #ccc;
+				color:#222 !important;
+				background: #fff !important;
+			}	
+
+
+
+			/*#######    selected items table    #############*/
+			.CO_Table{
+				margin-top: 0;
+			}
+
+			.CO_Table_h3{
+				margin-top: 0;
+				padding-top: 2px;
+				font-family: 'Open+Sans' sans-serif;
+				font-weight: normal;
+				font-size: 1em !important;
+				text-align: center;
+				background: #66A3FF;
+				color: #FFFFFF;
+				border-top-left-radius: 0.7em;
+				border-top-right-radius: 0.7em;
+				text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+				height: 20px;
+
+
+
+			}
+			.CO_Table_border{
+				border-bottom: 1px solid #66A3FF;
+			}
+
+
+
+
+
+			.PA_Table{
+				margin-top: 20px;	
+			}
+
+
+
+			.CO_TableRow td,
+			.selected_table{
+				vertical-align: top;
+			}
+
+			.selected_table table{
+				margin-top: 0;
+				margin-left: 20px;
+				width:670px;
+				vertical-align: top;
+				text-align: center;
+				height:auto;
+				overflow-y: auto;
+				/*overflow-x: none;*//*Horizontal*/
+			}
+
+			.selected_table table th,
+			.selected_table table td{
+				border: 1px solid #ccc;
+			}
+
+			.selected_table table tr th{
+				/*background: #66A3FF url("../img/glossyback2.gif") repeat-x left;*/
+				background: #66A3FF;
+				border:1px solid #a1a1a1;
+				text-shadow:rgba(0, 0, 0, 0.8) 1px 1px 3px;
+			  	color: #FFF;
+			  	height:18px;
+			  	/*height:28px;*/
+			}
+
+
+			.selected_table table tbody tr td{
+				border: 1px solid #ccc;
+				max-height:30px;
+				vertical-align: top;
+				background: #fff;
+				color: #444;
+			}
+
+			.selected_tr_height{
+				height:30px;
+				vertical-align: top;
+			}
+
+			.selected_tr_height button{
+				height:30px;
+				vertical-align: top;
+			}
+
+
+			.CO_TableCell{
+				width: 100%;
+				overflow-y: auto;
+				overflow-x: none;/*Horizontal*/
+			}
+
+			.selected_table{
+				width: 100%;
+			}
+ 
+
+.ICD10Records_pop{
+	width:94%;
+	height:80px;
+	text-align: left !important;
+	font-weight: normal !important;
+}
+
+
+
+table.ICD10Records_pop tr:hover td{
+	background-color: #fffacd
+}
+
+
+
+
+/*#######    selected items table    #############*/
+
+			.cat{
+				font-size: 0.9em !important;
+			}
+
+
+			#textArea_cell{
+				vertical-align: center !important;
+				margin:0 !important;
+			}
+
+			#textArea_cell textarea{
+				margin:0;
+				padding: 0;
+				font-size: 0.9em !important;
+				overflow-y:auto;
+				height:100%;
+				min-width: 250px;
+				width: 100% !important;
+				border:0;
+			}
+
+			#Button_cell{
+				/*vertical-align: center !important;*/
+				/*vertical-align: middle;*/
+			}
+
+			.SelTable tbody{
+				font-weight: normal;
+				margin:0;
+				padding: 0;
+			}
+
+			.SelTable tbody tr .editRow{
+				width:40px;
+				/*height:40px;*/
+			}
+
+			.SelTable tbody tr .deleteRow{
+				width:40px;
+				/*height:25px;*/
+			}
+
+			.SelTable thead tr th{
+				font-weight: normal;
+			}
+
+
+			.METable{
+				width: 400px;
+				height: 100%;
+				overflow-x:scroll;
+				border-collapse: collapse;
+				border-spacing: 0;
+				margin-left: 0;
+			}
+
+
+
+
+.myContainer{
+	margin-left: 10px !important;
+	table-layout:fixed;
+	width: 670px !important;
+}
+
+.myContainer_cell{
+	/*overflow-x:scroll;*/
+	height: auto;
+	width:683px;
+	
+}
+
+.myContent{
+	margin-left: 0 !important;
+}
+
+
+
+
+
+
+
+
+/*    .headcol1_med,
+    .headcol2_med{
+    	z-index: 999;
+    	position:absolute !important;
+    	height:25px !important;
+    }
+
+    .headcol1_med {
+    	width:44px;
+        right:55px;
+    }
+
+    .headcol2_med {
+    	width:40px;
+        right:12px;
+    }
+
+    .ContentCol1_med,
+    .ContentCol2_med{
+    	z-index: 1;
+    	position:absolute !important;
+    	width:40px;
+    	height:28px !important;
+    	border: 1px solid #fff;
+    }
+
+    .ContentCol1_med {
+        right:57px;
+    }
+
+    .ContentCol2_med {
+        right:12px;
+    }*/
+
+
+.MedButClass{
+	border: 1px solid #fff !important;
+}
+
+
+
+
+
+
+
+    .myContainer_med{
+        width:400px;
+        border:1px solid blue;
+    }
+
+    .myContainer_cell_med{
+        border:1px solid blue;
+        left:auto;
+
+        width: 400px;
+        overflow-x:scroll;  
+        overflow-y:visible;
+        padding-bottom:1px;
+    }
+
+    .myContent_med tr td,{
+        border:1px solid red;
+    }
+
+    .myDiv {
+        /*width: 598px;*/
+        width: 681px;
+        overflow-x:scroll;  
+        overflow-y:visible;
+        /*padding-bottom:1px;*/
+    }
+
+
+
+
+#Flying_Dutchman{
+	width:91px; 
+	height:34px; 
+	float:left; 
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+.FDM{
+	width:91px; 
+	height:35px; 
+	float:left; 
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+
+
+
+.medicationAccordion{
+	padding-left: 10px;
+}
+
+
+.curMed_div{
+	padding: 0 !important;
+	margin-left: 0;
+}
+.preMed_div{
+	padding: 0 !important;
+	margin-left: 0;
+}
+.recMed_div{
+	padding: 0 !important;
+	margin-left: 0;
+}
+
+
+.myContainerMedication{
+	margin-left: 0px !important;
+	table-layout: fixed !important;
+}

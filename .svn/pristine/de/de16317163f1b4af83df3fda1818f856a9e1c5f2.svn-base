@@ -1,0 +1,98 @@
+<script src="media/js/jquery-1.10.0.min.js"></script>
+<script src="media/js/closeEditPages.js"></script>
+<?php
+
+include './MelaClass/Mela_Forms.php';
+include './MelaClass/db.php';
+include './MelaClass/authInitScript.php';
+
+$Form = new Mela_Forms('editAgents','','POST','agents_form');
+
+if (!$_REQUEST['dlk'] || !$_REQUEST['lnk'] || !$_REQUEST['row']) die("Vital information missing");
+
+$dlk = filter_var($_REQUEST['dlk'], FILTER_SANITIZE_NUMBER_INT);
+$lnk = filter_var($_REQUEST['lnk'], FILTER_SANITIZE_NUMBER_INT);
+$row = filter_var($_REQUEST['row'], FILTER_SANITIZE_NUMBER_INT);
+
+$query = "SELECT ia.Agents_Result, itm.Description
+          FROM Infection_Agents ia
+          LEFT OUTER JOIN Items_agents itm ON ia.ID = itm.ID
+          WHERE ia.ID=$row AND ia.agent_dlkID=$dlk AND ia.agent_lnkID=$lnk AND ia.ID=itm.ID";
+    try { 
+        $result = odbc_exec($connect,$query); 
+        if($result){ 
+               $agent = odbc_fetch_array($result);
+        } 
+        else{ 
+        throw new RuntimeException("Failed to connect."); 
+        } 
+            } 
+        catch (RuntimeException $e) { 
+                print("Exception caught: $e");
+                //exit;
+        }
+        
+$hiddenRow = $Form->hiddenField('row',$row);
+$hiddenDLK = $Form->hiddenField('dlk',$dlk);
+$hiddenLNK = $Form->hiddenField('lnk',$lnk);
+
+echo $hiddenRow;
+echo $hiddenDLK;
+echo $hiddenLNK;
+
+if (!$_POST) {
+    
+    print "<table class='temp'>
+           <tbody>
+            <tr>
+                <td>
+                    Description
+                </td>
+                <td>";
+                    $description = $Form->textBox('agentDescription',$agent['DESCRIPTION'],'',1);
+                    print $description;
+                print "</td>
+            </tr>
+            <tr>
+                <td>
+                Result
+                </td>
+                <td>";
+                    $dose = $Form->textBox('agentResult',$agent['AGENTS_RESULT']);
+                    print $dose;
+                print "</td>
+            </tr>
+            <tr>
+                <td colspan='2'>";
+                $submit = $Form->submitButton('Submit');
+                echo $submit;
+                print "</td>
+            </tr>
+           </tbody>
+           </table>";
+} else {
+    $result = (is_numeric($_POST['agentResult'])) ? filter_var($_POST['agentResult'], FILTER_SANITIZE_NUMBER_INT) : filter_var($_POST['agentResult'], FILTER_SANITIZE_STRING);
+    $rowID = $_POST['row'];
+    $dlkID = $_POST['dlk'];
+    $lnkID = $_POST['lnk'];
+    $hiddenResult = $Form->hiddenField('hiddenResult',$result);
+    
+    $query = "UPDATE Infection_Agents SET Agents_Result='$result' WHERE ID=$rowID AND agent_dlkID=$dlkID AND agent_lnkID=$lnkID";
+    try { 
+        $result = odbc_exec($connect,$query); 
+        if($result){ 
+            ?>
+            <script type="text/javascript">
+                CloseAndRefresh('row','hiddenResult','agnotes'); 
+            </script>
+            <?php   
+        } 
+        else{ 
+        throw new RuntimeException("Failed to connect."); 
+        } 
+            } 
+        catch (RuntimeException $e) { 
+                print("Exception caught: $e");
+                //exit;
+        }
+}

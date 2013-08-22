@@ -1,0 +1,325 @@
+.cssmenu{ 
+	font-family: 'Open+Sans' sans-serif;
+	height:28px; /*37*/
+	display:block; 
+	padding:0; 
+	margin:1px 1px; 
+	/*border:1px solid;*/ 
+	border-radius:5px;
+
+/*Main Tab Background Color*/
+	background: -ms-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -moz-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -o-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #afafaf), color-stop(1, #747474));
+	background: -webkit-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: linear-gradient(to bottom, #afafaf 0%, #747474 100%);
+	
+	
+	/*background: -ms-linear-gradient(top, #66A3FF 0%, #36278c 100%);
+	background: -moz-linear-gradient(top, #66A3FF 0%, #36278c 100%);
+	background: -o-linear-gradient(top, #66A3FF 0%, #36278c 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #66A3FF), color-stop(1, #36278c));
+	background: -webkit-linear-gradient(top, #66A3FF 0%, #36278c 100%);
+	background: linear-gradient(to bottom, #66A3FF 0%, #36278c 100%);*/
+	
+} 
+
+
+
+
+
+
+.cssmenu > ul {
+	list-style:inside none; 
+	padding:0; 
+	margin:0;
+} 
+
+.cssmenu > ul > li {
+	list-style:inside none; 
+	padding:0; 
+	margin:0; 
+	float:left; 
+	display:block; 
+	position:relative;
+	/*z-index:2;*/
+	z-index:100;
+} 
+
+.cssmenu ul li span{
+	/*vertical-align: top;*/
+	color: #ffffff;
+}
+
+
+
+.cssmenu ul li a.active_pat_tab{
+
+/*background-image: linear-gradient(bottom, #66A3FF 7%, #646464 7%);
+background-image: -o-linear-gradient(bottom, #66A3FF 7%, #646464 7%);
+background-image: -moz-linear-gradient(bottom, #66A3FF 7%, #646464 7%);
+background-image: -webkit-linear-gradient(bottom, #66A3FF 7%, #646464 7%);
+background-image: -ms-linear-gradient(bottom, #66A3FF 7%, #646464 7%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.07, #66A3FF),
+	color-stop(0.07, #646464)
+);*/
+
+
+background-image: linear-gradient(bottom, #66A3FF 15%, #646464 15%);
+background-image: -o-linear-gradient(bottom, #66A3FF 15%, #646464 15%);
+background-image: -moz-linear-gradient(bottom, #66A3FF 15%, #646464 15%);
+background-image: -webkit-linear-gradient(bottom, #66A3FF 15%, #646464 15%);
+background-image: -ms-linear-gradient(bottom, #66A3FF 15%, #646464 15%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, #66A3FF),
+	color-stop(0.15, #646464)
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.cssmenu > ul > li > a{ 
+	outline:none; 
+	display:block; 
+	position:relative; 
+	padding:8px 16px; /*padding:12px 20px;*/
+	font:normal 12px/100% 'Open+Sans' sans-serif; 
+	text-align:center; 
+	text-decoration:none; 
+	text-shadow:1px 1px 0 rgba(0,0,0, 0.4); 
+} 
+
+.cssmenu > ul > li:first-child > a{
+	border-radius:5px 0 0 5px;
+} 
+
+.cssmenu > ul > li > a:after{ 
+	content:''; 
+	position:absolute; 
+	border-right:1px solid; 
+	top:-1px; 
+	bottom:-1px;
+	right:-2px; 
+	z-index:999; 
+} 
+
+.cssmenu ul li.has-sub:hover > a:after{
+	top:0; 
+	bottom:0;
+} 
+
+
+/*   Related to little driangle showing sub menus*/
+.cssmenu > ul > li.has-sub > a:before{ 
+	content:''; 
+	position:absolute; 
+	top:13px; 
+	right:3px; 
+	border:5px solid transparent; 
+	border-top:5px solid #ffffff; 
+} 
+
+/*   Related to little driangle showing sub menus*/
+.cssmenu > ul > li.has-sub:hover > a:before{
+	top:13px;
+} 
+
+
+/*Sub menu highlight color*/
+.cssmenu ul li.has-sub:hover > a{
+	background:#66A3FF;
+	border-color:#afafaf;
+padding-bottom:9px; 
+padding-top:8px; 
+	top:0; 
+	z-index:999; 
+} 
+
+.cssmenu ul li.has-sub:hover > ul, 
+.cssmenu ul li.has-sub:hover > div{
+	display:block;
+} 
+
+
+
+
+
+.cssmenu ul li > ul, 
+.cssmenu ul li > div{ 
+	display:none; 
+	width:auto; 
+	position:absolute; 
+	top:7px; /*38*/
+	padding:6px 0 5px 0;
+	border-radius:0 0 5px 5px; 
+	z-index:999; 
+/* Sub menu option canvas background color*/
+	background:#66A3FF;
+} 
+
+.cssmenu ul li > ul{
+	width:200px;
+} 
+
+.cssmenu ul li > ul li{
+	display:block; 
+	list-style:inside none; 
+	padding:0; 
+	margin:0; 
+	position:relative;
+} 
+
+.cssmenu ul li > ul li a{ 
+	outline:none; 
+	display:block; 
+	position:relative; 
+	margin:0; 
+	padding:4px 20px 4px 20px; 
+	font:10pt 'Open+Sans' sans-serif;; 
+	text-decoration:none; 
+	text-shadow:1px 1px 0 rgba(0,0,0, 0.5);
+
+/* Sub Menu Item Bacground Color*/
+	background-color: #66A3FF;
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cssmenu{
+	border-color:#cccccc;
+} 
+
+.cssmenu > ul > li > a{
+	border-right:1px solid #cccccc;
+	color:#eeeeee;
+} 
+
+.cssmenu > ul > li > a:after{
+	border-color:#f0696c;
+	border-color:#f0f0f0;
+} 
+
+/*#cssmenu > ul > li > a:hover{
+	background-color: #222;
+} */
+
+
+
+.cssmenu ul li a {
+	background: -ms-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -moz-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -o-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #afafaf), color-stop(1, #747474));
+	background: -webkit-linear-gradient(top, #afafaf 0%, #747474 100%);
+	background: linear-gradient(to bottom, #afafaf 0%, #747474 100%);
+
+	
+	/*background:#66A3FF;*/
+	border-top:#36278c;
+	border-bottom:#36278c;
+	color:#ffffff;
+
+}
+
+.cssmenu ul li a:hover {
+	background: #66A3FF;
+	border-top:#36278c;
+	border-bottom:#36278c;
+	color:#fffacd;
+}
+
+
+.cssmenu ul li a:active{ 
+	border-color: rgb(239, 253, 164);
+	background: rgb(239, 253, 164);
+
+background-image: linear-gradient(bottom, #FFC266 13%, #66A3FF 40%, #66A3FF 13%);
+background-image: -o-linear-gradient(bottom, #FFC266 13%, #66A3FF 40%, #66A3FF 13%);
+background-image: -moz-linear-gradient(bottom, #FFC266 13%, #66A3FF 40%, #66A3FF 13%);
+background-image: -webkit-linear-gradient(bottom, #FFC266 13%, #66A3FF 40%, #66A3FF 13%);
+background-image: -ms-linear-gradient(bottom, #FFC266 13%, #66A3FF 40%, #66A3FF 13%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.13, #FFC266),
+	color-stop(0.4, #66A3FF),
+	color-stop(0.13, #66A3FF)
+);
+
+
+
+
+/*	border-top:#995522;
+	border-bottom:#116600;
+	color:#337700;*/
+} 
+
+
+
+
+.cssmenu ul li ul li a {
+	background: #66A3FF !important;
+	border-top:#36278c;
+	border-bottom:#36278c;
+	color:#fffacd;
+}
+
+
+
+
+.has-sub ul li {
+	border-top: 1px solid #5a87dd;
+	border-bottom: 1px solid #66A3FF;
+}
+
+
+.last_sub{
+	border-bottom: 2px solid #5a87dd;
+}
+
+.has-sub ul li:hover {
+	border-top: 1px solid yellow;
+	border-bottom: 1px solid yellow;
+}
+
+
+.last_sub:hover{
+	border-bottom: 1px solid yellow;
+}
+
+
