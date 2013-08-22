@@ -374,13 +374,11 @@ class Auth
 
         $ip = $this->getIp();
         
-        /* I'd love to set this using self::SESSION_LENGTH like it was supposed to but it seems no
+        /* I'd love to set this using self::SESSION_LENGTH, which is supposed to be an hour ahead, but I doubt every hospital
          * server has their date set correctly, even my local setting is an hour behind (maybe due to BST but I don't practically
-         * see hospitals keeping on top of this), and if I set it any less than
-         * 2 days ahead 4D determines the session must end spot on 18:00:00 for some reason no matter what time of day you set it
+         * see hospitals keeping on top of this)
          */ 
-        $expiryDate = strtotime('now + 2 days');
-
+        $expiryDate = strtotime('now + 1 day');
         $data['expire'] = date("Y-m-d H:i:s", $expiryDate);
         //$data['expire'] = "2033-10-10 05:05:05";
         $data['cookie_crc'] = sha1($data['hash'] . $this->config->sitekey);
@@ -858,7 +856,9 @@ class Auth
         $now = strtotime('now');
         
         if ($row && $row['EXPIREDATE'] < $now) {
-            $newExpiryDate = date("Y-m-d H:i:s", strtotime(self::SESSION_LENGTH));
+            //$newExpiryDate = date("Y-m-d H:i:s", strtotime(self::SESSION_LENGTH));
+            $expiryDate = strtotime('now + 1 day');
+            $newExpiryDate = date("Y-m-d H:i:s", $expiryDate);
             $query = "UPDATE ".$this->config->table_sessions." SET expiredate='$newExpiryDate' WHERE hash = '$hash'";
             $update = odbc_exec($this->conn, $query);
             // Make sure to update cookie accordingly!
