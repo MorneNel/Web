@@ -28,14 +28,22 @@
 ?>
 
   <style>
-  #Dsk_Adm { width: 400px; height: 400px; padding: 0.5em; }
+        #Dsk_Adm { width: 600px; height: 400px; }
+        .Dsk_Adm_Icon{width: 100px; 
+                        height: 80px; 
+                        float: left; 
+                        margin: 20px;
+                        text-align: center;
+                    }
   </style>
 
 
   <script>
       $(function() {
         $( "#Dsk_Adm" ).draggable({ containment: "parent" });
-        $( ".Dsk_Adm_Icon" ).draggable({ containment: "parent" });
+        //$( ".Dsk_Adm_Icon" ).draggable({ containment: "parent" });
+        $( ".Dsk_Adm_Icon" ).draggable({ revert: true });
+
 
       });
 
@@ -63,21 +71,21 @@
     <div id="Dsk_Adm" class="ui-widget-content">
 
 
-                <div class="Dsk_Adm_Icon">
+                <div class="Dsk_Adm_Icon ui-widget-content">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Demographics
                     </a>
                 </div>
 
-                <div class="Dsk_Adm_Icon">
+                <div class="Dsk_Adm_Icon ui-widget-content">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-2">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Admission & Referral
                     </a>
                 </div>
 
-                <div class="Dsk_Adm_Icon">
+                <div class="Dsk_Adm_Icon ui-widget-content">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Co-morbidity
@@ -135,45 +143,7 @@
             
             <div style="clear:both;"></div>
             
-            <div class="box">
-                <h3>Title3</h3>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text2
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text3
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text4
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text5
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text6
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text7
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text8
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Text9
-                </div>
-            </div>
+
             
         </div>
 
