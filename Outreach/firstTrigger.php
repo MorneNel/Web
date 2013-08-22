@@ -8,7 +8,7 @@ if (!$_REQUEST['lnkid']) die("Necessary data is missing");
 
 $dlkPatID = $lnkID = filter_var($_REQUEST['lnkid'], FILTER_SANITIZE_NUMBER_INT);
 
-$query_PAT = "SELECT dmg.dmg_FirstName, dmg.dmg_Surname, dmg.dmg_DateOfBirth, dmg.dmg_Sex, dmg.dmg_NHSNumber, dmg.dmg_HospitalNumber, adm.adm_Number
+$query_PAT = "SELECT dmg.dmg_FirstName, dmg.dmg_Surname, dmg.dmg_DateOfBirth, dmg.dmg_Sex, dmg.dmg_NHSNumber, dmg.dmg_HospitalNumber, adm.adm_Number, adm.adm_ID
 		FROM Demographic dmg
 		LEFT OUTER JOIN LINK lnk ON lnk.lnk_dmgID = dmg.dmg_ID
 		LEFT OUTER JOIN Admission adm ON adm.adm_ID = lnk.lnk_admID
@@ -50,7 +50,7 @@ $query = "SELECT adms.HeartRate, adms.RespiratoryRate, adms.Temperature, adms.Bl
   adms.pH_CalledFor, adms.PaO2, adms.PaO2_Score, adms.PaO2_CalledFor, adms.O2_Sup, adms.O2_Sup_Score, adms.AScore_ID,
   a.adm_ScoreID
   FROM Admission_Score adms, Admission a
-  WHERE adms.AScore_ID=a.adm_ScoreID";
+  WHERE adms.AScore_ID=a.adm_ScoreID AND a.adm_ID=".$HeaderData['ADM_ID']."";
 try { 
     $result = odbc_exec($connect,$query); 
     if ($result) { 
@@ -167,10 +167,11 @@ if ($_POST) {
 		    
 		    function calculateMEWS(ID) {
 			// ID is lnk ID
+			var user = $('#hiddenUser').val();
 			$.ajax({
 			    type: "POST",
 			    url: "calculateMEWS.php",
-			    data: "page=ADM&id=" + ID,
+			    data: "page=ADM&id=" + ID + "&user=" + user,
 			    async: false,
 			    success: function(msg){
 				updateScores(msg);
@@ -290,7 +291,7 @@ if ($_POST) {
 			    "triggerDate": "noFutureDates"
 			},
 			 messages: {
-			    "triggerDate": "Date cannot be in the future"
+			    "triggerDate": "Date cannot be empty or set in the future"
 			},
 			highlight: function(element) {
 			    $(element).closest('.control-group').removeClass('success').addClass('error');
@@ -322,6 +323,7 @@ if ($_POST) {
 	    <?php	    
 	    $Form = new Mela_Forms('editMEWS','','POST','mews_form');
 	    echo $Form->hiddenField('hiddenLNKID',$lnkID);
+	    echo $Form->hiddenField('hiddenUser',$auth->UsrKeys->Username);
 	    echo $Form->hiddenField('ascoreid',$weighted['ASCORE_ID']);
 	    // CSS class specifically used to select only user editable fields
 	    $editable = array("editable");

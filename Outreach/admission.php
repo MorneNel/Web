@@ -290,7 +290,7 @@ echo $otc_calID;
                         catch (RuntimeException $e) { 
                                 print("Exception caught: $e");
                         }
-                    $responderDD = $Form->dropDown('adm-responder',$responderFields,$responderValues,'','');
+                    $responderDD = $Form->dropDown('adm-responder',$responderFields,$responderValues,$or_patient['OR_Responder'],'');
                     echo $responderDD;
                     ?>    
                 </td>                
@@ -298,7 +298,7 @@ echo $otc_calID;
         <?php } ?>
         <?php } ?>
         <?php if ($appName == "Outreach") { ?>
-        <?php if ($preferences['show_Sco_by_ward'] == 'true') { ?>
+        <?php if ($preferences['score_trig'] == 'true') { ?>
             <tr>
                 <td class="form_labels">Scored by ward</td>
                 <td>
@@ -309,9 +309,7 @@ echo $otc_calID;
                     ?>
                 </td>
             </tr>
-        <?php } ?>
-            
-        <?php if ($preferences['Show_Trig_by_ward'] == 'true') { ?>
+
             <tr>
                 <td class="form_labels">Triggered by ward</td>
                 <td>
@@ -322,9 +320,7 @@ echo $otc_calID;
                     ?>
                 </td>
             </tr>
-        <?php } ?>
-        <?php } ?>    
-        <?php if ($preferences['NEWS_ADM'] == 'true') { ?>
+
             <tr>
                 <td class="form_labels">NEWS Score</td>
                 <td>
@@ -332,9 +328,11 @@ echo $otc_calID;
                         $NEWSScore= $Form->textBox('adm-NEWS',$patient['NEWS_SCORE']);
                         echo $NEWSScore;
                         echo "<button type='button' id='admNEWSScore' data-dlkid='".$patient['DLK_ID']."' data-dlkpatid='".$patient['DLK_PATID']."' data-lnkid='".$lnkID."'>NEWS Trigger</button>";
+                        //var_dump($preferences);
                     ?>
                 </td>
             </tr>
+        <?php } ?>
         <?php } ?>
 
         </table>
@@ -380,7 +378,7 @@ echo $otc_calID;
                 <td class="form_labels"><?php echo $preferences['prf_EWSS_Name']; ?> on Referral</td>
                 <td>
                     <?php
-                        $myScoreOnREF = $Form->textBox('adm-myScoreOnREF',$patient['ADM_MEWS'],'','','MyScoreLabel');
+                        $myScoreOnREF = $Form->textBox('adm-myScoreOnREF',$patient['ADM_MEWS'],'',1,'MyScoreLabel');
                         echo $myScoreOnREF;
                         // Wrap this in preference
                         if ($preferences['prf_ShowInitialTrigger'] == 'true') {
@@ -594,7 +592,7 @@ echo $otc_calID;
                     </div>
                 </td>
             </tr>
-            <?php if (($appName == "AcutePain") AND ($preferences['ShowHosp'] == 'true')) { ?>
+            <?php if ($preferences['ShowHosp'] == 'true') { ?>
             <tr>
                 <td class="form_labels">Hospital</td>
                 <td>
