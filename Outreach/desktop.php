@@ -1,9 +1,6 @@
-Change should be from morne now
+
 
 <?php
-// error_reporting(E_ALL ^ E_NOTICE);
-// include './MelaClass/db.php';
-// include './MelaClass/authInitScript.php';
 
 // if (!$_REQUEST['lnkID']) die("Patient ID must be specified!");
 
@@ -30,7 +27,23 @@ Change should be from morne now
 // }
 ?>
 
+  <style>
+  #Dsk_Adm { width: 400px; height: 400px; padding: 0.5em; }
+  </style>
 
+
+  <script>
+      $(function() {
+        $( "#Dsk_Adm" ).draggable({ containment: "parent" });
+        $( ".Dsk_Adm_Icon" ).draggable({ containment: "parent" });
+
+      });
+
+
+
+
+
+  </script>
 
 
 <!-- <!DOCTYPE html>
@@ -44,71 +57,68 @@ Change should be from morne now
 
 
 
+<!-- <div id="containment-wrapper"> -->
 
-     <!--    <div class="patientPanel">
-            <ul class="patientDemographics">
-                <li><?php echo $patient['DMG_FIRSTNAME']." ".$patient['DMG_MIDDLENAME']." ".$patient['DMG_SURNAME']; ?>
-                <li><?php echo $patient['DMG_SEX']; ?>
-                <li>DOB: <?php echo $patient['DMG_DATEOFBIRTH']; ?>
-                <li>NHS: <?php echo $patient['DMG_NHSNUMBER']; ?>
-                <li>Hospital: <?php echo $patient['DMG_HOSPITALNUMBER']; ?>
-                <li>Admission: <?php echo $patient['ADM_NUMBER']; ?>
-            </ul>
-        </div>
-        <div class="leftbar">
-            <ul class="leftPanel"> 
-                <li>Log out
-                <li>Save
-                <li>Cancel
-            </ul>
-        </div>
-        <div class="mainPanel">
-            <div class="box">
-                <h3>
-                    Admission
-                </h3> 
-                <div class="icon_container">
+
+    <div id="Dsk_Adm" class="ui-widget-content">
+
+
+                <div class="Dsk_Adm_Icon">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Demographics
                     </a>
                 </div>
-                <div class="icon_container">
+
+                <div class="Dsk_Adm_Icon">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-2">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Admission & Referral
                     </a>
                 </div>
-                <div class="icon_container">
+
+                <div class="Dsk_Adm_Icon">
                     <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
                         <img src="media/images/icons/DVR2.bmp"><Br />
                         Co-morbidity
                     </a>
                 </div>
+
+    </div>
+
+
+<!-- </div> -->
+
+
+
+        <div class="mainPanel">
+
+            <div class="box">
+                <h3>Admission</h3> 
+            </div>
+       
+     
+
+
+
+            <div class="box">
+                <h3>Assessments</h3>
+                <div class="icon_container">
+                    <img src="media/images/icons/DVR2.bmp"><Br />
+                    Assessment Detail
+                </div>
+                <div class="icon_container">
+                    <img src="media/images/icons/DVR2.bmp"><Br />
+                    Physical Examination
+                </div>
+                <div class="icon_container">
+                    <img src="media/images/icons/DVR2.bmp"><Br />
+                    Physiology
+                </div>
             </div>
             
             <div class="box">
-                <h3>
-                    Assessments
-                </h3>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Assessment Detail
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Physical Examination
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Physiology
-                </div>
-            </div>
-            
-            <div class="box">
-                <h3>
-                    Assessments
-                </h3>
+                <h3>Assessments</h3>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
                         Assessment Detail
@@ -126,47 +136,46 @@ Change should be from morne now
             <div style="clear:both;"></div>
             
             <div class="box">
-                <h3>
-                    Title3
-                </h3>
+                <h3>Title3</h3>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text
+                    Text
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text2
+                    Text2
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text3
+                    Text3
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text4
+                    Text4
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text5
+                    Text5
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text6
+                    Text6
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text7
+                    Text7
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text8
+                    Text8
                 </div>
                 <div class="icon_container">
                     <img src="media/images/icons/DVR2.bmp"><Br />
-                        Text9
+                    Text9
                 </div>
             </div>
-        </div> -->
+            
+        </div>
 
 
 
