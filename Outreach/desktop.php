@@ -1,31 +1,34 @@
+
+I'm from the Organization
+
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
-include './MelaClass/db.php';
-include './MelaClass/authInitScript.php';
+// error_reporting(E_ALL ^ E_NOTICE);
+// include './MelaClass/db.php';
+// include './MelaClass/authInitScript.php';
 
-if (!$_REQUEST['lnkID']) die("Patient ID must be specified!");
+// if (!$_REQUEST['lnkID']) die("Patient ID must be specified!");
 
-$lnkID = filter_var($_REQUEST['lnkID'],FILTER_VALIDATE_INT);
+// $lnkID = filter_var($_REQUEST['lnkID'],FILTER_VALIDATE_INT);
 
-$query = "SELECT d.dmg_ID, d.dmg_FirstName, d.dmg_MiddleName, d.dmg_Surname, d.dmg_DateOfBirth, d.dmg_Sex, d.dmg_NHSNumber, d.dmg_HospitalNumber,
-            a.adm_Number,
-            l.lnk_ID
-            FROM Demographic d
-            LEFT OUTER JOIN LINK l ON d.dmg_ID = l.lnk_dmgID
-            LEFT OUTER JOIN Admission a ON a.adm_ID = l.lnk_admID
-            WHERE l.lnk_ID=$lnkID";
-try { 
-    $result = odbc_exec($connect,$query); 
-    if($result){ 
-        $patient = odbc_fetch_array($result);	
-    } 
-    else { 
-        throw new RuntimeException("Failed to connect."); 
-    } 
-} 
-catch (RuntimeException $e) { 
-    print("Exception caught: $e");
-}
+// $query = "SELECT d.dmg_ID, d.dmg_FirstName, d.dmg_MiddleName, d.dmg_Surname, d.dmg_DateOfBirth, d.dmg_Sex, d.dmg_NHSNumber, d.dmg_HospitalNumber,
+//             a.adm_Number,
+//             l.lnk_ID
+//             FROM Demographic d
+//             LEFT OUTER JOIN LINK l ON d.dmg_ID = l.lnk_dmgID
+//             LEFT OUTER JOIN Admission a ON a.adm_ID = l.lnk_admID
+//             WHERE l.lnk_ID=$lnkID";
+// try { 
+//     $result = odbc_exec($connect,$query); 
+//     if($result){ 
+//         $patient = odbc_fetch_array($result);	
+//     } 
+//     else { 
+//         throw new RuntimeException("Failed to connect."); 
+//     } 
+// } 
+// catch (RuntimeException $e) { 
+//     print("Exception caught: $e");
+// }
 ?>
 
 
