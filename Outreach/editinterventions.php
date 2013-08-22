@@ -85,7 +85,7 @@ if ($appName == "Outreach") {
 }
 
 // Get relevant data to fill out form
-$query = "SELECT inv.inv_ID, inv.StartDate, inv.inv_Time, inv.Duration_Time, inv.EndDate, inv.EndTime, inv.inv_Comments, inv.inv_Bolus, inv.inv_Dose, inv.inv_Probes,
+$query = "SELECT inv.inv_ID, DATE_TO_CHAR(inv.StartDate,'yyyy-Mm-Dd') AS STARTDATE, inv.inv_Time, inv.Duration_Time, DATE_TO_CHAR(inv.EndDate,'yyyy-Mm-Dd') AS ENDDATE, inv.EndTime, inv.inv_Comments, inv.inv_Bolus, inv.inv_Dose, inv.inv_Probes,
 	  inv.inv_TubeLength, inv.inv_Time_Volts, inv.inv_TubeSize, inv.inv_Test, inv.inv_Result, inv.inv_Treatment, inv.inv_Type, inv.inv_Infusion,
 	  inv.inv_NextRefill, inv.Pump_No, inv.No_Of_Tries, inv.No_Of_Goods, inv.inv_PerformedBy, inv.inv_Program, inv.inv_Reason, inv.inv_Sensation,
 	  inv.inv_Volts, inv.inv_Time_Volts, inv.inv_LineType, inv.inv_TubeSize, inv.inv_Frequency, inv.inv_LineSite, inv.inv_ChoiceOfLA,
