@@ -415,7 +415,16 @@
 	    
 	    /*
 	     * End physiology value checking
-	     */ 
+	     */
+	    
+	    function getDayFromDate(date) {
+		var javascriptDate = new Date(date);
+		var daysArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		var dateFromDay = daysArray[javascriptDate.getDay()];
+		//console.debug(javascriptDate);
+		//console.debug(dateFromDay);
+		return dateFromDay;
+	    }
 	    
 	    /*
 	     * End functions and generic code
@@ -2402,6 +2411,12 @@
 		    
 		}
 	    });
+	    
+		$('#otr-outreachDischargeDate').change(function() {
+			var currentDate = $(this).val();
+			var dayFromDate = getDayFromDate(currentDate);
+			$('#dischargeDay').val(dayFromDate);
+		});
 	
 	}); // End jQuery
 	/****************************/

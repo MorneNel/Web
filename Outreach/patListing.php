@@ -209,6 +209,9 @@ include './MelaClass/authInitScript.php';
 	});
      });
 </script>
+<title>
+    <?php echo $preferences['prf_HospitalName']; ?>
+</title>
 </head>
 <?php
 // This supposedly speeds up rendering time - see http://developer.yahoo.com/performance/rules.html#etags

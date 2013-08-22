@@ -47,7 +47,8 @@
 				    <td>
 					<?php
 					    $disDischargeDate = $Form->dateField('otr-outreachDischargeDate',stringToDateTime($patient['OTC_OTRDISCHARGEDATE'],2));
-					    echo $disDischargeDate;
+					    echo $disDischargeDate."<br />";
+					    echo $Form->textBox('dischargeDay','','',1);
 					?>
 				    </td>
 				</tr>
