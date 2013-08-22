@@ -59,13 +59,11 @@
             },
             rules: {
                 "date": "noFutureDates",
-                "anaesthetist1": "notEmpty",
-                "anaesthetist2": "notEmpty"
+                "anaesthetist1": "notEmpty"
             },
              messages: {
                 "date": "Date set cannot be blank or in the future",
-                "anaesthetist1": "Anaesthetist 1 cannot be empty",
-                "anaesthetist2": "Anaesthetist 2 cannot be empty"
+                "anaesthetist1": "Anaesthetist 1 cannot be empty"
             },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
@@ -333,20 +331,59 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
     } else {
     
     $ana1 = $_POST['anaesthetist1'];
-    $ana2 = $_POST['anaesthetist2'];
-    $date = dateToString($_POST['date']);
-    $classification = $_POST['classification'];
-    $incision = $_POST['incisionSite'];
-    $surgerytype = $_POST['typeOfSurgery'];
-    $outcome = $_POST['outcome'];
-    $technique = $_POST['technique'];
-    $notes = $_POST['surgeryNotes'];
     $operationID = $_POST['operationID'];
     $lnkID = $_POST['lnkID'];
     
-    //print_r($_POST);        
+    $srgAnea2SQL = "";
+    if (isset($_POST['anaesthetist2']) && strlen($_POST['anaesthetist2']) != 0) {
+        $anea2 = filter_var($_POST['anaesthetist2'], FILTER_SANITIZE_NUMBER_INT);
+	$srgAnea2SQL = "Anea2='".$anea2."',";
+    }
     
-    $sql = "UPDATE OPER_PatOperations SET Anea1=$ana1, Anea2=$ana2, OPER_Date='$date', OPER_Classification='$classification', IncisionType='$incision', Type='$surgerytype', Outcome='$outcome', Technique='$technique', OPER_Comments='$notes' WHERE OPER_ID=$operationID AND OPER_lnkID=$lnkID";
+    $srgDateSQL = "";
+    if (isset($_POST['surgDate']) && strlen($surgeryDate) != 0) {
+	$surgeryDate = dateToString($_POST['date']);
+        $srgDateSQL = "OPER_Date='".dateToString($surgeryDate)."',";
+    }
+    
+    $srgClassificationSQL = "";
+    if (strlen($_POST['classification']) != 0) {
+        $classification = filter_var($_POST['classification'], FILTER_SANITIZE_STRING);
+	$srgClassificationSQL = "OPER_Classification='".$classification."'";
+    }
+    
+    $srgIncisionTypeSQL = "";
+    if (isset($_POST['incisionSite']) && strlen($_POST['incisionSite']) != 0) {
+        $incisionType = filter_var($_POST['incisionSite'], FILTER_SANITIZE_STRING);
+        $srgIncisionTypeSQL = "IncisionType='$incisionType',";
+    }
+    
+    $srgTypeSQL= "";    
+    if (isset($_POST['typeOfSurgery']) && strlen($_POST['typeOfSurgery']) != 0) {
+        $type = filter_var($_POST['typeOfSurgery'], FILTER_SANITIZE_STRING);
+        $srgTypeSQL = "`Type`='$type',";
+    }
+    
+    $srgOutcomeSQL = "";
+    if (isset($_POST['outcome']) && strlen($_POST['outcome']) != 0) {
+        $outcome = filter_var($_POST['outcome'], FILTER_SANITIZE_STRING);
+        $srgOutcomeSQL = "Outcome='$outcome',";
+    }
+    
+    $srgTechniqueSQL = "";
+    if (isset($_POST['technique']) && strlen($_POST['technique']) != 0) {
+        $technique = filter_var($_POST['technique'], FILTER_SANITIZE_STRING);
+        $srgTechniqueSQL = "Technique='$technique',";
+    }
+    
+    $srgNotesSQL = "";
+    if (isset($_POST['surgeryNotes']) && strlen($_POST['surgeryNotes']) != 0) {
+        $notes = filter_var($_POST['surgeryNotes'], FILTER_SANITIZE_STRING);
+        $srgTechniqueSQL = "OPER_Comments='$notes',";
+    }
+    
+    $sql = "UPDATE OPER_PatOperations SET $srgAnea2SQL $srgDateSQL $srgClassificationSQL $srgIncisionTypeSQL $srgTypeSQL
+	    $srgOutcomeSQL $srgTechniqueSQL $srgTechniqueSQL Anea1=$ana1 WHERE OPER_ID=$operationID AND OPER_lnkID=$lnkID";
     //$sql = "UPDATE OPER_PatOperations SET IncisionType='1' WHERE OPER_ID=$operationID";
     try { 
         $result = odbc_exec($connect,$sql);

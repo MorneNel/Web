@@ -66,13 +66,11 @@
             },
             rules: {
                 "date": "noFutureDates",
-                "anaesthetist1": "notEmpty",
-                "anaesthetist2": "notEmpty"
+                "anaesthetist1": "notEmpty"
             },
              messages: {
                 "date": "Date set cannot be blank or in the future",
-                "anaesthetist1": "Anaesthetist 1 cannot be empty",
-                "anaesthetist2": "Anaesthetist 2 cannot be empty"
+                "anaesthetist1": "Anaesthetist 1 cannot be empty"
             },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');

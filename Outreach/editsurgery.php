@@ -56,13 +56,11 @@
             },
             rules: {
                 "surgDate": "noFutureDates",
-                "anaesthetist1": "notEmpty",
-                "anaesthetist2": "notEmpty"
+                "anaesthetist1": "notEmpty"
             },
              messages: {
                 "surgDate": "Date set cannot be blank or in the future",
-                "anaesthetist1": "Anaesthetist 1 cannot be empty",
-                "anaesthetist2": "Anaesthetist 2 cannot be empty"
+                "anaesthetist1": "Anaesthetist 1 cannot be empty"
             },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
@@ -349,9 +347,13 @@ if (!$_POST) {
     $lnkID = filter_var($_POST['lnk'], FILTER_SANITIZE_NUMBER_INT);
     $surgeryDate = $_POST['surgDate'];
     $surgeryTime = $_POST['surgTime'];
-    $anea1 = filter_var($_POST['anaesthetist1'], FILTER_SANITIZE_NUMBER_INT);
-    $anea2 = filter_var($_POST['anaesthetist2'], FILTER_SANITIZE_NUMBER_INT);   
+    $anea1 = filter_var($_POST['anaesthetist1'], FILTER_SANITIZE_NUMBER_INT);   
     
+    $srgAnea2SQL = "";
+    if (isset($_POST['anaesthetist2']) && strlen($_POST['anaesthetist2']) != 0) {
+        $anea2 = filter_var($_POST['anaesthetist2'], FILTER_SANITIZE_NUMBER_INT);
+	$srgAnea2SQL = "Anea2='".$anea2."',";
+    }
     
     $srgDateSQL = "";
     if (isset($_POST['surgDate']) && strlen($surgeryDate) != 0) {
@@ -415,7 +417,7 @@ if (!$_POST) {
     
     $query = "UPDATE Surgery SET $srgDateSQL $srgTimeSQL $srgTypeSQL
               $srgIncisionTypeSQL $srgTechniqueSQL $srgOutcomeSQL $srgSurgeryModeSQL
-              $srgDetailsSQL $srgNotesSQL Anea1=$anea1, Anea2=$anea2
+              $srgDetailsSQL $srgNotesSQL $srgAnea2SQL Anea1=$anea1
               WHERE srg_ID=$rowID AND srg_lnkID=$lnkID";
     try { 
         $result = odbc_exec($connect,$query); echo $query;
