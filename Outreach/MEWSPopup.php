@@ -267,7 +267,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>
 						    <?php
 						    $mewsClass =array('mewsField');
-							$heartRate = $Form->textBox('heartRate',$MEWS['PAT_HEARTRATE'],'',1,$mewsClass);
+							$heartRate = $Form->textBox('heartRate',$MEWS['PAT_HEARTRATE'],'',0,$mewsClass);
 							print $heartRate;
 						    ?>
 						</td>
@@ -282,7 +282,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Respiratory Rate</td>
 						<td>
 						    <?php
-							$respRate = $Form->textBox('respRate',$MEWS['PAT_RESPIRATORYRATE'],'',1,$mewsClass);
+							$respRate = $Form->textBox('respRate',$MEWS['PAT_RESPIRATORYRATE'],'',0,$mewsClass);
 							print $respRate;
 						    ?>    
 						</td>
@@ -297,7 +297,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Temperature</td>
 						<td>
 						    <?php
-							$temperature = $Form->textBox('temperature',$MEWS['PAT_TEMPERATURE'],'',1,$mewsClass);
+							$temperature = $Form->textBox('temperature',$MEWS['PAT_TEMPERATURE'],'',0,$mewsClass);
 							print $temperature;
 						    ?>
 						</td>
@@ -312,7 +312,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Blood Pressure</td>
 						<td>
 						    <?php
-							$sysBP = $Form->textBox('sysBP',$MEWS['PAT_SYSTOLIC_BP'],'',1,$mewsClass);
+							$sysBP = $Form->textBox('sysBP',$MEWS['PAT_SYSTOLIC_BP'],'',0,$mewsClass);
 							print $sysBP;
 						    ?>
 						</td>
@@ -327,7 +327,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>AVPU</td>
 						<td>
 						    <?php
-							$AVPU = $Form->textBox('AVPU',$MEWS['PAT_AVPU'],'',1,$mewsClass);
+							$AVPU = $Form->textBox('AVPU',$MEWS['PAT_AVPU'],'',0,$mewsClass);
 							print $AVPU;
 						    ?>    
 						</td>
@@ -342,7 +342,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Urine</td>
 						<td>
 						    <?php
-							$urine = $Form->textBox('Urine',$MEWS['PAT_URINEDD'],'',1,$mewsClass);
+							$urine = $Form->textBox('Urine',$MEWS['PAT_URINEDD'],'',0,$mewsClass);
 							print $urine;
 						    ?>  
 						</td>
@@ -357,7 +357,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Pain</td>
 						<td>
 						    <?php
-							$pain = $Form->textBox('Pain',$MEWS['PAT_PAIN'],'',1,$mewsClass);
+							$pain = $Form->textBox('Pain',$MEWS['PAT_PAIN'],'',0,$mewsClass);
 							print $pain;
 						    ?>    
 						</td>
@@ -372,7 +372,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>O2 Saturation</td>
 						<td>
 						    <?php
-							$O2Sat = $Form->textBox('O2Sat',$MEWS['PAT_O2SATURATION'],'',1,$mewsClass);
+							$O2Sat = $Form->textBox('O2Sat',$MEWS['PAT_O2SATURATION'],'',0,$mewsClass);
 							print $O2Sat;
 						    ?>    
 						</td>
@@ -387,7 +387,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Resp. Support</td>
 						<td>
 						    <?php
-							//$Resp = $Form->textBox('Resp',$MEWS['MEWS_RESP'],'',1);
+							//$Resp = $Form->textBox('Resp',$MEWS['MEWS_RESP'],'',0);
 							//print $Resp;
 						    ?> 
 						</td>
@@ -402,7 +402,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>GCS</td>
 						<td>
 						    <?php
-							$GCS = $Form->textBox('GCS',$MEWS['PAT_GCS'],'',1,$mewsClass);
+							$GCS = $Form->textBox('GCS',$MEWS['PAT_GCS'],'',0,$mewsClass);
 							print $GCS;
 						    ?>    
 						</td>
@@ -417,7 +417,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>Base Excess</td>
 						<td>
 						    <?php
-							$baseExcess = $Form->textBox('BaseExcess',$MEWS['PAT_BASE_EXCESS'],'',1,$mewsClass);
+							$baseExcess = $Form->textBox('BaseExcess',$MEWS['PAT_BASE_EXCESS'],'',0,$mewsClass);
 							print $baseExcess;
 						    ?>    
 						</td>
@@ -432,7 +432,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>pH</td>
 						<td>
 						    <?php
-							$pH = $Form->textBox('pH',$MEWS['PAT_PH'],'',1,$mewsClass);
+							$pH = $Form->textBox('pH',$MEWS['PAT_PH'],'',0,$mewsClass);
 							print $pH;
 						    ?>    
 						</td>
@@ -447,7 +447,7 @@ echo $Form->hiddenField('user',$auth->UsrKeys->Username);
 						<td>PaO2</td>
 						<td>
 						    <?php
-							$pAO2 = $Form->textBox('pAO2',$MEWS['PAT_PAO2'],'',1,$mewsClass);
+							$pAO2 = $Form->textBox('pAO2',$MEWS['PAT_PAO2'],'',0,$mewsClass);
 							print $pAO2;
 						    ?>    
 						</td>

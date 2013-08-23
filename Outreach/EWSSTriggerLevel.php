@@ -1,6 +1,11 @@
 <?php
+include './MelaClass/functions.php';
+include './MelaClass/Mela_Forms.php';
 include './MelaClass/db.php';
 include './MelaClass/authInitScript.php';
+//include './MelaClass/Mela_SQL.php';
+//$Mela_SQL = new Mela_SQL($auth->UsrKeys, $connect);
+//echo "<h1>WHAT ".$auth->UsrKeys->Username."</h1>";
 
 if (!$_REQUEST['input'] || !is_numeric($_REQUEST['input'])) die("No input value specified or invalid input format!");
 if (!$_REQUEST['category']) die("No category specified!");
@@ -94,12 +99,12 @@ switch (strtoupper($_REQUEST['category'])) {
     break;
 }
 
-$result = getTriggerScore($connect,$input,$formCategory,$lowestField,$highestField);
+$result = getTriggerScore($connect,$input,$formCategory,$lowestField,$highestField, $Mela_SQL);
 echo $result;
 
-function getTriggerScore($connect,$input,$category,$lowestField,$highestField) {
+function getTriggerScore($connect,$input,$category,$lowestField,$highestField, $Mela_SQL) {
     $upperCat = strtoupper($category);
-    $triggerLevel = '0';
+    $triggerLevel = 0;
     // get field values
     /*
     * There are 3 rows for EWSS
