@@ -685,7 +685,7 @@
 /* #########################################################################*/
 
 	    /*$('#pmh_EvidenceAvailable, #pmh-pmhRadio').hide();*/
-	    var pmhPrecheckedVal_yes = $('#pmh-evidenceAvailableToAssess-Yes:checked').val();
+	    /*var pmhPrecheckedVal_yes = $('#pmh-evidenceAvailableToAssess-Yes:checked').val();
 	    var pmhPrecheckedVal_no = $('#pmh-evidenceAvailableToAssess-No:checked').val();
 	    var pmhPastMedicalHistory_yes = $('#pmh-pastMedicalHistory-Yes:checked').val();
 	    var pmhPastMedicalHistory_no = $('#pmh-pastMedicalHistory-No:checked').val();
@@ -704,9 +704,8 @@
 	    if (pmhPrecheckedVal_no == 'No') {
 			$('#pmh_EvidenceAvailable, #pmh-pmhRadio').hide();
 			pmh_untic();
-	    }
-
-
+	    }*/
+	    
 	    $('#pmh-evidenceAvailableToAssess-No').click(function() {
 			$('#pmh_EvidenceAvailable, #pmh-pmhRadio').hide();
 			$('#pmh-pastMedicalHistory-No').prop('checked', false);
@@ -715,8 +714,16 @@
 	    });
 
 	    $('#pmh-evidenceAvailableToAssess-Yes').click(function() {
-			$('#pmh_EvidenceAvailable, #pmh-pmhRadio').show();
+			$('#pmh-pmhRadio').show();
 	    });
+	    
+	    function pmh_untic() {
+        	$.each($('.pmh_item'), function() { 
+		    	$(this).prop('checked', false);
+			});
+
+        	$('.pmh_aids').val('');
+		}
 
 
 
@@ -729,14 +736,23 @@
 	    });
 
 
-
-	    function pmh_untic() {
-        	$.each($('.pmh_item'), function() { 
-		    	$(this).prop('checked', false);
-			});
-
-        	$('.pmh_aids').val('');
-		}
+	    if ($('#pmh-evidenceAvailableToAssess-Yes').is(':checked')) {
+		    $('#pmh-pmhRadio').show();
+		    if ($('#pmh-pastMedicalHistory-Yes').is(':checked')) {
+			console.debug("It's getting here");
+			$('#pmh_EvidenceAvailable').show();
+		    } else {
+			$('#pmh_EvidenceAvailable').hide();
+		    }
+	    } else {
+		$('#pmh-pmhRadio').hide();
+		$('#pmh_EvidenceAvailable').hide();
+	    }
+	    
+	    if ($('#pmh-evidenceAvailableToAssess-No').is(':checked')) {
+		$('#pmh_EvidenceAvailable, #pmh-pmhRadio').hide();
+		pmh_untic();
+	    }
 
 /* ######################################################################### */
 
@@ -744,10 +760,8 @@
 
 	    $('.adm-priorSurgeryHide').hide();
 	    
-	    if ($('#adm-priorSurgeryUndertaken-Yes :checked')) {
+	    if ($('#adm-priorSurgeryUndertaken-Yes').is(':checked')) {
 		$('.adm-priorSurgeryHide').show();
-	    } else if ($('#adm-priorSurgeryUndertaken-No :checked')) {
-		$('.adm-priorSurgeryHide').hide();
 	    } else {
 		$('.adm-priorSurgeryHide').hide();
 	    }
