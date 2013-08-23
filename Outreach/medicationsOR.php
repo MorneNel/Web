@@ -21,8 +21,8 @@
                                             while ($painItems = odbc_fetch_array($subresult)) {
 
                                                 echo "<li class='select ME sub_item' title='".$painItems['DESCRIPTION']."'>
-                                                    <input type='radio' class='addRow' data-med='2' data-abbr='ME' data-destination='medications' data-item_id='".$painItems['ITEM_ID']."' data-lnk_ID='".$patient['LNK_ID']."' data-dlk_ID='".$patient['DLK_ID']."' data-group='".$painItems['DESCRIPTION']."' data-edit='y' id='".$painItems['ITEM_ID']."' value='".$painItems['ITEM_ID']."'>
-                                                    <label for='".$painItems['ITEM_ID']."'>".$painItems['DESCRIPTION']."</label>
+                                                    <input type='radio' class='addRow' data-med='2' data-abbr='ME' data-destination='medications' data-item_id='".$painItems['ITEM_ID']."' data-lnk_ID='".$patient['LNK_ID']."' data-dlk_ID='".$patient['DLK_ID']."' data-group='".$painItems['DESCRIPTION']."' data-edit='y' id='ME_".$painItems['ITEM_ID']."' value='".$painItems['ITEM_ID']."'>
+                                                    <label for='ME_".$painItems['ITEM_ID']."'>".$painItems['DESCRIPTION']."</label>
                                                     </li>\n";
 
                                             }
@@ -81,7 +81,7 @@
 							<td class='cat'>".$existingRows['Group_Description']."</td>
 							<td class='sel'>".$existingRows['Item_Description']."</td>
 							<td id='textArea_cell'><span>";
-							    $notes = $Form->textArea('mednotes['.$existingRows['ITMID'].']',''.$existingRows['MED_COMMENTS'].'','','','','gi_text','duchman');
+							    $notes = $Form->textArea('MEnotes['.$existingRows['ITM_ID'].']',''.$existingRows['MED_COMMENTS'].'','','','','gi_text','duchman');
 					    print           $notes;
 					    print       "</span></td>
 							<td id='Button_cell' class='MedButClass'><button id='".$existingRows['ITM_ID']."' type='button' class='editRow ContentCol1_med' data-page='medications'><img src='Media/img/pencil.gif' alt='Edit'/></button></td>

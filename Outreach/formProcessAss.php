@@ -618,10 +618,10 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	} //echo $vis2_updQuery;
 	
        // Medications
-       if (((!empty($_POST['mednotes'])) && (count($_POST['mednotes'] > 0))) || ((!empty($_POST['med-Dose'])) && (count($_POST['med-Dose'] > 0))) || ((!empty($_POST['med-doseUnits'])) && (count($_POST['med-doseUnits'] > 0))) || ((!empty($_POST['med-Frequency'])) && (count($_POST['med-Frequency'] > 0)))
+       if (((!empty($_POST['MEnotes'])) && (count($_POST['MEnotes'] > 0))) || ((!empty($_POST['med-Dose'])) && (count($_POST['med-Dose'] > 0))) || ((!empty($_POST['med-doseUnits'])) && (count($_POST['med-doseUnits'] > 0))) || ((!empty($_POST['med-Frequency'])) && (count($_POST['med-Frequency'] > 0)))
 	   || ((!empty($_POST['med-Route'])) && (count($_POST['med-Route'] > 0))) || ((!empty($_POST['med-Outcome'])) && (count($_POST['med-Outcome'] > 0))) || ((!empty($_POST['med-Discontinued'])) && (count($_POST['med-Discontinued'] > 0)))) {
 	      //echo "Medication count is ".count($_POST['DOnotes']);
-	      foreach ($_POST['mednotes'] AS $key => $val) {
+	      foreach ($_POST['MEnotes'] AS $key => $val) {
 		     $sanitisedComments = filter_var($val, FILTER_SANITIZE_STRING);
 		     $medDose = "";
 		     $medDoseUnits = "";
