@@ -69,7 +69,7 @@ $query = "SELECT d.dmg_ID, d.dmg_FirstName, d.dmg_MiddleName, d.dmg_Surname, DAT
 		icn.icn_LYM, icn.icn_CRRX, icn.icn_CICIDS, icn.icn_STERX,
 		l.lnk_ID, l.lnk_dmgID, l.lnk_dgnID, l.lnk_icnID, l.lnk_otcID, l.lnk_admID, l.TriggStat,
 		dlk.dlk_ID, dlk.dlk_patID,
-		adms.Score_Date, adms.Score_Time,
+		DATE_TO_CHAR(adms.Score_Date,'yyyy-Mm-Dd') AS SCORE_DATE, adms.Score_Time,
 		ccmd.UnitFunction, ccmd.TrtSpecialityCode, ccmd.BedConfig, ccmd.AdmSrc, ccmd.SrcLocation, ccmd.AdmType, ccmd.DischStatus, ccmd.DischDest, ccmd.DischLocation,
 		ccmd.AdvRespSupp, ccmd.BasicRespSupp, ccmd.AdvCardioSupp, ccmd.BasicCardioSupp, ccmd.RenalSupp, ccmd.NeuroSupp, ccmd.DermaSupp, ccmd.LiverSupp, ccmd.GISupport,
 		ccmd.MaxOrganSupp, ccmd.Level3, ccmd.Level2, ccmd.Level1, ccmd.Level0

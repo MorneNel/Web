@@ -243,11 +243,13 @@
 			    <td class="form_labels">Triggered</td>
 			    <td>
 				<?php
-					$scoClass = array("scoClass_Date");
-				    $s2dTriggeredDate = $Form->textBox('otr-s2dTriggeredDate',$patient['SCORE_DATE'],'','',$scoClass);
+				    $scoClass = array("scoClass_Date");
+				    //$s2dTriggeredDate = $Form->textBox('otr-s2dTriggeredDate',$patient['SCORE_DATE'],'','',$scoClass);
+				    $s2dTriggeredDate = $Form->dateField('otr-s2dTriggeredDate',$patient['SCORE_DATE'],$scoClass);
 				    echo $s2dTriggeredDate;
 				    $scoClass = array("scoClass_Time");
-				    $s2dTriggeredTime = $Form->textBox('otr-s2dTriggeredTime',convert4DTime($patient['SCORE_TIME']),'','',$scoClass);
+				    //$s2dTriggeredTime = $Form->textBox('otr-s2dTriggeredTime',convert4DTime($patient['SCORE_TIME']),'','',$scoClass);
+				    $s2dTriggeredTime = $Form->timeField('otr-s2dTriggeredTime',convert4DTime($patient['SCORE_TIME']),$scoClass);
 				    echo $s2dTriggeredTime;
 				?>
 			    </td>
@@ -258,10 +260,12 @@
 			    <td>
 				<?php
 				$scoClass = array("scoClass_Date");
-				    $s2dArrivalDate = $Form->textBox('otr-s2dArrivalDate',$patient['DR2SCR_ARIVE_DATE'],'','',$scoClass);
+				    //$s2dArrivalDate = $Form->textBox('otr-s2dArrivalDate',$patient['DR2SCR_ARIVE_DATE'],'','',$scoClass);
+				    $s2dArrivalDate = $Form->dateField('otr-s2dArrivalDate',$patient['DR2SCR_ARIVE_DATE'],$scoClass);
 				    echo $s2dArrivalDate;
 				    $scoClass = array("scoClass_Time");
-				    $s2dArrivalTime = $Form->textBox('otr-s2dArrivalTime',convert4DTime($patient['DR2SCR_ARIVE_TIME']),'','',$scoClass);
+				    //$s2dArrivalTime = $Form->textBox('otr-s2dArrivalTime',convert4DTime($patient['DR2SCR_ARIVE_TIME']),'','',$scoClass);
+				    $s2dArrivalTime = $Form->timeField('otr-s2dArrivalTime',convert4DTime($patient['DR2SCR_ARIVE_TIME']),$scoClass);
 				    echo $s2dArrivalTime;
 				?>
 			    </td>
