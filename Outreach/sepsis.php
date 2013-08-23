@@ -133,7 +133,7 @@
                                                 <td class='cat'>".$existingCLRows['Group_Description']."</td>
                                                 <td class='sel'>".$existingCLRows['Items_Description']."</td>
                                                 <td id='textArea_cell'>";
-                                                    $notes = $Form->textArea('sinotes['.$existingCLRows['SITE_ID'].']',''.$existingCLRows['SITE_COMMENTS'].'');
+                                                    $notes = $Form->textArea('SInotes['.$existingCLRows['SITE_ID'].']',''.$existingCLRows['SITE_COMMENTS'].'');
                                                     print $notes;
                                          print "</td>
                                                 <td id='Button_cell'>
@@ -261,7 +261,7 @@
                                                 <td class='cat'>".$existingCLRows['Group_Description']."</td>
                                                 <td class='sel'>".$existingCLRows['Items_Description']."</td>
                                                 <td id='textArea_cell'>";
-                                                    $notes = $Form->textArea('agnotes['.$existingCLRows['AGENT_ID'].']',''.$existingCLRows['AGENTS_COMMENTS'].'');
+                                                    $notes = $Form->textArea('AGnotes['.$existingCLRows['AGENT_ID'].']',''.$existingCLRows['AGENTS_COMMENTS'].'');
                                                     print $notes;
                                         print "</td>
                                                 <td id='Button_cell'>
@@ -383,7 +383,7 @@
                                                 <td class='cat'>".$existingCLRows['Group_Description']."</td>
                                                 <td class='sel'>".$existingCLRows['Items_Description']."</td>
                                                 <td id='textArea_cell'>";
-                                                    $notes = $Form->textArea('drnotes['.$existingCLRows['ANTIBIOTICS_ID'].']',''.$existingCLRows['ANTIBIOTICS_COMMENTS'].'');
+                                                    $notes = $Form->textArea('DRnotes['.$existingCLRows['ANTIBIOTICS_ID'].']',''.$existingCLRows['ANTIBIOTICS_COMMENTS'].'');
                                                     print $notes;
                                          print "</td>
                                                 <td id='Button_cell'>

@@ -1,4 +1,4 @@
-<!--<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">-->
+<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">
 <?php
 include './MelaClass/functions.php';
 include './MelaClass/db.php';
@@ -6,7 +6,7 @@ include './MelaClass/authInitScript.php';
 
 error_reporting(E_ALL ^ E_NOTICE);
 
-var_dump($_POST);
+//var_dump($_POST);
 $preferences = $Mela_SQL->getPreferences();
 if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
        
@@ -555,7 +555,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	
 	// Sepsis/infection
 	$inf_updQuery = "UPDATE Infection_Source SET Infection_Source='".$_POST['sps-infectionSource']."'
-	WHERE source_dlkID=".$_POST['ppaDLK']."";
+	WHERE source_dlkID=".$_POST['sourceDLK']."";
 	try { 
 	     $inf_updResult = odbc_exec($connect,$inf_updQuery); 
 	    } 
@@ -677,6 +677,52 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 		 catch (RuntimeException $e) { 
 		       print("Exception caught: $e");
 		 } //echo $inv_updQuery;
+	      }
+       }
+       
+       // Sepsis
+       // sepsis
+       if ($_POST['SInotes']) {
+	   foreach ($_POST['SInotes'] AS $key => $val) {
+		 //print "<b>Value</b>: $key as ".$val."<br />";
+			
+		 $si_updQuery = "UPDATE Infection_Site SET Site_Comments='$val' WHERE ID=$key AND site_lnkID =".$_POST['hiddenLNKID']."";
+		 try { 
+		      $si_updResult = odbc_exec($connect,$si_updQuery); 
+		     } 
+		 catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		 } //echo $si_updQuery;
+	      }
+       }
+       
+       // agents
+       if ($_POST['AGnotes']) {
+	   foreach ($_POST['AGnotes'] AS $key => $val) {
+		 //print "<b>Value</b>: $key as ".$val."<br />";
+			
+		 $ag_updQuery = "UPDATE Infection_Agents SET Agents_Comments='$val' WHERE ID=$key AND agent_lnkID =".$_POST['hiddenLNKID']."";
+		 try { 
+		      $ag_updResult = odbc_exec($connect,$ag_updQuery); 
+		     } 
+		 catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		 } //echo $ag_updQuery;
+	      }
+       }
+       
+       // drugs
+       if ($_POST['DRnotes']) {
+	   foreach ($_POST['DRnotes'] AS $key => $val) {
+		 //print "<b>Value</b>: $key as ".$val."<br />";
+			
+		 $dr_updQuery = "UPDATE Infection_Antibiotics SET Antibiotics_Comments='$val' WHERE ID=$key AND antibiotics_lnkID =".$_POST['hiddenLNKID']."";
+		 try { 
+		      $dr_updResult = odbc_exec($connect,$dr_updQuery); 
+		     } 
+		 catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		 } //echo $dr_updQuery;
 	      }
        }
        
