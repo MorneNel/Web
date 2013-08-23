@@ -1190,6 +1190,25 @@
 	     * Daily Outcome sublist stuff
 	     */
 	    $('#doActionTakenSublist, #do-actiontaken2').hide();
+	    switch ($('#do-actiontaken').val()) {
+		case "Refer for specialist assistance":
+		    changeDropDown('do-actiontaken2','do-specialist','specialist');
+		    console.debug("Here it is");
+		    $('#doActionTakenSublist').text('Referred to');
+		    $('#doActionTakenSublist, #do-actiontaken2').show();
+		break;
+		
+		case "Transfer":
+		    changeDropDown('do-actiontaken2','do-transfer','transfer');
+		    $('#doActionTakenSublist').text('Transferred to');
+		    $('#doActionTakenSublist, #do-actiontaken2').show();
+		break;
+	    
+		default:
+		    $('#doActionTakenSublist, #do-actiontaken2').hide();
+		    $('#doActionTakenSublist').text('Action detail');
+		break;
+	    }
 	    
 	    $('#do-actiontaken').change(function() {
 		var list = $(this).val();
