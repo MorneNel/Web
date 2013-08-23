@@ -1,4 +1,4 @@
-<!--<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">-->
+<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">
 <?php
 include './MelaClass/functions.php';
 include './MelaClass/db.php';
@@ -6,7 +6,7 @@ include './MelaClass/authInitScript.php';
 
 error_reporting(E_ALL ^ E_NOTICE);
 
-var_dump($_POST);
+//var_dump($_POST);
 $preferences = $Mela_SQL->getPreferences();
 if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
        
