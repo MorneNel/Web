@@ -5,17 +5,18 @@ if ($preferences['prf_UseCareLevelScore'] == 'true') {
 <script type="text/javascript">
     $(document).ready(function() {
         $('.CL').click(function() {
-            var title = $(this).attr('title');
-            
-            if (title === 'Level 1') {
+            var data = $(this).data();
+            var type = data['type'];
+            //console.debug("Type is " + type);
+            if (type === 'Level 1') {
                 $('#rcl-requiredCareLevel').val('1');
             }
             
-            if (title === 'Level 2' || title === '2Level 2') {
+            if (type === 'Level 2' || type === '2Level 2') {
                 $('#rcl-requiredCareLevel').val('2');
             }
             
-            if (title === 'Level 3' || title === '3Level 3') {
+            if (type === 'Level 3' || type === '3Level 3') {
                 $('#rcl-requiredCareLevel').val('3');
             }
         });
@@ -87,9 +88,9 @@ if ($preferences['prf_UseCareLevelScore'] == 'true') {
                             $subresult = odbc_exec($connect,$subquery);
                             while ($painItems = odbc_fetch_array($subresult)) {
 
-                                echo "<li class='select CL sub_item' title='".$painItems['DESCRIPTION']."'>
-                                    <input type='radio' class='addRow' data-abbr='CL' data-item_id='".$painItems['ITEMCL_ID']."' data-lnk_ID='".$patient['LNK_ID']."' data-dlk_ID='".$patient['DLK_ID']."' data-destination='careLevel' data-group='".$painItems['DESCRIPTION']."' data-edit='n' id='".$painItems['ITEMCL_ID']."' value='".$painItems['ITEMCL_ID']."'>
-                                    <label for='".$painItems['ITEMCL_ID']."'>".$painItems['DESCRIPTION']."</label>
+                                echo "<li class='select CL sub_item' title='".$painItems['DESCRIPTION']."' data-type='".$painGroups['DESCRIPTION']."'>
+                                    <input type='radio' class='addRow' data-abbr='CL' data-item_id='".$painItems['ITEMCL_ID']."' data-lnk_ID='".$patient['LNK_ID']."' data-dlk_ID='".$patient['DLK_ID']."' data-destination='careLevel' data-group='".$painItems['DESCRIPTION']."' data-edit='n' id='CL_".$painItems['ITEMCL_ID']."' value='".$painItems['ITEMCL_ID']."'>
+                                    <label for='CL_".$painItems['ITEMCL_ID']."'>".$painItems['DESCRIPTION']."</label>
                                     </li>";
                             }
 
@@ -143,7 +144,7 @@ if ($preferences['prf_UseCareLevelScore'] == 'true') {
                                         <td class='cat'>".$existingCLRows['Group_Description']."</td>
                                         <td class='sel'>".$existingCLRows['Item_Description']."</td>
                                         <td id='textArea_cell'>";
-                                            $notes = $Form->textArea('clnotes['.$existingCLRows['CARELEVELITEM_ID'].']',''.$existingCLRows['NOTES'].'');
+                                            $notes = $Form->textArea('CLnotes['.$existingCLRows['CARELEVELITEM_ID'].']',''.$existingCLRows['NOTES'].'');
                                             print $notes;
                                         print "</td>
                                         <td id='Button_cell'><button id='".$existingCLRows['CARELEVELITEM_ID']."' type='button' class='deleteRow' data-page='careLevel'><img src='Media/img/bin.gif' alt='Delete'/></button>

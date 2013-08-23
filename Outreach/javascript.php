@@ -58,14 +58,6 @@
 	    /*
 	     * Form Validation rules and stuff
 	     */
-	    
-	    function callback_add(v,m,f) {
-		if(v != 1)
-		{
-		  $(f).val('');
-		  $.prompt.close();
-		}
-	    }
 		
 	    /*
 	     * NHS Number Validation
@@ -412,11 +404,11 @@
 						// use e.preventDefault() to prevent closing when needed or return false. 
 						e.preventDefault(); 
 						if (v === false) {
-							//console.log("Yup, it was false. btw the val is " + $('#' + identifier).val());
-							//console.log("Value clicked was: "+ v);
 							// Get old value
 							var oldValue = $('#' + identifier + 'Hidden').val();
 							$('#' + identifier).val(oldValue);
+							$.prompt.close();
+						} else {
 							$.prompt.close();
 						}
 					}
@@ -1899,9 +1891,10 @@
 		var ph = Number($('#pHWeighted').val());
 		var pao2 = Number($('#pAO2Weighted').val());
 		
-		var total = (HR+resp+temp+sysBP+urine+pain+O2sat+GCS+baseExcess+ph+pao2);
-		
+		var total = Number(HR+resp+temp+sysBP+urine+pain+O2sat+GCS+baseExcess+ph+pao2);
+		console.debug(HR, resp, temp, sysBP, urine, pain, O2sat, GCS, baseExcess, ph, pao2, total);
 		$('#MEWSTotal').val(total);
+		//$('#phys-EWSSScore').val(total);
 	    }
 	    
 	    function calculateEWSSWeightedScore(input,category,weighted) {
@@ -1928,7 +1921,7 @@
 		calculateEWSSWeightedScore(input,category,'#respRateWeighted');
 	    });
 	    
-	    $('#temperature').change(function() {
+	    $('#phys-temperature').change(function() {
 		var category = "Temp";
 		var input = $(this).val();		
 		calculateEWSSWeightedScore(input,category,'#temperatureWeighted');	

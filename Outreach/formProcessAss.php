@@ -145,7 +145,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	}
 	
 	$ass_updQuery = "UPDATE Outreach SET Timeliness_visit='".$_POST['ass-timeliness']."', otr_Ward='".$_POST['ass-location']."', Location_bay='".$_POST['ass-bay']."', Location_bed='".$_POST['ass-bed']."', otr_ScoringSystem='".$_POST['ass-scoringSystem']."',
-	otr_AssessmentReason='".$_POST['ass-assessmentReason']."', otr_FollowUp='".$_POST['ass-detail']."', InapReason='".$_POST['ass-reason']."', otr_SeenBy='".$_POST['ass-seenByRole']."', otr_SeenBy1='".$_POST['ass-seenByRole1']."',
+	otr_AssessmentReason='".$_POST['ass-assessmentReason']."', otr_FollowUp='".$_POST['ass-detail']."', InapReason='".$_POST['ass-reason']."', otr_SeenBy='".$_POST['ass-seenByRole']."', otr_SeenBy1='".$_POST['ass-seenByRole1']."', otr_CareLevel='".$_POST['rcl-requiredCareLevel']."',
 	otr_SeenBy2='".$_POST['ass-seenByRole2']."', otr_Accompanied_By='".$_POST['ass-accompanied']."', otr_SeenBy_Name='".$_POST['ass-seenByName']."', otr_SeenBy_Name1='".$_POST['ass-seenByName1']."', otr_SeenBy_Name2='".$_POST['ass-seenByName2']."',
 	otr_ActionTaken='".$_POST['ass-actionTaken']."', otr_LastSeenBy_Grade='".$_POST['ass-lastSeenBy']."', chr_VisitType='".$_POST['ass-visitType']."', chr_AppointmentType='".$_POST['ass-appointmentType']."', chr_Attended='".$_POST['ass-attended']."',
 	chr_WhyNotAttended='".$_POST['ass-reasonNotAttended']."', $assLastSeenByDateSQL $assLastSeenByTimeSQL  otr_SuggestedNextAssess='".$_POST['ass-followUp']."' $assResearchTagsSQL
@@ -640,6 +640,21 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 			    } //echo $medno_updQuery;
 		     //}
 	       }
+       }
+       
+       // Care Level
+       if ($_POST['CLnotes']) {
+	   foreach ($_POST['CLnotes'] AS $key => $val) {
+		 //print "<b>Value</b>: $key as ".$val."<br />";
+			
+		 $cl_updQuery = "UPDATE CareLevel SET Notes='$val' WHERE CareLevelItem_ID=$key AND lnk_ID =".$_POST['hiddenLNKID']."";
+		 try { 
+		      $cl_updResult = odbc_exec($connect,$cl_updQuery); 
+		     } 
+		 catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		 } //echo $cl_updQuery;
+	      }
        }
 	?>
 	<div style="height:100%; width:100%;">
