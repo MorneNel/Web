@@ -99,29 +99,52 @@ $patquery = "SELECT  d.dmg_FirstName, d.dmg_Surname, d.dmg_DateOfBirth, d.dmg_Se
     //echo "<br />ID is: ".$careStaff['MDS_ID'];
     
     $dateFromSQL = "";
+    $dateFromInsert = "";
     if (strlen($formVal['resp-dateFrom']) > 0) {
+	$dateFromInsert = "DateFrom,";
 	$dateFromSQL = "'".$formVal['resp-dateFrom']."', ";
     }
     
     $dateToSQL = "";
+    $dateToInsert = "";
     if (strlen($formVal['resp-dateTo']) > 0) {
+	$dateToInsert = "DateTo,";
 	$dateToSQL = "'".$formVal['resp-dateTo']."', ";
     }
     
     $timeFromSQL = "";
+    $timeFromInsert = "";
     if (strlen($formVal['resp-timeFrom']) > 0) {
+	$timeFromInsert = "TimeFrom,";
 	$timeFromSQL = "'".$formVal['resp-timeFrom']."', ";
     }
     
     $timeToSQL = "";
+    $timeToInsert = "";
     if (strlen($formVal['resp-timeTo']) > 0) {
+	$timeToInsert = "TimeTo,";
 	$timeToSQL = "'".$formVal['resp-timeTo']."', ";
-    }    
+    }
+    
+    $careStaffSQL = "";
+    $careStaffInsert = "";
+    if (strlen($careStaff['MDS_ID']) > 0) {
+	$careStaffInsert = "CareStaff";
+	$careStaffSQL = "".$careStaff['MDS_ID'].", ";
+    }
+    
+    $shiftSQL = "";
+    $shiftInsert = "";
+    if (strlen($formVal['resp-Shift']) > 0) {
+	$shiftInsert = "Shift,";
+	$shiftSQL = "'".$formVal['resp-Shift']."', ";
+    }
     
     $query = "INSERT INTO RespiteCare
-	      (Link_ID, Location, Shift, DateFrom, DateTo, TimeFrom, TimeTo, Comments, CareStaff)
+	      (Link_ID, Location, $shiftInsert $dateFromInsert $dateToInsert $timeFromInsert $timeToInsert $careStaffInsert Comments)
 	      VALUES
-	      ($lnkID, '".$formVal['resp-Location']."', '".$formVal['resp-Shift']."',  $dateFromSQL $dateToSQL $timeFromSQL $timeToSQL '".$formVal['resp-Comments']."', ".$careStaff['MDS_ID'].")";
+	      ($lnkID, '".$formVal['resp-Location']."', $shiftSQL $dateFromSQL $dateToSQL $timeFromSQL $timeToSQL $careStaffSQL '".$formVal['resp-Comments']."')";
+    echo $query;
     try { 
 	$result = odbc_exec($connect,$query);
 	if($result){ 
@@ -144,6 +167,7 @@ $patquery = "SELECT  d.dmg_FirstName, d.dmg_Surname, d.dmg_DateOfBirth, d.dmg_Se
 	    catch (RuntimeException $e) { 
 		print("Exception caught: $e");
 	    }
+	    
 	    
 	    print "<div style='display: none;' id='respiteRowData' data-lnkid='$lnkID' data-respitecareid='".$newRespiteRow['RESPITE_CARE_ID']."' data-datefrom='".$formVal['resp-dateFrom']."' data-dateto='".$formVal['resp-dateTo']."' data-shift='".$formVal['resp-Shift']."' data-staff='".$newRespiteRow['MDS_NAME']."'></div>";
 	    ?>
@@ -206,7 +230,7 @@ echo $hiddenLNK;
             <span class="ui-button-text">Cancel</span>
             </button>
 
-            <button style="font-size: small; color: green;" type="submit" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onClick="return CloseAndRefresh()">
+            <button style="font-size: small; color: green;" type="submit" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
             <span class="ui-button-text">Save</span>
             </button>
         </div>
