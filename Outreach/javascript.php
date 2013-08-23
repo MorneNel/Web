@@ -414,7 +414,9 @@
 						if (v === false) {
 							//console.log("Yup, it was false. btw the val is " + $('#' + identifier).val());
 							//console.log("Value clicked was: "+ v);
-							$('#' + identifier).val('');
+							// Get old value
+							var oldValue = $('#' + identifier + 'Hidden').val();
+							$('#' + identifier).val(oldValue);
 							$.prompt.close();
 						}
 					}

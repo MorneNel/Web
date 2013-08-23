@@ -21,6 +21,7 @@ $PhysCSS = array('checkPhysiology');
                                     $tempDataTags = array('code' => 'temp', 'type' => 'T', 'label' => 'Temperature', 'identifier' => 'phys-temperature');
                                     $physTemperature = $Form->textBoxPhysiology('phys-temperature',$patient['PAT_TEMPERATURE'],'',0,$NEWSCSS, $tempDataTags);
                                     echo $physTemperature . $unitsArray[0];
+                                    echo $physTemperatureHidden = $Form->hiddenField('phys-temperatureHidden',$patient['PAT_TEMPERATURE']);
                                 ?>    
                             </td>
                         </tr>
@@ -31,6 +32,7 @@ $PhysCSS = array('checkPhysiology');
                                     $sysDataTags = array('code' => 'sys', 'type' => 'T', 'label' => 'Systolic BP', 'identifier' => 'phys-systolicBP');
                                     $physSystolicBP = $Form->textBoxPhysiology('phys-systolicBP',$patient['PAT_SYSTOLIC_BP'],'',0,$NEWSCSS, $sysDataTags);
                                     echo $physSystolicBP . $unitsArray[1];
+                                    echo $physSystolicBPHidden = $Form->hiddenField('phys-systolicBPHidden',$patient['PAT_SYSTOLIC_BP']);
                                 ?>    
                             </td>
                         </tr>
@@ -41,6 +43,7 @@ $PhysCSS = array('checkPhysiology');
                                     $diasDataTags = array('code' => 'dias', 'type' => 'T', 'label' => 'Diastolic BP', 'identifier' => 'phys-diastolicBP');
                                     $physDiastolicBP = $Form->textBoxPhysiology('phys-diastolicBP',$patient['PAT_DIASTOLIC_BP'],'',0,$PhysCSS,$diasDataTags);
                                     echo $physDiastolicBP . $unitsArray[1];
+                                    echo $physDiastolicBPHidden = $Form->hiddenField('phys-diastolicBPHidden',$patient['PAT_DIASTOLIC_BP']);
                                 ?>    
                             </td>
                         </tr>
@@ -60,6 +63,7 @@ $PhysCSS = array('checkPhysiology');
                                     $hrDataTags = array('code' => 'hr', 'type' => 'T', 'label' => 'Heart Rate', 'identifier' => 'phys-heartRate1');
                                     $physHeartRate = $Form->textBoxPhysiology('phys-heartRate1',$patient['PAT_HEARTRATE'],'',0,$PhysCSS,$hrDataTags);
                                     echo $physHeartRate . $unitsArray[2];
+                                    echo $physHeartRateHidden = $Form->hiddenField('phys-heartRate1Hidden',$patient['PAT_HEARTRATE']);
                                 ?>    
                             </td>
                         </tr>
@@ -70,6 +74,7 @@ $PhysCSS = array('checkPhysiology');
                                     $rrDataTags = array('code' => 'rr', 'type' => 'T', 'label' => 'Respiratory Rate', 'identifier' => 'phys-respRate');
                                     $physRespRate = $Form->textBoxPhysiology('phys-respRate',$patient['PAT_RESPIRATORYRATE'],'',0,$NEWSCSS,$rrDataTags);
                                     echo $physRespRate . $unitsArray[3];
+                                    echo $physRespRateHidden = $Form->hiddenField('phys-respRateHidden',$patient['PAT_RESPIRATORYRATE']);
                                 ?>
                             </td>
                         </tr>
@@ -80,6 +85,7 @@ $PhysCSS = array('checkPhysiology');
                                     $spo2DataTags = array('code' => 'SpO2', 'type' => 'T', 'label' => 'SpO2', 'identifier' => 'phys-SpO2');
                                     $physSpO2 = $Form->textBoxPhysiology('phys-SpO2',$patient['PAT_O2SATURATION'],'',0,$NEWSCSS,$spo2DataTags);
                                     echo $physSpO2 . $unitsArray[4];
+                                    echo $physSpO2Hidden = $Form->hiddenField('phys-SpO2Hidden',$patient['PAT_O2SATURATION']);
                                 ?>    
                             </td>
                         </tr>
@@ -89,6 +95,7 @@ $PhysCSS = array('checkPhysiology');
                                 <?php
                                     $o2DataTags = array('code' => 'o2Rec', 'type' => 'T', 'label' => 'O2 Received', 'identifier' => 'phys-O2');
                                     $physO2 = $Form->textBoxPhysiology('phys-O2',$patient['PAT_O2RECEIVED'],'',0,$NEWSCSS,$o2DataTags);
+                                    echo $physO2Hidden = $Form->hiddenField('phys-O2Hidden',$patient['PAT_O2RECEIVED']);
                                     echo $physO2 ."<br />";
                                 
                                     if ($preferences['prf_Use_O2RecUnit_List'] == 'true') {
@@ -213,6 +220,7 @@ $PhysCSS = array('checkPhysiology');
                                         $pao2DataTags = array('code' => 'pao2', 'type' => 'T', 'label' => 'PaO2', 'identifier' => 'phys-heartRate');
                                         $physPAO2 = $Form->textBoxPhysiology('phys-heartRate',$patient['PAT_PAO2'],'',0,$PhysCSS,$pao2DataTags);
                                         echo $physPAO2 . $preferences['PRF_PAO2'];
+                                        echo $physPAO2Hidden = $Form->hiddenField('phys-heartRateHidden',$patient['PAT_PAO2']);
                                     ?>     
                                 </td>
                             </tr>
@@ -223,6 +231,7 @@ $PhysCSS = array('checkPhysiology');
                                         $fioDataTags = array('code' => 'fio', 'type' => 'T', 'label' => 'Associated FIO2', 'identifier' => 'phys-AssociatedFIO2');
                                         $physAssociatedFIO2 = $Form->textBoxPhysiology('phys-AssociatedFIO2',$patient['PAT_FIO2'],'',0,$PhysCSS,$fioDataTags);
                                         echo $physAssociatedFIO2;
+                                        echo $physAssociatedFIO2Hidden = $Form->hiddenField('phys-AssociatedFIO2Hidden',$patient['PAT_FIO2']);
                                     ?>    
                                 </td>
                             </tr>
@@ -233,6 +242,7 @@ $PhysCSS = array('checkPhysiology');
                                         $paco2DataTags = array('code' => 'pac', 'type' => 'T', 'label' => 'Associated PaCO2', 'identifier' => 'phys-AssociatedPACO2');
                                         $physAssociatedPACO2 = $Form->textBoxPhysiology('phys-AssociatedPACO2',$patient['PAT_PACO2'],'',0,$PhysCSS,$paco2DataTags);
                                         echo $physAssociatedPACO2 . $preferences['PRF_PACO2'];
+                                        echo $physAssociatedPACO2Hidden = $Form->hiddenField('phys-AssociatedPACO2Hidden',$patient['PAT_PACO2']);
                                         echo $Form->hiddenField('prf_PACO2',$preferences['PRF_PACO2']);
                                     ?>    
                                 </td>
@@ -244,6 +254,7 @@ $PhysCSS = array('checkPhysiology');
                                         $phDataTags = array('code' => 'ph', 'type' => 'T', 'label' => 'Associated pH/H+', 'identifier' => 'phys-AssociatedPHH');
                                         $physAssociatedPHH = $Form->textBoxPhysiology('phys-AssociatedPHH',$patient['PAT_PH'],'',0,$PhysCSS,$phDataTags);
                                         echo $physAssociatedPHH . $preferences['PRF_PH'];
+                                        echo $physAssociatedPHHHidden = $Form->hiddenField('phys-AssociatedPHHHidden',$patient['PAT_PH']);
                                     ?>    
                                 </td>
                             </tr>
@@ -263,6 +274,7 @@ $PhysCSS = array('checkPhysiology');
                                         $sao2DataTags = array('code' => 'SaO2', 'type' => 'T', 'label' => 'SaO2', 'identifier' => 'phys-SaO2');
                                         $physSAO2 = $Form->textBoxPhysiology('phys-SaO2',$patient['PAT_SAO2'],'',0,$PhysCSS,$sao2DataTags);
                                         echo $physSAO2 . $unitsArray[4];
+                                        echo $physSAO2Hidden = $Form->hiddenField('phys-SaO2Hidden',$patient['PAT_SAO2']);
                                     ?>     
                                 </td>
                             </tr>
@@ -273,6 +285,7 @@ $PhysCSS = array('checkPhysiology');
                                         $hco3DataTags = array('code' => 'HCO3', 'type' => 'T', 'label' => 'HCO3', 'identifier' => 'phys-HCO3');
                                         $physHCO3 = $Form->textBoxPhysiology('phys-HCO3',$patient['PAT_HCO3'],'',0,$PhysCSS,$hco3DataTags);
                                         echo $physHCO3 . $unitsArray[5];
+                                        echo $physHCO3Hidden = $Form->hiddenField('phys-HCO3Hidden',$patient['PAT_HCO3']);
                                     ?>     
                                 </td>
                             </tr>
@@ -318,6 +331,7 @@ $PhysCSS = array('checkPhysiology');
                                         $crpDataTags = array('code' => 'crp', 'type' => 'T', 'label' => 'CRP', 'identifier' => 'phys-CRP');
                                         $physCRP = $Form->textBoxPhysiology('phys-CRP',$patient['PAT_CRP'],'',0,$PhysCSS,$crpDataTags);
                                         echo $physCRP . $unitsArray[7];
+                                        echo $physCRPHidden = $Form->hiddenField('phys-CRPHidden',$patient['PAT_CRP']);
                                     ?>        
                                 </td>
                             </tr>
@@ -328,6 +342,7 @@ $PhysCSS = array('checkPhysiology');
                                         $ddimDataTags = array('code' => 'DDim', 'type' => 'T', 'label' => 'D-Dimers', 'identifier' => 'phys-DDimers');
                                         $physDDimers = $Form->textBoxPhysiology('phys-DDimers',$patient['PAT_DDIMERS'],'',0,$PhysCSS,$ddimDataTags);
                                         echo $physDDimers . $unitsArray[8];
+                                        echo $physDDimersHidden = $Form->hiddenField('phys-DDimersHidden',$patient['PAT_DDIMERS']);
                                     ?>    
                                 </td>
                             </tr>
@@ -338,6 +353,7 @@ $PhysCSS = array('checkPhysiology');
                                         $calcDataTags = array('code' => 'calc', 'type' => 'T', 'label' => 'Troponin Level', 'identifier' => 'phys-TroponinLevel');
                                         $physTroponinLevel = $Form->textBoxPhysiology('phys-TroponinLevel',$patient['PAT_TROPONIN_LEVEL'],'',0,$PhysCSS,$calcDataTags);
                                         echo $physTroponinLevel . $unitsArray[9];
+                                        echo $physTroponinLevelHidden = $Form->hiddenField('phys-TroponinLevelHidden',$patient['PAT_TROPONIN_LEVEL']);
                                     ?>    
                                 </td>
                             </tr>
@@ -348,6 +364,7 @@ $PhysCSS = array('checkPhysiology');
                                         $kinaseDataTags = array('code' => 'kinase', 'type' => 'T', 'label' => 'Cardiac Kinase', 'identifier' => 'phys-CardiacKinase');
                                         $physCardiacKinase = $Form->textBoxPhysiology('phys-CardiacKinase',$patient['PAT_CARDIAC_KINASE'],'',0,$PhysCSS,$kinaseDataTags);
                                         echo $physCardiacKinase;
+                                        echo $physCardiacKinaseHidden = $Form->hiddenField('phys-CardiacKinaseHidden',$patient['PAT_CARDIAC_KINASE']);
                                     ?>    
                                 </td>
                             </tr>
@@ -358,6 +375,7 @@ $PhysCSS = array('checkPhysiology');
                                         $esrDataTags = array('code' => 'esr', 'type' => 'T', 'label' => 'ESR', 'identifier' => 'phys-ESR');
                                         $physESR = $Form->textBoxPhysiology('phys-ESR',$patient['PAT_ESR'],'',0,$PhysCSS,$esrDataTags);
                                         echo $physESR . $unitsArray[10];
+                                        echo $physESRHidden = $Form->hiddenField('phys-ESRHidden',$patient['PAT_ESR']);
                                     ?>    
                                 </td>
                             </tr>
