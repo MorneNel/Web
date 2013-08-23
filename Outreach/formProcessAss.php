@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">
+<!--<meta http-equiv="refresh" content="5; URL=patDmg.php?lnkID=<?php echo $_POST['hiddenLNKID']; ?>#page-8">-->
 <?php
 include './MelaClass/functions.php';
 include './MelaClass/db.php';
@@ -6,7 +6,7 @@ include './MelaClass/authInitScript.php';
 
 error_reporting(E_ALL ^ E_NOTICE);
 
-//var_dump($_POST);
+var_dump($_POST);
 $preferences = $Mela_SQL->getPreferences();
 if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
        
@@ -722,6 +722,21 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 		 catch (RuntimeException $e) { 
 		       print("Exception caught: $e");
 		 } //echo $dr_updQuery;
+	      }
+       }
+       
+       // Tasks
+       if ($_POST['TAnotes']) {
+	   foreach ($_POST['TAnotes'] AS $key => $val) {
+		 //print "<b>Value</b>: $key as ".$val."<br />";
+			
+		 $ta_updQuery = "UPDATE Tasks SET Comments='$val' WHERE ItmID=$key AND LnkID =".$_POST['hiddenLNKID']."";
+		 try { 
+		      $ta_updResult = odbc_exec($connect,$ta_updQuery); 
+		     } 
+		 catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		 } //echo $ta_updQuery;
 	      }
        }
        
