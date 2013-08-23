@@ -81,7 +81,7 @@
                                                 <td class='cat'>".$existingRows['Group_Description']."</td>
                                                 <td class='sel'>".$existingRows['Item_Description']."</td>
                                                 <td id='textArea_cell'>";
-                                                    $notes = $Form->textArea('innotes['.$existingRows['ITEM_ID'].']',''.$existingRows['INV_COMMENTS'].'','','','','gi_text');
+                                                    $notes = $Form->textArea('INnotes['.$existingRows['ITEM_ID'].']',''.$existingRows['INV_COMMENTS'].'','','','','gi_text');
                                                     print $notes;
                                         print "</td>
                                                     <td id='Button_cell'>
