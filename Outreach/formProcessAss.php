@@ -341,8 +341,16 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	      print("Exception caught: $e");
 	} //echo $painass_updQuery;
 	
-	// Physical Examination
-	$physexam_updQuery = "UPDATE PhyAssess_AtTime SET pat_PhysExam='".$_POST['phye-medical']."', pat_PsycoExam='".$_POST['phye-pyscho']."', pat_PhyioExam='".$_POST['phye-physio']."'
+	// Physical Examination & phyisology 1B
+	$physexam_updQuery = "UPDATE PhyAssess_AtTime SET pat_PhysExam='".$_POST['phye-medical']."', pat_PsycoExam='".$_POST['phye-pyscho']."', pat_PhyioExam='".$_POST['phye-physio']."',
+	pat_Serum_Bicarbonate=".$_POST['phys2-serumBicarbonate'].", pat_Serum_Na=".$_POST['phys2-serumSodium'].", pat_Serum_K=".$_POST['phys2-serumPotassium'].",
+	pat_Serum_Urea=".$_POST['phys2-serumUrea'].", pat_Serum_Creatinine=".$_POST['phys2-serumCreatinine'].", pat_Serum_Glucose=".$_POST['phys2-serumGlucose'].",
+	pat_Serum_Ca=".$_POST['phys2-serumCalcium'].", pat_InorganicPhosphate=".$_POST['phys2-InorganicPhosphate'].", pat_TotalProtein=".$_POST['phys2-TotalProtein'].",
+	pat_Serum_Albumin=".$_POST['phys2-SerumAlbumin'].", pat_Serum_Mg=".$_POST['phys2-SerumMagnesium'].", pat_Blood_Lactate=".$_POST['phys2-BloodLactate'].",
+	pat_White_Cell_Count=".$_POST['phys2-WBCCount'].", pat_Serum_Haematocrit=".$_POST['phys2-Haematocrit'].", pat_Serum_Hb=".$_POST['phys2-Haematoglobin'].",
+	pat_Platelet=".$_POST['phys2-PlateletCount'].", pat_Prothrombin=".$_POST['phys2-ProthrombinTime'].", pat_Thromboplastin=".$_POST['phys2-APTT'].", pat_INR=".$_POST['phys2-INR'].",
+	pat_Amylase=".$_POST['phys2-Amylase'].", Pat_AlkalinePO4=".$_POST['phys2-AlkalinePhosphate'].", pat_AST=".$_POST['phys2-AST'].", pat_ALT=".$_POST['phys2-ALT'].",
+	pat_Serum_Bilirubin=".$_POST['phys2-SerumBilirubin'].", pat_GGT=".$_POST['phys2-GGT']."
 	WHERE pat_ID=".$_POST['hiddenpatDLK']."";
 	try { 
 	     $physexam_updResult = odbc_exec($connect,$physexam_updQuery); 
@@ -656,6 +664,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 		 } //echo $cl_updQuery;
 	      }
        }
+       
 	?>
 	<div style="height:100%; width:100%;">
 	      <div class="successbox" style="vertical-align: middle; text-align: center; margin-left: auto; margin-right: auto; border: 3px solid #66CD00; background-color: #CCFFCC; color: #596C56; height:25%; width:25%;">
