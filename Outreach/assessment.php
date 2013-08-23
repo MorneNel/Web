@@ -42,7 +42,7 @@ $query = "SELECT d.dmg_ID, d.dmg_FirstName, d.dmg_MiddleName, d.dmg_Surname, d.d
 		pat.pat_Amylase, pat.pat_AlkalinePO4, pat.pat_AST, pat.pat_ALT, pat.pat_INR, pat.pat_Serum_Bilirubin, pat.pat_GGT, pat.pat_Temperature, pat.pat_Weight, pat.pat_PsycoExam, pat.pat_PhyioExam,
 		pat.pat_Systolic_BP, pat.pat_Diastolic_BP, pat.pat_Mean_arterial_bp, pat.pat_HeartRate, pat.pat_RespiratoryRate, pat.pat_O2Saturation, pat.pat_O2Rec_Unit, pat.pat_O2deliv_by,
 		pat.pat_UrineDD, pat.Urine_in_last_hrs, pat.pat_AVPU, pat.pat_Pain, pat.ABG_type, pat.pat_PaO2, pat.pat_FIO2, pat.pat_PaCO2, pat.pat_pH, pat.pat_Base_Excess, pat.pat_SaO2,
-		pat.pat_HCO3, pat.pat_ABG_Test_Date, pat.pat_ABG_Test_Time, pat.pat_Mean_arterial_bp, pat.pat_CRP, pat.pat_DDimers, pat.pat_Troponin_Level, pat.pat_Cardiac_Kinase, pat.pat_ESR,
+		pat.pat_HCO3, DATE_TO_CHAR(pat.pat_ABG_Test_Date,'yyyy-Mm-Dd') AS PAT_ABG_TEST_DATE, pat.pat_ABG_Test_Time, pat.pat_Mean_arterial_bp, pat.pat_CRP, pat.pat_DDimers, pat.pat_Troponin_Level, pat.pat_Cardiac_Kinase, pat.pat_ESR,
 		pat.pat_RAP, pat.pat_Rhythm, pat.pat_Paced, pat.pat_GCS_Eyes, pat.pat_GCS_Motor, pat.pat_GCS_Verbal, pat.pat_GCS_Grimace, pat_GCS, pat.Limb_LeftArm, pat.Limb_LeftLeg, pat.Limb_RightArm, pat.Limb_RightLeg,
 		pat.LimbTotal, pat.Seizure_Type, pat.Seizure_Desc, pat.PupilReact_Left, pat.PupilReact_Right, pat.PupilDilation_Left, pat.PupilDilation_Right, pat.SOFA, pat.NEWS_Score,
 		pat.pat_EWSSFDDCI, pat.pat_PsycoExam, pat.pat_PhyioExam, pat.pat_UrineOutput, pat.pat_O2Received,

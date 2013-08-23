@@ -295,10 +295,12 @@ $PhysCSS = array('checkPhysiology');
                                 <td>
                                     <?php
                                         $ABGDateSplit = explode(' ',$patient['PAT_ABG_TEST_DATE']);
-                                        $physABGDate = $Form->textBoxPhysiology('phys-ABGDate',$ABGDateSplit[0]);
+                                        //$physABGDate = $Form->textBoxPhysiology('phys-ABGDate',$ABGDateSplit[0]);
+                                        $physABGDate = $Form->dateField('phys-ABGDate',$patient['PAT_ABG_TEST_DATE']);
                                         echo $physABGDate;
                                         
-                                        $physABGTime = $Form->textBoxPhysiology('phys-ABGTime',convert4DTime($patient['PAT_ABG_TEST_TIME']));
+                                        //$physABGTime = $Form->textBoxPhysiology('phys-ABGTime',convert4DTime($patient['PAT_ABG_TEST_TIME']));
+                                        $physABGTime = $Form->timeField('phys-ABGTime',convert4DTime($patient['PAT_ABG_TEST_TIME']));
                                         echo $physABGTime;
                                     ?>    
                                 </td>
