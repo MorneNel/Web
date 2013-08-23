@@ -155,7 +155,6 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	    } 
 	catch (RuntimeException $e) { 
 	      print("Exception caught: $e");
-	      echo $ass_updQuery;
 	} //echo $ass_updQuery;
 	
 	// Pain Assessment
