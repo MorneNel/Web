@@ -58,6 +58,14 @@
 	    /*
 	     * Form Validation rules and stuff
 	     */
+	    
+	    function callback_add(v,m,f) {
+		if(v != 1)
+		{
+		  $(f).val('');
+		  $.prompt.close();
+		}
+	    }
 		
 	    /*
 	     * NHS Number Validation
@@ -377,14 +385,15 @@
 	    /*
 	     * Physiology value checking
 	     */
-	    function checkPhysiologyValue(dlkID, fieldCode, fieldType, physiologyValue, fieldLabel) {
+	    function checkPhysiologyValue(dlkID, fieldCode, fieldType, physiologyValue, fieldLabel, identifier) {
 		/*
 		 * @param {int} dlkID - Daily Link ID
 		 * @param {string} fieldCode - Identifies which field is being checked (look at form structure in 4D. Method pat_Validate_Value is called with 3 args, this is 3rd arg)
 		 * @param {string} fieldType - 3 possibilites: 'T' for Physiology1A, 'L' or 'H' for physiology 2 referring to highest/lowest
 		 * @param {float} physiologyValue - The actual value of the field being checked
 		 * @param {string} fieldLabel - The name of the field being checked
-		 * @returns {string} String is regexp checked for a question mark. If so, present yes/no option else just display warning
+		 * @param {string} identifier - the ID of the element called so its value can be deleted if they don't want to keep it
+		 * @returns {string} String is checked for a question mark. If so, present yes/no option else just display warning
 		 */
 		$.ajax({
 		    type: "POST",
@@ -397,8 +406,18 @@
 			    // if the last character is a question mark, like so: str.slice(-1);
 			    if (msg.slice(-1) === '?') {
 				// Need to provide yes/no option
-				$.prompt(msg, {
-				    buttons: { "OK": true, "Cancel": false }
+				$.prompt(msg, {	
+				    buttons: { "OK": true, "Cancel": false },
+				    submit: function(e,v,m,f){
+						// use e.preventDefault() to prevent closing when needed or return false. 
+						e.preventDefault(); 
+						if (v === false) {
+							//console.log("Yup, it was false. btw the val is " + $('#' + identifier).val());
+							//console.log("Value clicked was: "+ v);
+							$('#' + identifier).val('');
+							$.prompt.close();
+						}
+					}
 				});		
 			    } else {
 				$.prompt(msg);
@@ -426,6 +445,10 @@
 		return dateFromDay;
 	    }
 	    
+	    function isNumber(n) {
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	    }
+	    
 	    /*
 	     * End functions and generic code
 	     */
@@ -440,8 +463,13 @@
 		var code = data['code'];
 		var type = data['type'];
 		var label = data['label'];
+		var identifier = data['identifier'];
 		var that = $(this).val();
-		checkPhysiologyValue(dlkID, code, type, that, label);
+		if (isNumber(that)) {
+			checkPhysiologyValue(dlkID, code, type, that, label, identifier);
+		} else {
+			$.prompt("Value entered must be numeric");
+		}
 	    });
 	    
 	    /*

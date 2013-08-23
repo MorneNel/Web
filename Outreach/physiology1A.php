@@ -18,7 +18,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>Temperature</td>
                             <td>
                                 <?php
-                                    $tempDataTags = array('code' => 'temp', 'type' => 'T', 'label' => 'Temperature');
+                                    $tempDataTags = array('code' => 'temp', 'type' => 'T', 'label' => 'Temperature', 'identifier' => 'phys-temperature');
                                     $physTemperature = $Form->textBoxPhysiology('phys-temperature',$patient['PAT_TEMPERATURE'],'',0,$NEWSCSS, $tempDataTags);
                                     echo $physTemperature . $unitsArray[0];
                                 ?>    
@@ -28,7 +28,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>Systolic BP</td>
                             <td>
                                 <?php
-                                    $sysDataTags = array('code' => 'sys', 'type' => 'T', 'label' => 'Systolic BP');
+                                    $sysDataTags = array('code' => 'sys', 'type' => 'T', 'label' => 'Systolic BP', 'identifier' => 'phys-systolicBP');
                                     $physSystolicBP = $Form->textBoxPhysiology('phys-systolicBP',$patient['PAT_SYSTOLIC_BP'],'',0,$NEWSCSS, $sysDataTags);
                                     echo $physSystolicBP . $unitsArray[1];
                                 ?>    
@@ -38,7 +38,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>Diastolic BP</td>
                             <td>
                                 <?php
-                                    $diasDataTags = array('code' => 'dias', 'type' => 'T', 'label' => 'Diastolic BP');
+                                    $diasDataTags = array('code' => 'dias', 'type' => 'T', 'label' => 'Diastolic BP', 'identifier' => 'phys-diastolicBP');
                                     $physDiastolicBP = $Form->textBoxPhysiology('phys-diastolicBP',$patient['PAT_DIASTOLIC_BP'],'',0,$PhysCSS,$diasDataTags);
                                     echo $physDiastolicBP . $unitsArray[1];
                                 ?>    
@@ -57,7 +57,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>Heart Rate</td>
                             <td>
                                 <?php
-                                    $hrDataTags = array('code' => 'hr', 'type' => 'T', 'label' => 'Heart Rate');
+                                    $hrDataTags = array('code' => 'hr', 'type' => 'T', 'label' => 'Heart Rate', 'identifier' => 'phys-heartRate1');
                                     $physHeartRate = $Form->textBoxPhysiology('phys-heartRate1',$patient['PAT_HEARTRATE'],'',0,$PhysCSS,$hrDataTags);
                                     echo $physHeartRate . $unitsArray[2];
                                 ?>    
@@ -67,7 +67,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>Resp Rate</td>
                             <td>
                                 <?php
-                                    $rrDataTags = array('code' => 'rr', 'type' => 'T', 'label' => 'Respiratory Rate');
+                                    $rrDataTags = array('code' => 'rr', 'type' => 'T', 'label' => 'Respiratory Rate', 'identifier' => 'phys-respRate');
                                     $physRespRate = $Form->textBoxPhysiology('phys-respRate',$patient['PAT_RESPIRATORYRATE'],'',0,$NEWSCSS,$rrDataTags);
                                     echo $physRespRate . $unitsArray[3];
                                 ?>
@@ -77,7 +77,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>SpO2</td>
                             <td>
                                 <?php
-                                    $spo2DataTags = array('code' => 'SpO2', 'type' => 'T', 'label' => 'SpO2');
+                                    $spo2DataTags = array('code' => 'SpO2', 'type' => 'T', 'label' => 'SpO2', 'identifier' => 'phys-SpO2');
                                     $physSpO2 = $Form->textBoxPhysiology('phys-SpO2',$patient['PAT_O2SATURATION'],'',0,$NEWSCSS,$spo2DataTags);
                                     echo $physSpO2 . $unitsArray[4];
                                 ?>    
@@ -87,7 +87,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>O2 Received</td>
                             <td>
                                 <?php
-                                    $o2DataTags = array('code' => 'o2Rec', 'type' => 'T', 'label' => 'O2 Received');
+                                    $o2DataTags = array('code' => 'o2Rec', 'type' => 'T', 'label' => 'O2 Received', 'identifier' => 'phys-O2');
                                     $physO2 = $Form->textBoxPhysiology('phys-O2',$patient['PAT_O2RECEIVED'],'',0,$NEWSCSS,$o2DataTags);
                                     echo $physO2 ."<br />";
                                 
@@ -210,7 +210,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>PaO2</td>
                                 <td>
                                     <?php
-                                        $pao2DataTags = array('code' => 'pao2', 'type' => 'T', 'label' => 'PaO2');
+                                        $pao2DataTags = array('code' => 'pao2', 'type' => 'T', 'label' => 'PaO2', 'identifier' => 'phys-heartRate');
                                         $physPAO2 = $Form->textBoxPhysiology('phys-heartRate',$patient['PAT_PAO2'],'',0,$PhysCSS,$pao2DataTags);
                                         echo $physPAO2 . $preferences['PRF_PAO2'];
                                     ?>     
@@ -220,7 +220,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>Associated FIO2</td>
                                 <td>
                                     <?php
-                                        $fioDataTags = array('code' => 'fio', 'type' => 'T', 'label' => 'Associated FIO2');
+                                        $fioDataTags = array('code' => 'fio', 'type' => 'T', 'label' => 'Associated FIO2', 'identifier' => 'phys-AssociatedFIO2');
                                         $physAssociatedFIO2 = $Form->textBoxPhysiology('phys-AssociatedFIO2',$patient['PAT_FIO2'],'',0,$PhysCSS,$fioDataTags);
                                         echo $physAssociatedFIO2;
                                     ?>    
@@ -230,7 +230,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>Associated PaCO2</td>
                                 <td>
                                     <?php
-                                        $paco2DataTags = array('code' => 'pac', 'type' => 'T', 'label' => 'Associated PaCO2');
+                                        $paco2DataTags = array('code' => 'pac', 'type' => 'T', 'label' => 'Associated PaCO2', 'identifier' => 'phys-AssociatedPACO2');
                                         $physAssociatedPACO2 = $Form->textBoxPhysiology('phys-AssociatedPACO2',$patient['PAT_PACO2'],'',0,$PhysCSS,$paco2DataTags);
                                         echo $physAssociatedPACO2 . $preferences['PRF_PACO2'];
                                         echo $Form->hiddenField('prf_PACO2',$preferences['PRF_PACO2']);
@@ -241,7 +241,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>Associated pH/H+</td>
                                 <td>
                                     <?php
-                                        $phDataTags = array('code' => 'ph', 'type' => 'T', 'label' => 'Associated pH/H+');
+                                        $phDataTags = array('code' => 'ph', 'type' => 'T', 'label' => 'Associated pH/H+', 'identifier' => 'phys-AssociatedPHH');
                                         $physAssociatedPHH = $Form->textBoxPhysiology('phys-AssociatedPHH',$patient['PAT_PH'],'',0,$PhysCSS,$phDataTags);
                                         echo $physAssociatedPHH . $preferences['PRF_PH'];
                                     ?>    
@@ -260,7 +260,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>SaO2</td>
                                 <td>
                                     <?php
-                                        $sao2DataTags = array('code' => 'SaO2', 'type' => 'T', 'label' => 'SaO2');
+                                        $sao2DataTags = array('code' => 'SaO2', 'type' => 'T', 'label' => 'SaO2', 'identifier' => 'phys-SaO2');
                                         $physSAO2 = $Form->textBoxPhysiology('phys-SaO2',$patient['PAT_SAO2'],'',0,$PhysCSS,$sao2DataTags);
                                         echo $physSAO2 . $unitsArray[4];
                                     ?>     
@@ -270,7 +270,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>HCO3</td>
                                 <td>
                                     <?php
-                                        $hco3DataTags = array('code' => 'HCO3', 'type' => 'T', 'label' => 'HCO3');
+                                        $hco3DataTags = array('code' => 'HCO3', 'type' => 'T', 'label' => 'HCO3', 'identifier' => 'phys-HCO3');
                                         $physHCO3 = $Form->textBoxPhysiology('phys-HCO3',$patient['PAT_HCO3'],'',0,$PhysCSS,$hco3DataTags);
                                         echo $physHCO3 . $unitsArray[5];
                                     ?>     
@@ -315,7 +315,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>CRP</td>
                                 <td>
                                     <?php
-                                        $crpDataTags = array('code' => 'crp', 'type' => 'T', 'label' => 'CRP');
+                                        $crpDataTags = array('code' => 'crp', 'type' => 'T', 'label' => 'CRP', 'identifier' => 'phys-CRP');
                                         $physCRP = $Form->textBoxPhysiology('phys-CRP',$patient['PAT_CRP'],'',0,$PhysCSS,$crpDataTags);
                                         echo $physCRP . $unitsArray[7];
                                     ?>        
@@ -325,7 +325,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>D-Dimers</td>
                                 <td>
                                     <?php
-                                        $ddimDataTags = array('code' => 'DDim', 'type' => 'T', 'label' => 'D-Dimers');
+                                        $ddimDataTags = array('code' => 'DDim', 'type' => 'T', 'label' => 'D-Dimers', 'identifier' => 'phys-DDimers');
                                         $physDDimers = $Form->textBoxPhysiology('phys-DDimers',$patient['PAT_DDIMERS'],'',0,$PhysCSS,$ddimDataTags);
                                         echo $physDDimers . $unitsArray[8];
                                     ?>    
@@ -335,7 +335,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>Troponin Level</td>
                                 <td>
                                     <?php
-                                        $calcDataTags = array('code' => 'calc', 'type' => 'T', 'label' => 'Troponin Level');
+                                        $calcDataTags = array('code' => 'calc', 'type' => 'T', 'label' => 'Troponin Level', 'identifier' => 'phys-TroponinLevel');
                                         $physTroponinLevel = $Form->textBoxPhysiology('phys-TroponinLevel',$patient['PAT_TROPONIN_LEVEL'],'',0,$PhysCSS,$calcDataTags);
                                         echo $physTroponinLevel . $unitsArray[9];
                                     ?>    
@@ -345,7 +345,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>Cardiac Kinase</td>
                                 <td>
                                     <?php
-                                        $kinaseDataTags = array('code' => 'kinase', 'type' => 'T', 'label' => 'Cardiac Kinase');
+                                        $kinaseDataTags = array('code' => 'kinase', 'type' => 'T', 'label' => 'Cardiac Kinase', 'identifier' => 'phys-CardiacKinase');
                                         $physCardiacKinase = $Form->textBoxPhysiology('phys-CardiacKinase',$patient['PAT_CARDIAC_KINASE'],'',0,$PhysCSS,$kinaseDataTags);
                                         echo $physCardiacKinase;
                                     ?>    
@@ -355,7 +355,7 @@ $PhysCSS = array('checkPhysiology');
                                 <td>ESR</td>
                                 <td>
                                     <?php
-                                        $esrDataTags = array('code' => 'esr', 'type' => 'T', 'label' => 'ESR');
+                                        $esrDataTags = array('code' => 'esr', 'type' => 'T', 'label' => 'ESR', 'identifier' => 'phys-ESR');
                                         $physESR = $Form->textBoxPhysiology('phys-ESR',$patient['PAT_ESR'],'',0,$PhysCSS,$esrDataTags);
                                         echo $physESR . $unitsArray[10];
                                     ?>    
