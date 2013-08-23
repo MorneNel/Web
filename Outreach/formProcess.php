@@ -429,7 +429,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      $OTCDelayTime = $formatOTCDelay->format('H:i:s');
      
      // TO-DO: OR Responder (after Caller) is medical staff, NEWS Score (Is this calculated or saved?), EWSS on referral/first trigger stuff
-     $otrc_updQuery = "UPDATE OR_Call SET Caller='".$_POST['adm-referrer']."', Time_Of_Call='".$OTCTOCTime."', Time_Of_Response='".$OTCTORTime."', Delay='".$OTCDelayTime."' WHERE cal_ID=".$_POST['otc_calID']."";
+     $otrc_updQuery = "UPDATE OR_Call SET Caller='".$_POST['adm-referrer']."', Time_Of_Call='".$OTCTOCTime."', Time_Of_Response='".$OTCTORTime."', Delay='".$OTCDelayTime."', OR_Responder='".$_POST['adm-responder']."' WHERE cal_ID=".$_POST['otc_calID']."";
      try { 
 	  $otrc_updResult = odbc_exec($connect,$otrc_updQuery); 
 	 } 
