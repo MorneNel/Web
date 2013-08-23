@@ -44,7 +44,7 @@
         </td>
         <td>
             <?php
-            $timelinessoptions = array('Timely' => 'Timely', 'Delayed' => 'Delayed');
+            $timelinessoptions = array('Timely' => 'Timely', 'Delay' => 'Delay');
             $timelinessRadio = $Form->radioBox('ass-timeliness',$timelinessoptions,$patient['TIMELINESS_VISIT'],'');
             echo $timelinessRadio;
             ?>
