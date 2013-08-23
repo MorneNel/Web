@@ -255,8 +255,8 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      }
      
      $admHospitalAdmissionSQL = "";
-     if (strlen($_POST['dmg-hospitalAdmissionDate']) != 0) {
-	   $admHospitalAdmissionSQL = "adm_HospitalAdmission='".$_POST['dmg-hospitalAdmissionDate']."',";
+     if (strlen($_POST['adm-hospitalAdmissionDate']) != 0) {
+	   $admHospitalAdmissionSQL = "adm_HospitalAdmission='".$_POST['adm-hospitalAdmissionDate']."',";
      }
      
      $formatICUAdminTime = new DateTime($_POST['adm-ICUAdmissionTime']);
