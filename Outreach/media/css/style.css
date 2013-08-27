@@ -1302,3 +1302,93 @@ font-size: small;
   color:#222;
   width: 58px;
 }
+
+
+
+
+
+.desktop{
+  padding-left:2px !important;
+  padding-right:2px !important;
+  padding-top:2px !important;
+  padding-bottom:5px !important;
+}
+
+
+
+
+
+#Dsk_Adm { width: 260px; height: 70px; padding-top: 0; margin: 5px;}
+#Dsk_Adm h3 { text-align: center; margin: 0; }
+#Dsk_Adm p { 
+  text-align: center; 
+  margin: 0; 
+  font-size: 12px;
+  font-weight: normal;
+}
+
+
+#Dsk_Ass { width: 390px; height: 70px; padding-top: 0; margin: 5px;}
+#Dsk_Ass h3{ text-align: center; margin: 0; }
+
+#Dsk_Out { width: 130px; height: 70px; padding-top: 0; margin: 5px;}
+#Dsk_Out h3{ text-align: center; margin: 0; }
+
+.Dsk_container{float: left;}
+
+.Dsk_Icon { 
+  padding-top: 3px;
+  width: 65px; 
+  height: 48px; 
+  float: left;
+  margin: 0;
+  text-align: center;
+  border: none !important;
+}
+
+
+.Dsk_Icon a{
+  font-size: 9px;
+}
+
+#pListing-wrapper{ 
+  height: 500px;
+  padding-bottom: 5px;
+}
+
+#Icon-wrapper{  
+  height: 90px;
+  text-align: center;
+}S
+
+
+.desktop_summary_column{
+  width:60%;
+  color: #333;
+  padding-left: 30px;
+}
+
+.desktop_summary_row{
+  padding-bottom: 20px;
+}
+
+.desktop_summary_column_div{
+  color: #444;
+  height:225px;
+  margin-bottom: 25px;
+  margin-left: 20px;
+  overflow: auto;
+}
+
+.desktop_hr{ 
+  display: block;
+  border: 0; 
+  border-top: 1px solid #ddd;
+  padding: 0; 
+}
+
+
+
+
+
+

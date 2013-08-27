@@ -1,4 +1,5 @@
-.holder {
+.holder,
+.holder_desktop {
 	height:15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -9,9 +10,6 @@
 	background-color: rgb(220,220,220);
 	border: 1px solid rgb(150,150,150);
 
-/*	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;*/
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -19,7 +17,8 @@
 	width: 35%;
 }
 
-.holder a {
+.holder a,
+.holder_desktop a {
 	padding: 3px;
 	font-size: 13px;
 	cursor: pointer;
@@ -27,7 +26,8 @@
 	color: #333333;
 }
 
-.holder a:hover {
+.holder a:hover,
+.holder_desktop a:hover {
 	padding: 3px; 
 	background-color: #FFFFBB;
 	color: #0000AA;
@@ -40,20 +40,32 @@
 .holder a.jp-previous { margin-right: 15px; }
 .holder a.jp-next { margin-left: 15px; }
 
-.holder a.jp-current, a.jp-current:hover { 
-	/*color: #FF4242;*/
+.holder_desktop a.jp-previous { margin-right: 15px; }
+.holder_desktop a.jp-next { margin-left: 15px; }
+
+
+.holder a.jp-current,
+.holder_desktop a.jp-current, 
+ a.jp-current:hover { 
 	color: #000;
 	font-weight: bold;
 }
 
-.holder a.jp-disabled, a.jp-disabled:hover {
+.holder a.jp-disabled, 
+.holder_desktop a.jp-disabled,
+a.jp-disabled:hover {
 	color: #BBBBBB;
 }
 
-.holder a.jp-current, a.jp-current:hover,
-.holder a.jp-disabled, a.jp-disabled:hover {
+.holder a.jp-current,
+.holder_desktop a.jp-current, 
+a.jp-current:hover,
+.holder a.jp-disabled,
+.holder_desktop a.jp-disabled, 
+a.jp-disabled:hover {
 	cursor: default; 
 	background: none;
 }
 
 .holder span { margin: 5px; color: #000000; }
+.holder_desktop span { margin: 5px; color: #000000; }

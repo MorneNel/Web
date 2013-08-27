@@ -458,7 +458,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						</table>
 					</div>  <!-- Respite Care -->
 
-					<div id="page-16">  <!-- Desktop -->
+					<div id="page-16" class="desktop">  <!-- Desktop -->
 						<table width="100%">
 						    <tr>
 							<td>

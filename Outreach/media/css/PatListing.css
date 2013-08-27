@@ -124,6 +124,16 @@
 }
 
 
+.listing_div_desktop{
+	width: 400px;
+	margin-bottom: 5px;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+
+
+
 .listing_div{
 	margin-bottom: 5px;
 	width: 990px;
@@ -132,7 +142,8 @@
 }
 
 
-.Listing_Content{
+.Listing_Content,
+.Listing_Content_desktop{
 	width: 990px;
 	margin: 1px;
 	background-color: #f8f8f8; 
@@ -141,12 +152,11 @@
 	border-radius: 5px;
 }
 
-/*.patientselect tr th,
-.patientselect tr td{
-	white-space: nowrap;
-	height: 40px !important;
-	overflow:hidden;
-}*/
+.Listing_Content_desktop tr td{
+	vertical-align: top;
+}
+
+
 
 
 .plCell{
@@ -155,6 +165,11 @@
 	width: 100px;
 }
 
+.plCell_desktop{
+	overflow:hidden;
+	width: auto;
+	height: 16px;	
+}
 
 
 
@@ -168,6 +183,19 @@
 	margin: 0px;
 	box-shadow: 0px 0px 1px 0px #474747;
 }
+
+
+.patientselect_desktop{
+	border-collapse: collapse;
+	background: #FFFFFF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 0px;
+	box-shadow: 0px 0px 1px 0px #474747;
+	width:100%;
+}
+
 
 
 .header{
@@ -214,18 +242,22 @@ tr.select{
 }
 
 
-table.patientselect tbody tr.odd {
+table.patientselect tbody tr.odd,
+.patientselect_desktop tbody tr.odd {
 	background-color: rgb(245, 245, 245);
 	/*background-color: #ebf3ff;*/
 }
 
-table.patientselect tbody tr.even {
+table.patientselect tbody tr.even,
+table.patientselect_desktop tbody tr.even {
 	background-color: #ffffff;
 }
 
 
 table.patientselect tr.odd:hover td,
-table.patientselect tr.even:hover td {
+table.patientselect tr.even:hover td,
+table.patientselect_desktop tr.odd:hover td,
+table.patientselect_desktop tr.even:hover td {
 	border-top:1px solid #FFD9A1;
 	border-bottom:1px solid #FFD9A1;
 	background-color: #fff2df;

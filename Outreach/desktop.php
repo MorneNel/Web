@@ -28,23 +28,50 @@
 ?>
 
   <style>
-        #Dsk_Adm { width: 600px; height: 400px; }
-        .Dsk_Adm_Icon{width: 100px; 
-                        height: 80px; 
-                        float: left; 
-                        margin: 20px;
+        #Icon-wrapper{height: 120px;}
+        #Dsk_Adm { width: 310px; height: 105px; padding-top: 0; margin: 5px;}
+        #Dsk_Adm h3 { text-align: center; margin: 0; }
+
+        #Dsk_Ass { width: 465px; height: 105px; padding-top: 0; margin: 5px;}
+        #Dsk_Ass h3{ text-align: center; margin: 0; }
+
+        #Dsk_Out { width: 155px; height: 105px; padding-top: 0; margin: 5px;}
+        #Dsk_Out h3{ text-align: center; margin: 0; }
+
+        .Dsk_container{float: left;}
+
+        .Dsk_Icon{  width: 65px; 
+                        height: 70px; 
+                        float: left;
+                        margin: 5px;
                         text-align: center;
+                        border-radius: 5px;
                     }
+
+
+        .Dsk_Icon a{
+            font-size: 9px;
+        }
+
+        #pListing-wrapper{  height: 500px;
+                            padding-bottom: 5px;
+                         }
+        #Icon-wrapper{  height: 115px;
+                        text-align: center;
+                     }
+
+
   </style>
 
 
   <script>
       $(function() {
         $( "#Dsk_Adm" ).draggable({ containment: "parent" });
-        //$( ".Dsk_Adm_Icon" ).draggable({ containment: "parent" });
-        $( ".Dsk_Adm_Icon" ).draggable({ revert: true });
+        $( "#Dsk_Out" ).draggable({ containment: "parent" });
+        $( "#Dsk_Ass" ).draggable({ containment: "parent" });
 
-
+        $( ".Dsk_Icon" ).draggable({ containment: "parent" });
+        $( ".Dsk_Icon" ).draggable({ revert: true });
       });
 
 
@@ -54,105 +81,117 @@
   </script>
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link type="text/css" rel="stylesheet" href="media/css/normalize.css">
-        <link type="text/css" rel="stylesheet" href="media/css/desktop.css">
-        <title>Patient Desktop</title>
-    </head>
-    <body> -->
+
+<div id="pListing-wrapper">
+    <p>
+        Make the selected elements draggable by mouse. If you want not just drag, but drag & drop, see the jQuery UI Droppable plugin, which provides a drop target for draggables.
+    </p>
+</div>
 
 
-
-<!-- <div id="containment-wrapper"> -->
-
-
-    <div id="Dsk_Adm" class="ui-widget-content">
+ <div id="Icon-wrapper">
 
 
-                <div class="Dsk_Adm_Icon ui-widget-content">
-                    <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
-                        <img src="media/images/icons/DVR2.bmp"><Br />
-                        Demographics
-                    </a>
-                </div>
-
-                <div class="Dsk_Adm_Icon ui-widget-content">
-                    <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-2">
-                        <img src="media/images/icons/DVR2.bmp"><Br />
-                        Admission & Referral
-                    </a>
-                </div>
-
-                <div class="Dsk_Adm_Icon ui-widget-content">
-                    <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
-                        <img src="media/images/icons/DVR2.bmp"><Br />
-                        Co-morbidity
-                    </a>
-                </div>
-
-    </div>
-
-
-<!-- </div> -->
-
-
-
-        <div class="mainPanel">
-
-            <div class="box">
-                <h3>Admission</h3> 
+        <div id="Dsk_Adm" class="Dsk_container ui-widget-content">
+            <h3 class="ui-widget-header">Admission</h3>
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Demographics
+                </a>
             </div>
-       
-     
 
-
-
-            <div class="box">
-                <h3>Assessments</h3>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Assessment Detail
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Physical Examination
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                    Physiology
-                </div>
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-2">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                  Admission & Referral
+                </a>
             </div>
-            
-            <div class="box">
-                <h3>Assessments</h3>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Assessment Detail
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Physical Examination
-                </div>
-                <div class="icon_container">
-                    <img src="media/images/icons/DVR2.bmp"><Br />
-                        Physiology
-                </div>
-            </div>
-            
-            <div style="clear:both;"></div>
-            
 
-            
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    History & Co-morbidity
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="diagnosis.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Diagnosis
+                </a>
+            </div>
         </div>
 
 
 
 
+        <div id="Dsk_Ass" class="Dsk_container ui-widget-content">
+            <h3 class="ui-widget-header">Assessment</h3>
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Assess detail
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-2">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Observation
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Investigation
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="diagnosis.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Management
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="diagnosis.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Visit Outcome
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="diagnosis.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Tasks
+                </a>
+            </div>
+        </div>
+
+
+        <div id="Dsk_Out" class="Dsk_container ui-widget-content">
+            <h3 class="ui-widget-header">Outcome</h3>
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-1">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Outreach Discharge
+                </a>
+            </div>
+
+            <div class="Dsk_Icon ui-widget-content">
+                <a href="patDmg.php?lnkID=<?php echo $patient['LNK_ID']; ?>#page-6">
+                    <img src="media/images/icons/DVR2.bmp"><br />
+                    Summary
+                </a>
+            </div>
+        </div>
+
+</div>
 
 
 
-<!--     </body>
-</html> -->
+
 
