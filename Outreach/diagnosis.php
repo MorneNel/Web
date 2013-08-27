@@ -48,7 +48,7 @@
                                         <!--<div class="diagnosisSearchBtn">  
                                             &nbsp;  
                                         </div>-->
-                                        <div id="diagnosisResults">
+                                        <div id="firstdiagnosisResults">
                             
                                         </div>
                                 </div>

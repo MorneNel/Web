@@ -1531,8 +1531,8 @@
 			    data: "page=" + page +"&search="+ searchDiag.val(),
 			    async: true,
 			    success: function(msg){					      
-			      $('#diagnosisResults').css('display','block');
-			      $('#diagnosisResults').html(msg);
+			      $('#firstdiagnosisResults').css('display','block');
+			      $('#firstdiagnosisResults').html(msg);
 			      submitButton.button("enable");
 			    },
 			    error: function(XMLHttpRequest, textStatus, errorThrown) {

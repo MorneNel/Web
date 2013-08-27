@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
 <title>Mela Solutions Ltd</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 <link href="media/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="media/css/login_style.css" rel="stylesheet" type="text/css" />
-
 <link href="media/css/ui-lightness/jquery-ui.custom.css" rel="stylesheet" type="text/css" />
 <link href="media/css/jquery.qtip.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="media/css/jquery-impromptu.css"/>
+<style>
+    .overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+</style>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -18,9 +30,29 @@
 <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.validate.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.qtip.js"></script>
+<script src="media/js/jquery-impromptu.js"></script>
+<script>
+	// This will store browser name in navigator.sayswho[0] and version in navigator.sayswho[1]
+	navigator.sayswho= (function(){
+	    var N= navigator.appName, ua= navigator.userAgent, tem;
+	    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+	    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+	    M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+	    return M;
+	})();
+	
+	$(document).ready(function() 
+	{
+	    if (navigator.sayswho[0] !== 'Chrome' && navigator.sayswho[0] !== 'Safari') {
+		$('.overlay').show();
+		$.prompt("You are using an unsupported browser (" + navigator.sayswho[0] + "). Please use either Chrome or Safari");
+	    }
+	});
+</script>
 </head>
 
 <body>
+<div class="overlay"><h1>Hello</h1></div>
 <div class="logo"></div>
 <div class="form">
 	<form id="login" method="post">
