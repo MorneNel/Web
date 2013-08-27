@@ -1,5 +1,6 @@
 <?php
 include './MelaClass/db.php';
+include './MelaClass/authInitScript.php';
 
 if (!$_REQUEST['dd']) die("No dropdown list specified");
 

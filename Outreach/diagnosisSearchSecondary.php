@@ -19,15 +19,20 @@
             $('#sdi-Condition').empty();
             $('#sdi-Condition').load("fillDiagDropdown.php?dd=sdi-Condition", function(response) {
             
-            $('#sdi-System').val(data['sysval']);
-            $('#sdi-Site').val(data['sitval']);
-            $('#sdi-Process').val(data['proval']);
-            $('#sdi-Condition').val(data['conval']);
+            $('#sdi-System').val(data['sysid']);
+            $('#sdi-Site').val(data['sitid']);
+            $('#sdi-Process').val(data['proid']);
+            $('#sdi-Condition').val(data['procid']);
             
-            $('#sdi-System option[value=' + data['sysval'] + ']').text(data['sysdesc']);
-            $('#sdi-Site option[value=' + data['sitval'] + ']').text(data['sitdesc']);
-            $('#sdi-Process option[value=' + data['proval'] + ']').text(data['prodesc']);
-            $('#sdi-Condition option[value=' + data['conval'] + ']').text(data['condesc']);
+            $('#sdi-System option[value=' + data['sysid'] + ']').text(data['sysdesc']);
+            $('#sdi-Site option[value=' + data['sitid'] + ']').text(data['sitdesc']);
+            $('#sdi-Process option[value=' + data['proid'] + ']').text(data['prodesc']);
+            $('#sdi-Condition option[value=' + data['procid'] + ']').text(data['prodesc']);
+	    
+	    console.debug(data['sysid']);
+            console.debug(data['sitid']);
+            console.debug(data['proid']);
+            console.debug(data['procid']);
             
             $.ajax({
 		   type: "POST",
@@ -78,7 +83,7 @@ $rowCount = 0;
 while ($row = odbc_fetch_array($update))
 
 {
-  echo "<span class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['CON_VALUE']."' data-procid='".$row['PROC_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."'>".$row['CON_DESCRIPTION']."</span><br />";
+  echo "<span class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['CON_VALUE']."' data-procid='".$row['PROC_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."' data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."' data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</span><br />";
   $rowCount++;
   }
   
