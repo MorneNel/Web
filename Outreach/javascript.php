@@ -206,7 +206,7 @@
 	    
 	    $("#save_form").validate({
 		errorLabelContainer: ".validationErrorBox",
-		wrapper: "li",
+		wrapper: "div",
 		showErrors: function(errorMap, errorList) {
 		    if (submitted) {
 			if (errorList) {
