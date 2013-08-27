@@ -154,6 +154,14 @@ if ($_POST) {
     $technique = $_POST[$surgeryFields[7]];
     $notes = $_POST[$surgeryFields[8]];
     
+    $srgAnea2SQL = "";
+    $srgAnea2 = "";
+    if (isset($_POST[$surgeryFields[1]]) && strlen($_POST[$surgeryFields[1]]) != 0) {
+        $anea2 = filter_var($_POST[$surgeryFields[1]], FILTER_SANITIZE_NUMBER_INT);
+	$srgAnea2SQL = "".$anea2.",";
+	$srgAnea2 = "Anea2,";
+    }
+    
     // get details from OPER_Codes based on $surgeryCode
     $OCodequery = "SELECT Oper_ID, Oper_Title, Oper_Name
         FROM OPER_Codes
@@ -178,14 +186,16 @@ if ($_POST) {
 
     //print "<h1>".$OCode['OPER_ID']." - ".$OCode['OPER_TITLE']." - ".$OCode['OPER_NAME']."</h1>";
     //var_dump($_POST);
-    $opr_updQuery = "INSERT INTO OPER_PatOperations (OPER_lnkID, OPER_ID, Oper_Code, Anea1, Anea2, OPER_Date, OPER_Classification, IncisionType, Type, Outcome, Technique, OPER_Comments)
-     VALUES ($LNKID, $operID, '$surgeryCode', $anea1, $anea2, '$surgeryDate', '$classification', '$incision', '$surgeryType', '$outcome', '$technique','$notes')";
+    $opr_updQuery = "INSERT INTO OPER_PatOperations (OPER_lnkID, OPER_ID, Oper_Code, Anea1, $srgAnea2 OPER_Date, OPER_Classification, IncisionType, `Type`, Outcome, Technique, OPER_Comments)
+     VALUES ($LNKID, $operID, '$surgeryCode', $anea1, $srgAnea2SQL '$surgeryDate', '$classification', '$incision', '$surgeryType', '$outcome', '$technique','$notes')";
+    //echo "update query is ".$opr_updQuery;
     /*
      * This updates the wrong table
      *$opr_updQuery = "INSERT INTO Surgery (srg_lnkID, Oper_Code, Anea1, Anea2, OPER_Date, OPER_Classification, IncisionType, Type, Outcome, Technique, OPER_Comments)
      VALUES ($LNKID,'$surgeryCode', $anea1, $anea2, '$surgeryDate', '$classification', '$incision', '$surgeryType', '$outcome', '$technique','$notes')";*/
     $opr_update = odbc_prepare($connect, $opr_updQuery);
     $opr_updResult = odbc_execute($opr_update) or die(odbc_errormsg());
+    
     
     $hiddenOperID = $Form->hiddenField('hiddenOPERID',$operID);
     echo $hiddenOperID;
