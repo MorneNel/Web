@@ -122,7 +122,7 @@
                                     //exit;
                             }
             
-                        $pdiSiteDD = $Form->dropDown('pdi-Site',$pdiSiteDDArray,$pdiSiteValueDDArray,$patient['DGN_REASON1_SITE']);
+                        $pdiSiteDD = $Form->dropDown('pdi-Site',$pdiSiteDDArray,$pdiSiteValueDD,$patient['DGN_REASON1_SITE']);
                         echo $pdiSiteDD;
                     ?>
                 </td>
@@ -151,7 +151,7 @@
                                     //exit;
                             }
             
-                        $pdiProcessDD = $Form->dropDown('pdi-Process',$pdiProcessDDArray,$pdiProcessValueDDArray,$patient['DGN_REASON1_PROCESS']);
+                        $pdiProcessDD = $Form->dropDown('pdi-Process',$pdiProcessDDArray,$pdiProcessValueDD,$patient['DGN_REASON1_PROCESS']);
                         echo $pdiProcessDD;
                     ?>
                 </td>
@@ -168,7 +168,7 @@
                             if($result){ 
                                     while ($systems = odbc_fetch_array($result)) {
                                         array_push($pdiConditionDDArray,$systems['DESCRIPTION']);
-                                        array_push($pdiConditionValueDD,$systems['PROC_ID']);
+                                        array_push($pdiConditionValueDD,$systems['COND_ID']);
                                     }
                             } 
                             else{ 
@@ -180,7 +180,7 @@
                                     //exit;
                             }
             
-                        $pdiConditionDD = $Form->dropDown('pdi-Condition',$pdiConditionDDArray,$pdiConditionValueDDArray,$patient['DGN_REASON1_CONDITION']);
+                        $pdiConditionDD = $Form->dropDown('pdi-Condition',$pdiConditionDDArray,$pdiConditionValueDD,$patient['DGN_REASON1_CONDITION']);
                         echo $pdiConditionDD;
                     ?>
                     <select style="display: none; visibility: hidden;" name="hiddenDiag"><option value="1"></option></select>

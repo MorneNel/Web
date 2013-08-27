@@ -213,7 +213,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      dmg_County='".$_POST['dmg-county']."', dmg_PostCode='".$_POST['dmg-postCode']."', dmg_Country='".$_POST['dmg-country']."',
      dmg_Phone='".$_POST['dmg-phone']."', dmg_NOK='".$_POST['dmg-NOK']."', dmg_NOK_Phone='".$_POST['dmg-NOKPhone']."', dmg_NOK_Relation='".$_POST['dmg-NOKRelation']."',
      dmg_NOK_Address='".$_POST['dmg-NOKAddress']."', dmg_NOK_Town='".$_POST['dmg-NOKTown']."',
-     dmg_NOK_County='".$_POST['dmg-NOKCounty']."', dmg_NOK_PostCode='".$_POST['dmg-NOKPostCode']."', dmg_NOK_Country='".$_POST['dmg-NOKCountry']."', Language='".$_POST['dmg-language']."'
+     dmg_NOK_County='".$_POST['dmg-NOKCounty']."', dmg_NOK_PostCode='".$_POST['dmg-NOKPostCode']."', dmg_NOK_Country='".$_POST['dmg-NOKCountry']."', `Language`='".$_POST['dmg-language']."'
      WHERE dmg_ID=".$_POST['dmg-ID']."";
      try { 
 	  $dmg_updResult = odbc_exec($connect,$dmg_updQuery); 
@@ -468,7 +468,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      
      // Diagnosis
      // Could be ICD10 diagnosis, in which case all of this is redundant so check here
-     if ($_POST['pdi-primaryDiagnosisNotes']) {
+     //if ($_POST['pdi-primaryDiagnosisNotes']) {
 	   // GET descriptions from passed POST IDs
 	   if ($_POST['pdi-System'] != '') {
 		 $sql = "SELECT Description FROM System WHERE Sys_ID =".$_POST['pdi-System']."";
@@ -535,7 +535,8 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
 	   }
 	   
 	   $pdi_updQuery = "UPDATE Diagnosis SET dgn_AdmissionPrimaryReason='".$_POST['pdi-primaryDiagnosisNotes']."', dgn_Reason1_Type='".$_POST['pdi-Type']."', dgn_Reason1_System='".$pdiSystem['DESCRIPTION']."',
-	   dgn_Reason1_Site='".$pdiSite['DESCRIPTION']."', dgn_Reason1_Process='".$pdiProcess['DESCRIPTION']."', dgn_Reason1_Condition='".$pdiCondition['DESCRIPTION']."', dgn_Reason1_Code='".$_POST['pdi-Code']."' 
+	   dgn_Reason1_Site='".$pdiSite['DESCRIPTION']."', dgn_Reason1_Process='".$pdiProcess['DESCRIPTION']."', dgn_Reason1_Condition='".$pdiCondition['DESCRIPTION']."', dgn_Reason1_Code='".$_POST['pdi-Code']."',
+	   dgn_NonICNARC_Reason='".$_POST['dia-customDiagnosis']."'
 	   WHERE dgn_ID=".$_POST['pdi-dgnLNK']."";
 	   try { 
 		$pdi_updResult = odbc_exec($connect,$pdi_updQuery); 
@@ -543,7 +544,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
 	   catch (RuntimeException $e) { 
 		 print("Exception caught: $e");
 	   } //echo $pdi_updQuery;
-     }
+    //}
      
      
      // Other diagnosis
