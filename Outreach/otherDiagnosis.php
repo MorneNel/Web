@@ -152,7 +152,7 @@
                                     //exit;
                             }
             
-                        $sdiProcessDD = $Form->dropDown('sdi-Process',$sdiProcessDDArray,$sdiProcessValueDDArray,$patient['DGN_REASON2_PROCESS']);
+                        $sdiProcessDD = $Form->dropDown('sdi-Process',$sdiProcessDDArray,$sdiProcessValueDD,$patient['DGN_REASON2_PROCESS']);
                         echo $sdiProcessDD;
                     ?>
                 </td>
@@ -171,7 +171,7 @@
                             if($result){ 
                                     while ($systems = odbc_fetch_array($result)) {
                                         array_push($sdiConditionDDArray,$systems['DESCRIPTION']);
-                                        array_push($sdiConditionValueDD,$systems['PROC_ID']);
+                                        array_push($sdiConditionValueDD,$systems['COND_ID']);
                                     }
                             } 
                             else{ 
@@ -183,7 +183,7 @@
                                     //exit;
                             }
             
-                        $sdiConditionDD = $Form->dropDown('sdi-Condition',$sdiConditionDDArray,$sdiConditionValueDDArray,$patient['DGN_REASON2_CONDITION']);
+                        $sdiConditionDD = $Form->dropDown('sdi-Condition',$sdiConditionDDArray,$sdiConditionValueDD,$patient['DGN_REASON2_CONDITION']);
                         echo $sdiConditionDD;
                     ?>
                 </td>

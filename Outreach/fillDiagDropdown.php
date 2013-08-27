@@ -147,7 +147,7 @@ switch ($_REQUEST['dd']) {
 
     case "sdi-Condition":
         $rows = array();
-        $query = "SELECT Cond_ID, Proc_ID, Description, Value, Code FROM Condition WHERE".$Mela_SQL->sqlHUMinMax("Cond_ID");
+        $query = "SELECT Cond_ID, Proc_ID, Description, Value, Code FROM Condition WHERE".$Mela_SQL->sqlHUMinMax("Proc_ID");
             try { 
                 $result = odbc_exec($connect,$query); 
                 if($result){ 

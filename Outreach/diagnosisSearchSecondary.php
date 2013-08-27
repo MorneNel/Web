@@ -22,12 +22,12 @@
             $('#sdi-System').val(data['sysid']);
             $('#sdi-Site').val(data['sitid']);
             $('#sdi-Process').val(data['proid']);
-            $('#sdi-Condition').val(data['procid']);
+            $('#sdi-Condition').val(data['condid']);
             
             $('#sdi-System option[value=' + data['sysid'] + ']').text(data['sysdesc']);
             $('#sdi-Site option[value=' + data['sitid'] + ']').text(data['sitdesc']);
             $('#sdi-Process option[value=' + data['proid'] + ']').text(data['prodesc']);
-            $('#sdi-Condition option[value=' + data['procid'] + ']').text(data['prodesc']);
+            $('#sdi-Condition option[value=' + data['procid'] + ']').text(data['condesc']);
 	    
 	    console.debug(data['sysid']);
             console.debug(data['sitid']);
@@ -64,7 +64,7 @@ $formattedString = ucfirst(strtolower($searchString));
 
 if($formattedString)
 {
-    $sql = "SELECT con.Description AS CON_DESCRIPTION, con.Value AS CON_VALUE, con.Proc_ID,
+    $sql = "SELECT con.Cond_ID, con.Description AS CON_DESCRIPTION, con.Value AS CON_VALUE, con.Proc_ID,
             pro.Site_ID, pro.Description AS PRO_DESCRIPTION, pro.Value AS PRO_VALUE,
             sit.Sys_ID, sit.Description AS SIT_DESCRIPTION, sit.Value AS SIT_VALUE,
             sys.Sys_ID, sys.Description AS SYS_DESCRIPTION, sys.Value AS SYS_VALUE
@@ -83,7 +83,7 @@ $rowCount = 0;
 while ($row = odbc_fetch_array($update))
 
 {
-  echo "<span class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['CON_VALUE']."' data-procid='".$row['PROC_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."' data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."' data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</span><br />";
+  echo "<span class='searchRow' data-condid='".$row['COND_ID']."' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['CON_VALUE']."' data-procid='".$row['PROC_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."' data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."' data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</span><br />";
   $rowCount++;
   }
   

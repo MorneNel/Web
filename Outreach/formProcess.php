@@ -598,7 +598,7 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      }
     
      if (!empty($_POST['sdi-Condition'])) {
-	   $sql = "SELECT Description FROM Condition WHERE Cond_ID =".$_POST['sdi-Condition']."";
+	   $sql = "SELECT Description FROM Condition WHERE Cond_ID=".$_POST['sdi-Condition']."";
 	   try { 
 		 $result = odbc_exec($connect,$sql); 
 		 if($result){ 
