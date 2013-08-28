@@ -13,7 +13,11 @@
 <link type="text/css" rel="stylesheet" href="media/css/GI_Style_real.css"/>
 
 <link type="text/css" rel="stylesheet" href="media/css/Header_style.css">
-
+<style>
+    body {
+	color: black;
+    }
+</style>
 <script language="JavaScript" type="text/javascript">    
     function calculateDuration(startDate, startTime, endDate, endTime) {
 	/*console.log(startDate);
