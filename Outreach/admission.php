@@ -416,11 +416,13 @@ echo $otc_calID;
 
             <tr>
                 <td class="form_labels">
-                    <?php if ($appName == "Outreach") { ?>
-                        Outreach number
-                    <?php } elseif ($appName == "AcutePain") { ?>
-                        ID Number
-                    <?php } ?>
+                        <span id="IDOutreachText">
+                                <?php if ($appName == "Outreach") { ?>
+                                    Outreach number
+                                <?php } elseif ($appName == "AcutePain") { ?>
+                                    ID Number
+                                <?php } ?>
+                        </span>
                 </td>
                 <td>
                     <?php

@@ -132,6 +132,7 @@
 	    });
 	    
 	    var submitted = false;
+	    var IDOutreachNumberText = $('#IDOutreachText').text();
 	    
 	    $("#save_form").validate({
 		errorLabelContainer: ".validationErrorBox",
@@ -166,7 +167,7 @@
 		    "dmg-NHSNumber": "Demographics - Invalid NHS Number",
 		    "dmg-pregnant" : "Demographics - Males cannot be pregnant",
 		    "dmg-DOB": "Demographics - Invalid DOB value given",
-		    "adm-outreachNumber": "Admission - ID/Outreach Number must be set and cannot be zero",
+		    "adm-outreachNumber": "Admission - " + IDOutreachNumberText + " must be set and cannot be zero",
 		    "newassDate": "New Assessment - Date cannot be in the future"
 		},
 		highlight: function(element) {
