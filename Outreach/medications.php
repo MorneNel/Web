@@ -100,7 +100,7 @@
 				    array_push($medOutcomeDDArray,$medOutcomeDDSQL[$i]['Long_Name']);
 				}
 				
-				$query = "SELECT m.itm_ID, m.med_lnkID, m.med_dlkID, m.med_Comments, m.med_Dose, m.Unit, m.med_Frequency, m.med_Route, m.Outcome, m.Duration_Time, DATE_TO_CHAR(m.End_Date,'yyyy-Mm-Dd') AS ENDDATE,
+				$query = "SELECT m.itm_ID, m.med_lnkID, m.med_dlkID, m.med_Comments, m.med_Dose, m.Unit, m.med_Frequency, m.med_Route, m.Outcome, m.Duration_Time, DATE_TO_CHAR(m.End_Date,'yyyy-Mm-Dd') AS END_DATE,
 				itm.ID AS ITEM_ID, itm.GrpID, itm.Description AS Item_Description,
 				grp.ID AS GRPID, grp.Description AS Group_Description
 				FROM Medication m

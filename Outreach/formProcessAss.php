@@ -340,217 +340,221 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	      print("Exception caught: $e");
 	} //echo $painass_updQuery;
 	
-	// Physical Examination & phyisology 1B
-	$physexam_updQuery = "UPDATE PhyAssess_AtTime SET pat_PhysExam='".$_POST['phye-medical']."', pat_PsycoExam='".$_POST['phye-pyscho']."', pat_PhyioExam='".$_POST['phye-physio']."',
-	pat_Serum_Bicarbonate=".$_POST['phys2-serumBicarbonate'].", pat_Serum_Na=".$_POST['phys2-serumSodium'].", pat_Serum_K=".$_POST['phys2-serumPotassium'].",
-	pat_Serum_Urea=".$_POST['phys2-serumUrea'].", pat_Serum_Creatinine=".$_POST['phys2-serumCreatinine'].", pat_Serum_Glucose=".$_POST['phys2-serumGlucose'].",
-	pat_Serum_Ca=".$_POST['phys2-serumCalcium'].", pat_InorganicPhosphate=".$_POST['phys2-InorganicPhosphate'].", pat_TotalProtein=".$_POST['phys2-TotalProtein'].",
-	pat_Serum_Albumin=".$_POST['phys2-SerumAlbumin'].", pat_Serum_Mg=".$_POST['phys2-SerumMagnesium'].", pat_Blood_Lactate=".$_POST['phys2-BloodLactate'].",
-	pat_White_Cell_Count=".$_POST['phys2-WBCCount'].", pat_Serum_Haematocrit=".$_POST['phys2-Haematocrit'].", pat_Serum_Hb=".$_POST['phys2-Haematoglobin'].",
-	pat_Platelet=".$_POST['phys2-PlateletCount'].", pat_Prothrombin=".$_POST['phys2-ProthrombinTime'].", pat_Thromboplastin=".$_POST['phys2-APTT'].", pat_INR=".$_POST['phys2-INR'].",
-	pat_Amylase=".$_POST['phys2-Amylase'].", Pat_AlkalinePO4=".$_POST['phys2-AlkalinePhosphate'].", pat_AST=".$_POST['phys2-AST'].", pat_ALT=".$_POST['phys2-ALT'].",
-	pat_Serum_Bilirubin=".$_POST['phys2-SerumBilirubin'].", pat_GGT=".$_POST['phys2-GGT']."
-	WHERE pat_ID=".$_POST['hiddenpatDLK']."";
-	try { 
-	     $physexam_updResult = odbc_exec($connect,$physexam_updQuery); 
-	    } 
-	catch (RuntimeException $e) { 
-	      print("Exception caught: $e");
-	} //echo $physexam_updQuery;
-	
-	// Physiology 1A
-	$phys1O2ReceivedUnitsSQL = "";
-	if (strlen($_POST['phys-O2Received']) != 0) {
-	   $phys1O2ReceivedUnitsSQL = "pat_O2Rec_Unit='".$_POST['phys-SpO2']."',";   
-	}
-	
-	$phys1UrineDDSQL = "";
-	if (strlen($_POST['phys-Urine']) != 0) {
-	   $phys1UrineDDSQL = "pat_UrineDD='".$_POST['phys-Urine']."',";
-	}
-	
-	$phys1Urine2DDSQL = "";
-	if (strlen($_POST['phys-Urine2']) != 0) {
-	   $phys1Urine2DDSQL = "Urine_in_last_hrs='".$_POST['phys-Urine2']."',";
-	}
-	
-	$ABGDateSQL = "";
-	if (strlen($_POST['phys-ABGDate']) != 0 && ($_POST['phys-ABGDate'] != '00/00/0')) {
-	   $ABGDateSQL = "pat_ABG_Test_Date='".$_POST['phys-ABGDate']."',";
-	}
-	
-	$ABGTimeSQL = "";
-	if (strlen($_POST['phys-ABGTime']) != 0 && ($_POST['phys-ABGTime'] != '00:00')) {
-	   $ABGTimeSQL = "pat_ABG_Test_Time='".$_POST['phys-ABGTime']."',";
-	}
-	
-	$physCRPSQL = "";
-	if (strlen($_POST['phys-CRP']) != 0) {
-	   $physCRPSQL = "pat_CRP=".$_POST['phys-CRP'].",";
-	}
-	
-	$physDDimersSQL = "";
-	if (strlen($_POST['phys-DDimers']) != 0) {
-	   $physDDimersSQL = "pat_DDimers=".$_POST['phys-DDimers'].",";
-	}
-	
-	$physTroponinSQL = "";
-	if (strlen($_POST['phys-TroponinLevel']) != 0) {
-	   $physTroponinSQL = "pat_Troponin_Level=".$_POST['phys-TroponinLevel'].",";
-	}
-	
-	$physCardiacKinase = "";
-	if (strlen($_POST['phys-CardiacKinase']) != 0) {
-	   $physCardiacKinase = "pat_Cardiac_Kinase=".$_POST['phys-CardiacKinase'].",";
-	}
-	
-	$physESR = "";
-	if (strlen($_POST['phys-ESR']) != 0) {
-	   $physESR = "pat_ESR=".$_POST['phys-ESR'].",";
-	}
-	
-	$physRAP = "";
-	if (strlen($_POST['phys-RAP']) != 0) {
-	   $physRAP = "pat_RAP=".$_POST['phys-RAP'].",";
-	}
-	
-	$physRhythm = "";
-	if (strlen($_POST['phys-Rhythm']) != 0) {
-	   $physRhythm = "pat_Rhythm='".$_POST['phys-Rhythm']."',";
-	}
-	
-	$physPaced = "";
-	if (strlen($_POST['phys-Paced']) != 0) {
-	   $physPaced = "pat_Paced='".$_POST['phys-Paced']."',";
-	}
-	
-	$physGCSEyes = "";
-	if (strlen($_POST['phys-Eyes']) != 0) {
-	   $physGCSEyes = "pat_GCS_Eyes='".$_POST['phys-Eyes']."',";
-	}
-	
-	$physGCSMotor = "";
-	if (strlen($_POST['phys-Motor']) != 0) {
-	   $physGCSMotor = "pat_GCS_Motor='".$_POST['phys-Motor']."',";
-	}
-	
-	$physGCSVerbal = "";
-	if (strlen($_POST['phys-Verbal']) != 0) {
-	   $physGCSVerbal = "pat_GCS_Verbal='".$_POST['phys-Verbal']."',";
-	}
-	
-	$physGCSTotal = "";
-	if (strlen($_POST['phys-GCS']) != 0) {
-	   $physGCSTotal = "pat_GCS=".$_POST['phys-GCS'].",";
-	}
-	
-	$physLimbLeftArmSQL = "";
-	if (strlen($_POST['phys-LimbLeftArm']) != 0) {
-	   $physLimbLeftArmSQL = "Limb_LeftArm='".$_POST['phys-LimbLeftArm']."',";
-	}
-	
-	$physLimbLeftLegSQL = "";
-	if (strlen($_POST['phys-LimbLeftLeg']) != 0) {
-	   $physLimbLeftLegSQL = "Limb_LeftLeg='".$_POST['phys-LimbLeftLeg']."',";
-	}
-	
-	$physLimbRightArmSQL = "";
-	if (strlen($_POST['phys-LimbRightArm']) != 0) {
-	   $physLimbRightArmSQL = "Limb_RightArm='".$_POST['phys-LimbRightArm']."',";
-	}
-	
-	$physLimbRightLegSQL = "";
-	if (strlen($_POST['phys-LimbRightLeg']) != 0) {
-	   $physLimbRightLegSQL = "Limb_RightLeg='".$_POST['phys-LimbRightLeg']."',";
-	}
-	
-	$physLimbTotalSQL = "";
-	if (strlen($_POST['phys-LimbTotal']) != 0) {
-	   $physLimbTotalSQL = "LimbTotal=".$_POST['phys-LimbTotal'].",";
-	}
-	
-	$physSeizureTypeSQL = "";
-	if (strlen($_POST['phys-SeizureType']) != 0) {
-	   $physSeizureTypeSQL = "Seizure_Type='".$_POST['phys-SeizureType']."',";
-	}
-	
-	$physSeizureDescSQL = "";
-	if (strlen($_POST['phys-SeizureDescription']) != 0) {
-	   $physSeizureDescSQL = "Seizure_Desc='".$_POST['phys-SeizureDescription']."',";
-	}
-	
-	$physPupilReactLeftSQL = "";
-	if (strlen($_POST['phys-PupilReactLeft']) != 0) {
-	   $physPupilReactLeftSQL = "PupilReact_Left='".$_POST['phys-PupilReactLeft']."',";
-	}
-	
-	$physPupilReactRightSQL = "";
-	if (strlen($_POST['phys-PupilReactRight']) != 0) {
-	   $physPupilReactRightSQL = "PupilReact_Right='".$_POST['phys-PupilReactRight']."',";
-	}
-	
-	$physPupilDilationLeftSQL = "";
-	if (strlen($_POST['phys-PupilDilationLeft']) != 0) {
-	   $physPupilDilationLeftSQL = "PupilDilation_Left='".$_POST['phys-PupilDilationLeft']."',";
-	}
-	
-	$physPupilDilationRightSQL = "";
-	if (strlen($_POST['phys-PupilDilationRight']) != 0) {
-	   $physPupilDilationRightSQL = "PupilDilation_Right='".$_POST['phys-PupilDilationRight']."',";
-	}
-	// These are from physiology 2
-	$phys2TestDateSQL = "";
-	if (strlen($_POST['phys2-testDate']) != 0) {
-	   $phys2TestDateSQL = "pat_Blood_Test_Date='".$_POST['phys2-testDate']."',";
-	}
-	$phys2TestTimeSQL = "";
-	if ($_POST['phys2-testTime'] != '00:00') {
-	   $phys2TestTimeSQL = "pat_Blood_Test_Time='".$_POST['phys2-testTime']."',";
-	}
-	
-	$SOFASQL = "";
-	if (strlen($_POST['phys-SOFAScore']) != 0) {
-	      $SOFASQL = "SOFA=".$_POST['phys-SOFAScore'].", ";      
-	}
-	// pat_Mean_arterial_bp=".$_POST['phys-MeanArterialBP'].", - for some reason inserting this throws up an error and I cannot see why at all, data type is fine, no typos (copied/pasted from 4D DB itself), data is getting passed fine...no idea
-	$phys1_updQuery = "UPDATE PhyAssess_AtTime SET pat_Temperature=".$_POST['phys-temperature'].", pat_Systolic_BP=".$_POST['phys-systolicBP'].", pat_Diastolic_BP=".$_POST['phys-diastolicBP'].", pat_Mean_arterial_bp=".$_POST['phys-meanBP'].",
-	pat_HeartRate=".$_POST['phys-heartRate1'].", pat_RespiratoryRate=".$_POST['phys-respRate'].", pat_O2Saturation=".$_POST['phys-SpO2'].", $phys1O2ReceivedUnitsSQL pat_O2deliv_by='".$_POST['phys-O2Received2']."', $phys1UrineDDSQL $phys1Urine2DDSQL
-	pat_AVPU='".$_POST['phys-AVPU']."', pat_Pain='".$_POST['phys-Pain']."', pat_PaO2=".$_POST['phys-heartRate'].", pat_FIO2=".$_POST['phys-AssociatedFIO2'].", pat_PaCO2=".$_POST['phys-AssociatedPACO2'].", pat_pH=".$_POST['phys-AssociatedPHH'].",
-	pat_Base_Excess=".$_POST['phys-BaseExcess'].", pat_SaO2=".$_POST['phys-SaO2'].", pat_HCO3=".$_POST['phys-HCO3'].", $ABGDateSQL $ABGTimeSQL $physCRPSQL $physDDimersSQL $physTroponinSQL
-	$physCardiacKinase $physESR $physRAP $physRhythm $physPaced $physGCSEyes $physGCSMotor $physGCSVerbal $physGCSTotal $physLimbLeftArmSQL $physLimbLeftLegSQL $physLimbRightArmSQL $physLimbRightLegSQL $physLimbTotalSQL $physSeizureTypeSQL
-	$physSeizureDescSQL $physPupilReactLeftSQL $physPupilReactRightSQL $physPupilDilationLeftSQL $physPupilDilationRightSQL $phys2TestDateSQL $phys2TestTimeSQL pat_EWSSFDDCI='".$_POST['phys-EWSSScore']."', $SOFASQL NEWS_Score='".$_POST['phys-NEWSScore']."',
-	ABG_type='".$_POST['phys-Type']."'
-	WHERE pat_ID=".$_POST['hiddenpatDLK']."";
-	try { 
-	     $phys1_updResult = @odbc_exec($connect,$phys1_updQuery); 
-	    } 
-	catch (RuntimeException $e) { 
-	      print("Exception caught: $e");
-	} //echo $phys1_updQuery;
-	
-	// Physiology 2 
-	$phys2_updQuery = "UPDATE PhyAssess_PrevTime SET ppa_LowestCTemperature=".$_POST['ppa-LowestCTemp'].", ppa_HighestCTemperature=".$_POST['ppa-HighestCTemp'].", ppa_LowestBicarbonate=".$_POST['ppa-LowestBicarbonate'].", ppa_HighestBicarbonate=".$_POST['ppa-HighestBicarbonate'].",
-	ppa_LowestWhiteCellCount=".$_POST['ppa-LowestWhiteCellCount'].", ppa_HighestWhiteCellCount=".$_POST['ppa-HighestWhiteCellCount'].", ppa_LowestTemperature=".$_POST['ppa-LowestTemp'].", ppa_HighestTemperature=".$_POST['ppa-HighestTemp'].",
-	ppa_LowestNa=".$_POST['ppa-LowestSodium'].", ppa_HighestNa=".$_POST['ppa-HighestSodium'].", ppa_LowestHaemocrit=".$_POST['ppa-LowestHaematocrit'].", ppa_HighestHaemocrit=".$_POST['ppa-HighestHaematocrit'].", ppa_LowestSystolic_BP=".$_POST['ppa-LowestSystolicBP'].",
-	ppa_HighestSystolic_BP=".$_POST['ppa-HighestSystolicBP'].", ppa_LowestK=".$_POST['ppa-LowestPotassium'].", ppa_HighestK=".$_POST['ppa-HighestPotassium'].", ppa_LowestHb=".$_POST['ppa-LowestHaemoglobin'].", ppa_HighestHb=".$_POST['ppa-HighestHaemoglobin'].",
-	ppa_LowestPairedDiasBP=".$_POST['ppa-LowestPairedDBP'].", ppa_HighestPairedDiasBP=".$_POST['ppa-HighestPairedDBP'].", ppa_LowestUrea=".$_POST['ppa-LowestUrea'].", ppa_HighestUrea=".$_POST['ppa-HighestUrea'].", ppa_LowestPlateletCount=".$_POST['ppa-LowestPlateletCount'].",
-	ppa_HighestPlateletCount=".$_POST['ppa-HighestPlateletCount'].", ppa_LowestDiastolic_BP=".$_POST['ppa-LowestDiastolicBP'].", ppa_HighestDiastolic_BP=".$_POST['ppa-HighestDiastolicBP'].", ppa_LowestCreatinine=".$_POST['ppa-LowestCreatinine'].", ppa_HighestCreatinine=".$_POST['ppa-HighestCreatinine'].",
-	ppa_LowestProthrombin=".$_POST['ppa-LowestProthrombin'].", ppa_HighestProthrombin=".$_POST['ppa-HighestProthrombin'].", ppa_LowestPairedSysBP=".$_POST['ppa-LowestPairedSBP'].", ppa_HighestPairedSysBP=".$_POST['ppa-HighestPairedSBP'].", ppa_LowestGlucose=".$_POST['ppa-LowestGlucose'].",
-	ppa_HighestGlucose=".$_POST['ppa-HighestGlucose'].", ppa_LowestThromboPlastin=".$_POST['ppa-LowestThromboplastin'].", ppa_HighestThromboPlastin=".$_POST['ppa-HighestThromboplastin'].", ppa_LowestHeartRate=".$_POST['ppa-LowestHR'].", ppa_HighestHeartRate=".$_POST['ppa-HighestHR'].",
-	ppa_LowestCalcium=".$_POST['ppa-LowestCalcium'].", ppa_HighestCalcium=".$_POST['ppa-HighestCalcium'].", ppa_LowestAST=".$_POST['ppa-LowestAST'].", ppa_HighestAST=".$_POST['ppa-HighestAST'].", ppa_LowestRespiratoryRate=".$_POST['ppa-LowestRespiratoryRate'].",
-	ppa_HighestRespiratoryRate=".$_POST['ppa-HighestRespiratoryRate'].", ppa_LowestAlbumin=".$_POST['ppa-LowestAlbumin'].", ppa_HighestAlbumin=".$_POST['ppa-HighestAlbumin'].", ppa_LowestALT=".$_POST['ppa-LowestALT'].", ppa_HighestALT=".$_POST['ppa-HighestALT'].",
-	ppa_LowestO2Saturation=".$_POST['ppa-LowestO2Saturation'].", ppa_HighestO2Saturation=".$_POST['ppa-HighestO2Saturation'].", ppa_CPAP='".$_POST['ppa-CPAP']."', ppa_LowestAmylase=".$_POST['ppa-LowestAmylase'].", ppa_HighestAmylase=".$_POST['ppa-HighestAmylase'].",
-	ppa_LowestUrineOutput=".$_POST['ppa-LowestUrineOutput'].", ppa_WorstAVPU='".$_POST['ppa-WorstAVPU']."', ppa_LowestAlkaline=".$_POST['ppa-LowestAlkaline'].", ppa_HighestAlkaline=".$_POST['ppa-HighestAlkaline'].", ppa_Fluid_Input=".$_POST['ppa-FluidInput'].",
-	ppa_Pain='".$_POST['ppa-worstPain']."', ppa_LowestBilirubin=".$_POST['ppa-LowestBilirubin'].", ppa_HighestBilirubun=".$_POST['ppa-HighestBilirubin'].", ppa_GCS_Eyes='".$_POST['ppa-GCSEyes']."', ppa_GCS_Motor='".$_POST['ppa-GCSMotor']."', ppa_GCS_Verbal='".$_POST['ppa-GCSVerbal']."',
-	ppa_WorstGCS=".$_POST['ppa-WorstGCS'].", ppa_PaO2=".$_POST['ppa-WorstPAO2'].", ppa_LowestFIO2=".$_POST['ppa-AssociatedFIO2'].", ppa_LowestPaCO2=".$_POST['ppa-AssociatedPacO2'].", ppa_LowestPH=".$_POST['ppa-AssociatedPH'].", ppa_APACHEII=".$_POST['ppa-APACHEIIScore'].",
-	ppa_APACHEII_Prob=".$_POST['ppa-APACHEIIProb'].", ppa_SAPSII=".$_POST['ppa-SAPSIIScore'].", ppa_SAPSII_Prob=".$_POST['ppa-SAPSIIProb']."
-	WHERE ppa_ID=".$_POST['ppaDLK']."";
-	try { 
-	     $phys2_updResult = odbc_exec($connect,$phys2_updQuery); 
-	    } 
-	catch (RuntimeException $e) { 
-	      print("Exception caught: $e");
-	} //echo $phys2_updQuery;
+       if ($preferences['prf_ShowPhys1'] == 'true') {
+	      // Physical Examination & phyisology 1B
+	      $physexam_updQuery = "UPDATE PhyAssess_AtTime SET pat_PhysExam='".$_POST['phye-medical']."', pat_PsycoExam='".$_POST['phye-pyscho']."', pat_PhyioExam='".$_POST['phye-physio']."',
+	      pat_Serum_Bicarbonate=".$_POST['phys2-serumBicarbonate'].", pat_Serum_Na=".$_POST['phys2-serumSodium'].", pat_Serum_K=".$_POST['phys2-serumPotassium'].",
+	      pat_Serum_Urea=".$_POST['phys2-serumUrea'].", pat_Serum_Creatinine=".$_POST['phys2-serumCreatinine'].", pat_Serum_Glucose=".$_POST['phys2-serumGlucose'].",
+	      pat_Serum_Ca=".$_POST['phys2-serumCalcium'].", pat_InorganicPhosphate=".$_POST['phys2-InorganicPhosphate'].", pat_TotalProtein=".$_POST['phys2-TotalProtein'].",
+	      pat_Serum_Albumin=".$_POST['phys2-SerumAlbumin'].", pat_Serum_Mg=".$_POST['phys2-SerumMagnesium'].", pat_Blood_Lactate=".$_POST['phys2-BloodLactate'].",
+	      pat_White_Cell_Count=".$_POST['phys2-WBCCount'].", pat_Serum_Haematocrit=".$_POST['phys2-Haematocrit'].", pat_Serum_Hb=".$_POST['phys2-Haematoglobin'].",
+	      pat_Platelet=".$_POST['phys2-PlateletCount'].", pat_Prothrombin=".$_POST['phys2-ProthrombinTime'].", pat_Thromboplastin=".$_POST['phys2-APTT'].", pat_INR=".$_POST['phys2-INR'].",
+	      pat_Amylase=".$_POST['phys2-Amylase'].", Pat_AlkalinePO4=".$_POST['phys2-AlkalinePhosphate'].", pat_AST=".$_POST['phys2-AST'].", pat_ALT=".$_POST['phys2-ALT'].",
+	      pat_Serum_Bilirubin=".$_POST['phys2-SerumBilirubin'].", pat_GGT=".$_POST['phys2-GGT']."
+	      WHERE pat_ID=".$_POST['hiddenpatDLK']."";
+	      try { 
+		   $physexam_updResult = odbc_exec($connect,$physexam_updQuery); 
+		  } 
+	      catch (RuntimeException $e) { 
+		    print("Exception caught: $e");
+	      } //echo $physexam_updQuery;
+	      
+	      // Physiology 1A
+	      $phys1O2ReceivedUnitsSQL = "";
+	      if (strlen($_POST['phys-O2Received']) != 0) {
+		 $phys1O2ReceivedUnitsSQL = "pat_O2Rec_Unit='".$_POST['phys-SpO2']."',";   
+	      }
+	      
+	      $phys1UrineDDSQL = "";
+	      if (strlen($_POST['phys-Urine']) != 0) {
+		 $phys1UrineDDSQL = "pat_UrineDD='".$_POST['phys-Urine']."',";
+	      }
+	      
+	      $phys1Urine2DDSQL = "";
+	      if (strlen($_POST['phys-Urine2']) != 0) {
+		 $phys1Urine2DDSQL = "Urine_in_last_hrs='".$_POST['phys-Urine2']."',";
+	      }
+	      
+	      $ABGDateSQL = "";
+	      if (strlen($_POST['phys-ABGDate']) != 0 && ($_POST['phys-ABGDate'] != '00/00/0')) {
+		 $ABGDateSQL = "pat_ABG_Test_Date='".$_POST['phys-ABGDate']."',";
+	      }
+	      
+	      $ABGTimeSQL = "";
+	      if (strlen($_POST['phys-ABGTime']) != 0 && ($_POST['phys-ABGTime'] != '00:00')) {
+		 $ABGTimeSQL = "pat_ABG_Test_Time='".$_POST['phys-ABGTime']."',";
+	      }
+	      
+	      $physCRPSQL = "";
+	      if (strlen($_POST['phys-CRP']) != 0) {
+		 $physCRPSQL = "pat_CRP=".$_POST['phys-CRP'].",";
+	      }
+	      
+	      $physDDimersSQL = "";
+	      if (strlen($_POST['phys-DDimers']) != 0) {
+		 $physDDimersSQL = "pat_DDimers=".$_POST['phys-DDimers'].",";
+	      }
+	      
+	      $physTroponinSQL = "";
+	      if (strlen($_POST['phys-TroponinLevel']) != 0) {
+		 $physTroponinSQL = "pat_Troponin_Level=".$_POST['phys-TroponinLevel'].",";
+	      }
+	      
+	      $physCardiacKinase = "";
+	      if (strlen($_POST['phys-CardiacKinase']) != 0) {
+		 $physCardiacKinase = "pat_Cardiac_Kinase=".$_POST['phys-CardiacKinase'].",";
+	      }
+	      
+	      $physESR = "";
+	      if (strlen($_POST['phys-ESR']) != 0) {
+		 $physESR = "pat_ESR=".$_POST['phys-ESR'].",";
+	      }
+	      
+	      $physRAP = "";
+	      if (strlen($_POST['phys-RAP']) != 0) {
+		 $physRAP = "pat_RAP=".$_POST['phys-RAP'].",";
+	      }
+	      
+	      $physRhythm = "";
+	      if (strlen($_POST['phys-Rhythm']) != 0) {
+		 $physRhythm = "pat_Rhythm='".$_POST['phys-Rhythm']."',";
+	      }
+	      
+	      $physPaced = "";
+	      if (strlen($_POST['phys-Paced']) != 0) {
+		 $physPaced = "pat_Paced='".$_POST['phys-Paced']."',";
+	      }
+	      
+	      $physGCSEyes = "";
+	      if (strlen($_POST['phys-Eyes']) != 0) {
+		 $physGCSEyes = "pat_GCS_Eyes='".$_POST['phys-Eyes']."',";
+	      }
+	      
+	      $physGCSMotor = "";
+	      if (strlen($_POST['phys-Motor']) != 0) {
+		 $physGCSMotor = "pat_GCS_Motor='".$_POST['phys-Motor']."',";
+	      }
+	      
+	      $physGCSVerbal = "";
+	      if (strlen($_POST['phys-Verbal']) != 0) {
+		 $physGCSVerbal = "pat_GCS_Verbal='".$_POST['phys-Verbal']."',";
+	      }
+	      
+	      $physGCSTotal = "";
+	      if (strlen($_POST['phys-GCS']) != 0) {
+		 $physGCSTotal = "pat_GCS=".$_POST['phys-GCS'].",";
+	      }
+	      
+	      $physLimbLeftArmSQL = "";
+	      if (strlen($_POST['phys-LimbLeftArm']) != 0) {
+		 $physLimbLeftArmSQL = "Limb_LeftArm='".$_POST['phys-LimbLeftArm']."',";
+	      }
+	      
+	      $physLimbLeftLegSQL = "";
+	      if (strlen($_POST['phys-LimbLeftLeg']) != 0) {
+		 $physLimbLeftLegSQL = "Limb_LeftLeg='".$_POST['phys-LimbLeftLeg']."',";
+	      }
+	      
+	      $physLimbRightArmSQL = "";
+	      if (strlen($_POST['phys-LimbRightArm']) != 0) {
+		 $physLimbRightArmSQL = "Limb_RightArm='".$_POST['phys-LimbRightArm']."',";
+	      }
+	      
+	      $physLimbRightLegSQL = "";
+	      if (strlen($_POST['phys-LimbRightLeg']) != 0) {
+		 $physLimbRightLegSQL = "Limb_RightLeg='".$_POST['phys-LimbRightLeg']."',";
+	      }
+	      
+	      $physLimbTotalSQL = "";
+	      if (strlen($_POST['phys-LimbTotal']) != 0) {
+		 $physLimbTotalSQL = "LimbTotal=".$_POST['phys-LimbTotal'].",";
+	      }
+	      
+	      $physSeizureTypeSQL = "";
+	      if (strlen($_POST['phys-SeizureType']) != 0) {
+		 $physSeizureTypeSQL = "Seizure_Type='".$_POST['phys-SeizureType']."',";
+	      }
+	      
+	      $physSeizureDescSQL = "";
+	      if (strlen($_POST['phys-SeizureDescription']) != 0) {
+		 $physSeizureDescSQL = "Seizure_Desc='".$_POST['phys-SeizureDescription']."',";
+	      }
+	      
+	      $physPupilReactLeftSQL = "";
+	      if (strlen($_POST['phys-PupilReactLeft']) != 0) {
+		 $physPupilReactLeftSQL = "PupilReact_Left='".$_POST['phys-PupilReactLeft']."',";
+	      }
+	      
+	      $physPupilReactRightSQL = "";
+	      if (strlen($_POST['phys-PupilReactRight']) != 0) {
+		 $physPupilReactRightSQL = "PupilReact_Right='".$_POST['phys-PupilReactRight']."',";
+	      }
+	      
+	      $physPupilDilationLeftSQL = "";
+	      if (strlen($_POST['phys-PupilDilationLeft']) != 0) {
+		 $physPupilDilationLeftSQL = "PupilDilation_Left='".$_POST['phys-PupilDilationLeft']."',";
+	      }
+	      
+	      $physPupilDilationRightSQL = "";
+	      if (strlen($_POST['phys-PupilDilationRight']) != 0) {
+		 $physPupilDilationRightSQL = "PupilDilation_Right='".$_POST['phys-PupilDilationRight']."',";
+	      }
+	      // These are from physiology 2
+	      $phys2TestDateSQL = "";
+	      if (strlen($_POST['phys2-testDate']) != 0) {
+		 $phys2TestDateSQL = "pat_Blood_Test_Date='".$_POST['phys2-testDate']."',";
+	      }
+	      $phys2TestTimeSQL = "";
+	      if ($_POST['phys2-testTime'] != '00:00') {
+		 $phys2TestTimeSQL = "pat_Blood_Test_Time='".$_POST['phys2-testTime']."',";
+	      }
+	      
+	      $SOFASQL = "";
+	      if (strlen($_POST['phys-SOFAScore']) != 0) {
+		    $SOFASQL = "SOFA=".$_POST['phys-SOFAScore'].", ";      
+	      }
+	      // pat_Mean_arterial_bp=".$_POST['phys-MeanArterialBP'].", - for some reason inserting this throws up an error and I cannot see why at all, data type is fine, no typos (copied/pasted from 4D DB itself), data is getting passed fine...no idea
+	      $phys1_updQuery = "UPDATE PhyAssess_AtTime SET pat_Temperature=".$_POST['phys-temperature'].", pat_Systolic_BP=".$_POST['phys-systolicBP'].", pat_Diastolic_BP=".$_POST['phys-diastolicBP'].", pat_Mean_arterial_bp=".$_POST['phys-meanBP'].",
+	      pat_HeartRate=".$_POST['phys-heartRate1'].", pat_RespiratoryRate=".$_POST['phys-respRate'].", pat_O2Saturation=".$_POST['phys-SpO2'].", $phys1O2ReceivedUnitsSQL pat_O2deliv_by='".$_POST['phys-O2Received2']."', $phys1UrineDDSQL $phys1Urine2DDSQL
+	      pat_AVPU='".$_POST['phys-AVPU']."', pat_Pain='".$_POST['phys-Pain']."', pat_PaO2=".$_POST['phys-heartRate'].", pat_FIO2=".$_POST['phys-AssociatedFIO2'].", pat_PaCO2=".$_POST['phys-AssociatedPACO2'].", pat_pH=".$_POST['phys-AssociatedPHH'].",
+	      pat_Base_Excess=".$_POST['phys-BaseExcess'].", pat_SaO2=".$_POST['phys-SaO2'].", pat_HCO3=".$_POST['phys-HCO3'].", $ABGDateSQL $ABGTimeSQL $physCRPSQL $physDDimersSQL $physTroponinSQL
+	      $physCardiacKinase $physESR $physRAP $physRhythm $physPaced $physGCSEyes $physGCSMotor $physGCSVerbal $physGCSTotal $physLimbLeftArmSQL $physLimbLeftLegSQL $physLimbRightArmSQL $physLimbRightLegSQL $physLimbTotalSQL $physSeizureTypeSQL
+	      $physSeizureDescSQL $physPupilReactLeftSQL $physPupilReactRightSQL $physPupilDilationLeftSQL $physPupilDilationRightSQL $phys2TestDateSQL $phys2TestTimeSQL pat_EWSSFDDCI='".$_POST['phys-EWSSScore']."', $SOFASQL NEWS_Score='".$_POST['phys-NEWSScore']."',
+	      ABG_type='".$_POST['phys-Type']."'
+	      WHERE pat_ID=".$_POST['hiddenpatDLK']."";
+	      try { 
+		   $phys1_updResult = @odbc_exec($connect,$phys1_updQuery); 
+		  } 
+	      catch (RuntimeException $e) { 
+		    print("Exception caught: $e");
+	      } //echo $phys1_updQuery;
+       }
+       
+       if ($preferences['Physiology2'] == 'true') {	
+	      // Physiology 2 
+	      $phys2_updQuery = "UPDATE PhyAssess_PrevTime SET ppa_LowestCTemperature=".$_POST['ppa-LowestCTemp'].", ppa_HighestCTemperature=".$_POST['ppa-HighestCTemp'].", ppa_LowestBicarbonate=".$_POST['ppa-LowestBicarbonate'].", ppa_HighestBicarbonate=".$_POST['ppa-HighestBicarbonate'].",
+	      ppa_LowestWhiteCellCount=".$_POST['ppa-LowestWhiteCellCount'].", ppa_HighestWhiteCellCount=".$_POST['ppa-HighestWhiteCellCount'].", ppa_LowestTemperature=".$_POST['ppa-LowestTemp'].", ppa_HighestTemperature=".$_POST['ppa-HighestTemp'].",
+	      ppa_LowestNa=".$_POST['ppa-LowestSodium'].", ppa_HighestNa=".$_POST['ppa-HighestSodium'].", ppa_LowestHaemocrit=".$_POST['ppa-LowestHaematocrit'].", ppa_HighestHaemocrit=".$_POST['ppa-HighestHaematocrit'].", ppa_LowestSystolic_BP=".$_POST['ppa-LowestSystolicBP'].",
+	      ppa_HighestSystolic_BP=".$_POST['ppa-HighestSystolicBP'].", ppa_LowestK=".$_POST['ppa-LowestPotassium'].", ppa_HighestK=".$_POST['ppa-HighestPotassium'].", ppa_LowestHb=".$_POST['ppa-LowestHaemoglobin'].", ppa_HighestHb=".$_POST['ppa-HighestHaemoglobin'].",
+	      ppa_LowestPairedDiasBP=".$_POST['ppa-LowestPairedDBP'].", ppa_HighestPairedDiasBP=".$_POST['ppa-HighestPairedDBP'].", ppa_LowestUrea=".$_POST['ppa-LowestUrea'].", ppa_HighestUrea=".$_POST['ppa-HighestUrea'].", ppa_LowestPlateletCount=".$_POST['ppa-LowestPlateletCount'].",
+	      ppa_HighestPlateletCount=".$_POST['ppa-HighestPlateletCount'].", ppa_LowestDiastolic_BP=".$_POST['ppa-LowestDiastolicBP'].", ppa_HighestDiastolic_BP=".$_POST['ppa-HighestDiastolicBP'].", ppa_LowestCreatinine=".$_POST['ppa-LowestCreatinine'].", ppa_HighestCreatinine=".$_POST['ppa-HighestCreatinine'].",
+	      ppa_LowestProthrombin=".$_POST['ppa-LowestProthrombin'].", ppa_HighestProthrombin=".$_POST['ppa-HighestProthrombin'].", ppa_LowestPairedSysBP=".$_POST['ppa-LowestPairedSBP'].", ppa_HighestPairedSysBP=".$_POST['ppa-HighestPairedSBP'].", ppa_LowestGlucose=".$_POST['ppa-LowestGlucose'].",
+	      ppa_HighestGlucose=".$_POST['ppa-HighestGlucose'].", ppa_LowestThromboPlastin=".$_POST['ppa-LowestThromboplastin'].", ppa_HighestThromboPlastin=".$_POST['ppa-HighestThromboplastin'].", ppa_LowestHeartRate=".$_POST['ppa-LowestHR'].", ppa_HighestHeartRate=".$_POST['ppa-HighestHR'].",
+	      ppa_LowestCalcium=".$_POST['ppa-LowestCalcium'].", ppa_HighestCalcium=".$_POST['ppa-HighestCalcium'].", ppa_LowestAST=".$_POST['ppa-LowestAST'].", ppa_HighestAST=".$_POST['ppa-HighestAST'].", ppa_LowestRespiratoryRate=".$_POST['ppa-LowestRespiratoryRate'].",
+	      ppa_HighestRespiratoryRate=".$_POST['ppa-HighestRespiratoryRate'].", ppa_LowestAlbumin=".$_POST['ppa-LowestAlbumin'].", ppa_HighestAlbumin=".$_POST['ppa-HighestAlbumin'].", ppa_LowestALT=".$_POST['ppa-LowestALT'].", ppa_HighestALT=".$_POST['ppa-HighestALT'].",
+	      ppa_LowestO2Saturation=".$_POST['ppa-LowestO2Saturation'].", ppa_HighestO2Saturation=".$_POST['ppa-HighestO2Saturation'].", ppa_CPAP='".$_POST['ppa-CPAP']."', ppa_LowestAmylase=".$_POST['ppa-LowestAmylase'].", ppa_HighestAmylase=".$_POST['ppa-HighestAmylase'].",
+	      ppa_LowestUrineOutput=".$_POST['ppa-LowestUrineOutput'].", ppa_WorstAVPU='".$_POST['ppa-WorstAVPU']."', ppa_LowestAlkaline=".$_POST['ppa-LowestAlkaline'].", ppa_HighestAlkaline=".$_POST['ppa-HighestAlkaline'].", ppa_Fluid_Input=".$_POST['ppa-FluidInput'].",
+	      ppa_Pain='".$_POST['ppa-worstPain']."', ppa_LowestBilirubin=".$_POST['ppa-LowestBilirubin'].", ppa_HighestBilirubun=".$_POST['ppa-HighestBilirubin'].", ppa_GCS_Eyes='".$_POST['ppa-GCSEyes']."', ppa_GCS_Motor='".$_POST['ppa-GCSMotor']."', ppa_GCS_Verbal='".$_POST['ppa-GCSVerbal']."',
+	      ppa_WorstGCS=".$_POST['ppa-WorstGCS'].", ppa_PaO2=".$_POST['ppa-WorstPAO2'].", ppa_LowestFIO2=".$_POST['ppa-AssociatedFIO2'].", ppa_LowestPaCO2=".$_POST['ppa-AssociatedPacO2'].", ppa_LowestPH=".$_POST['ppa-AssociatedPH'].", ppa_APACHEII=".$_POST['ppa-APACHEIIScore'].",
+	      ppa_APACHEII_Prob=".$_POST['ppa-APACHEIIProb'].", ppa_SAPSII=".$_POST['ppa-SAPSIIScore'].", ppa_SAPSII_Prob=".$_POST['ppa-SAPSIIProb']."
+	      WHERE ppa_ID=".$_POST['ppaDLK']."";
+	      try { 
+		   $phys2_updResult = odbc_exec($connect,$phys2_updQuery); 
+		  } 
+	      catch (RuntimeException $e) { 
+		    print("Exception caught: $e");
+	      } //echo $phys2_updQuery;
+       }
 	
 	// Sepsis/infection
 	$inf_updQuery = "UPDATE Infection_Source SET Infection_Source='".$_POST['sps-infectionSource']."'
@@ -615,38 +619,41 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['hiddenLNKID']) == 1) {
 	catch (RuntimeException $e) { 
 	      print("Exception caught: $e");
 	} //echo $vis2_updQuery;
-	
-       // Medications
-       if (((!empty($_POST['MEnotes'])) && (count($_POST['MEnotes'] > 0))) || ((!empty($_POST['med-Dose'])) && (count($_POST['med-Dose'] > 0))) || ((!empty($_POST['med-doseUnits'])) && (count($_POST['med-doseUnits'] > 0))) || ((!empty($_POST['med-Frequency'])) && (count($_POST['med-Frequency'] > 0)))
-	   || ((!empty($_POST['med-Route'])) && (count($_POST['med-Route'] > 0))) || ((!empty($_POST['med-Outcome'])) && (count($_POST['med-Outcome'] > 0))) || ((!empty($_POST['med-Discontinued'])) && (count($_POST['med-Discontinued'] > 0)))) {
-	      //echo "Medication count is ".count($_POST['DOnotes']);
-	      foreach ($_POST['MEnotes'] AS $key => $val) {
-		     $sanitisedComments = filter_var($val, FILTER_SANITIZE_STRING);
-		     $medDose = "";
-		     $medDoseUnits = "";
-		     $medFrequency = "";
-		     $medRoute = "";
-		     $medOutcome = "";
-		     $medDiscontinued = "";
-		     //echo "Med Dose val for $val is ".$_POST['med-Dose'][$key]."<br />";
-		     if (isset($_POST['med-Dose'][$key])) $medDose = "med_Dose=".$_POST['med-Dose'][$key].", ";
-		     if (isset($_POST['med-doseUnits'][$key])) $medDoseUnits = "Unit='".$_POST['med-doseUnits'][$key]."', ";
-		     if (isset($_POST['med-Frequency'][$key])) $medFrequency = "med_Frequency='".$_POST['med-Frequency'][$key]."', ";
-		     if (isset($_POST['med-Route'][$key])) $medRoute = "med_Route='".$_POST['med-Route'][$key]."', ";
-		     if (isset($_POST['med-Outcome'][$key])) $medOutcome = "Outcome='".$_POST['med-Outcome'][$key]."', ";
-		     if (isset($_POST['med-Discontinued'][$key])) $medDiscontinued = "End_Date='".$_POST['med-Discontinued'][$key]."', ";
-		     //print "<b>Value</b>: $key as ".$val." also date is ".$_POST['DODate'][$key]." and time is ".$_POST['DOTime'][$key]."<br />";
-		     //if (strlen($_POST['mednotes'][$key]) == 10) {	   
-			    $medno_updQuery = "UPDATE Medication SET $medDose $medDoseUnits $medFrequency $medRoute $medOutcome $medDiscontinued med_Comments='$sanitisedComments'
-			    WHERE itm_ID=$key AND med_lnkID=".$_POST['hiddenLNKID']." AND med_dlkID=".$_POST['patDLKID']."";
-			    try { 
-				$medno_updResult = odbc_exec($connect,$medno_updQuery); 
-			    } 
-			    catch (RuntimeException $e) { 
-				print("Exception caught: $e");
-			    } //echo $medno_updQuery;
-		     //}
-	       }
+
+       if ($preferences['prf_Show_Medication'] == 'true') {	
+	      // Medications
+	      /*if (((!empty($_POST['MEnotes'])) && (count($_POST['MEnotes'] > 0))) || ((!empty($_POST['med-Dose'])) && (count($_POST['med-Dose'] > 0))) || ((!empty($_POST['med-doseUnits'])) && (count($_POST['med-doseUnits'] > 0))) || ((!empty($_POST['med-Frequency'])) && (count($_POST['med-Frequency'] > 0)))
+		  || ((!empty($_POST['med-Route'])) && (count($_POST['med-Route'] > 0))) || ((!empty($_POST['med-Outcome'])) && (count($_POST['med-Outcome'] > 0))) || ((!empty($_POST['med-Discontinued'])) && (count($_POST['med-Discontinued'] > 0)))) {
+		     echo "Medication count is ".count($_POST['mednotes']);*/
+	      if (count($_POST['mednotes']) > 0) {
+		     foreach ($_POST['mednotes'] AS $key => $val) {
+			    $sanitisedComments = filter_var($val, FILTER_SANITIZE_STRING);
+			    $medDose = "";
+			    $medDoseUnits = "";
+			    $medFrequency = "";
+			    $medRoute = "";
+			    $medOutcome = "";
+			    $medDiscontinued = "";
+			    //echo "Med Dose val for $val is ".$_POST['med-Dose'][$key]."<br />";
+			    if (isset($_POST['med-Dose'][$key])) $medDose = "med_Dose=".$_POST['med-Dose'][$key].", ";
+			    if (isset($_POST['med-doseUnits'][$key])) $medDoseUnits = "Unit='".$_POST['med-doseUnits'][$key]."', ";
+			    if (isset($_POST['med-Frequency'][$key])) $medFrequency = "med_Frequency='".$_POST['med-Frequency'][$key]."', ";
+			    if (isset($_POST['med-Route'][$key])) $medRoute = "med_Route='".$_POST['med-Route'][$key]."', ";
+			    if (isset($_POST['med-Outcome'][$key])) $medOutcome = "Outcome='".$_POST['med-Outcome'][$key]."', ";
+			    if (isset($_POST['med-Discontinued'][$key])) $medDiscontinued = "End_Date='".$_POST['med-Discontinued'][$key]."', ";
+			    //print "<b>Value</b>: $key as ".$val." also date is ".$_POST['DODate'][$key]." and time is ".$_POST['DOTime'][$key]."<br />";
+			    //if (strlen($_POST['mednotes'][$key]) == 10) {	   
+				   $medno_updQuery = "UPDATE Medication SET $medDose $medDoseUnits $medFrequency $medRoute $medOutcome $medDiscontinued med_Comments='$sanitisedComments'
+				   WHERE itm_ID=$key AND med_lnkID=".$_POST['hiddenLNKID']." AND med_dlkID=".$_POST['patDLKID']."";
+				   try { 
+				       $medno_updResult = odbc_exec($connect,$medno_updQuery); 
+				   } 
+				   catch (RuntimeException $e) { 
+				       print("Exception caught: $e");
+				   } //echo $medno_updQuery;
+			    //}
+		      }
+	      }
        }
        
        // Care Level
