@@ -258,6 +258,7 @@ switch ($_REQUEST['dd']) {
                 for ($i = 1; $i < (count($detailDDSQL)+1); $i++) {
                     if (isset($_REQUEST['defaultVal']) && $_REQUEST['defaultVal'] == preg_replace('/\s+/', '', $detailDDSQL[$i]['Long_Name'])) $selected = "selected";
                     echo "<option value='".$detailDDSQL[$i]['Long_Name']."' $selected>".$detailDDSQL[$i]['Long_Name']."</option>";
+                    $selected = "";
                 }    
             }
         }

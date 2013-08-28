@@ -739,7 +739,6 @@
 	    if ($('#pmh-evidenceAvailableToAssess-Yes').is(':checked')) {
 		    $('#pmh-pmhRadio').show();
 		    if ($('#pmh-pastMedicalHistory-Yes').is(':checked')) {
-			console.debug("It's getting here");
 			$('#pmh_EvidenceAvailable').show();
 		    } else {
 			$('#pmh_EvidenceAvailable').hide();
@@ -1461,34 +1460,34 @@
 		var description = $('#sdi-Condition option:selected').text();
 		getDiagnosisCode('sdi-Code', '' + proc + '', '' + description + '');
 	    });
-	    getOTRFollowUp();
+	    
+	    if ($('#ass-assessmentReason').length > 0) {
+		getOTRFollowUp();
+	    }
+	    
 	    $('#ass-assessmentReason').change(function() {
 		getOTRFollowUp();				
 	    });
 	    
 	    function getOTRFollowUp() {
 		var selectedOption = $('#ass-assessmentReason').find(":selected").text().replace(/ /g,"_"); // Replace whitespace with _ for URL transportation
-		$.ajax({
-		    type: "GET",
-		    url: "otrFollowUp.php",
-		    data: { "followup": selectedOption },
-		    async: false,
-		    success: function(msg){
-			var followUpVal = $('#hiddenOTRFollowUp').val().replace(/ /g,'');
-			$('#ass-detail').empty('');
-			changeDropDown('ass-detail','0',msg,followUpVal);
-			
-			//$('#ass-detail').val(followUpVal);
-			//$('#ass-detail option[value="' + followUpVal + '"]').attr('selected', true);
-			//$('select[name="ass-detail"]').find('option:contains(' + followUpVal + ')').attr("selected",true);
-			//$('select[name="ass-detail"]').val('Critical Incident');
-			console.debug(followUpVal);
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) {
-			rowID = 'Invalid';
-			alert(" Status: " + textStatus + "\n Error message: "+ errorThrown); 
-		    } 
-		});	
+		if (selectedOption.length > 0) {
+		    $.ajax({
+			type: "GET",
+			url: "otrFollowUp.php",
+			data: { "followup": selectedOption },
+			async: false,
+			success: function(msg){
+			    var followUpVal = $('#hiddenOTRFollowUp').val().replace(/ /g,'');
+			    $('#ass-detail').empty('');
+			    changeDropDown('ass-detail','0',msg,followUpVal);
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+			    rowID = 'Invalid';
+			    alert(" Status: " + textStatus + "\n Error message: "+ errorThrown); 
+			} 
+		    });	
+		}		
 	    }
 	    
 	    /*
