@@ -186,6 +186,16 @@ if ($_POST) {
 	$medRouteSQL = "med_Route='".$formVal['med-Route']."', ";
     }
     
+    $medNoOfTriesSQL = "";
+    if (strlen($formVal['med-NoOfTries']) > 0) {
+	$medNoOfTriesSQL = "No_Of_Tries=".$formVal['med-NoOfTries'].",";
+    }
+    
+    $medNoOfGoodsSQL = "";
+    if (strlen($formVal['med-NoOfGoods']) > 0) {
+	$medNoOfGoodsSQL = "No_Of_Goods=".$formVal['med-NoOfGoods'].",";
+    }
+    
     $hiddenComments = $Form->hiddenField('hiddenComments',$formVal['med-Comments']);
     echo $hiddenComments;
     
@@ -193,7 +203,7 @@ if ($_POST) {
     if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $lnkID) == 1) { 
 	$query = "UPDATE Medication SET $medAssignedDateSQL $medAssignedTimeSQL $medEndDateSQL $medEndTimeSQL med_Comments='".$formVal['med-Comments']."',
 	$medPrescribedBySQL $medDoseSQL $medStrengthSQL $medNextRefillSQL
-	$medPumpSQL $medFrequencySQL $medRouteSQL No_Of_Tries=".$formVal['med-NoOfTries'].", No_Of_Goods=".$formVal['med-NoOfGoods'].",
+	$medPumpSQL $medFrequencySQL $medRouteSQL $medNoOfTriesSQL $medNoOfGoodsSQL
 	`Duration`='".$formVal['med-Duration']."', Unit='".$formVal['med-Units']."'
 	WHERE itm_ID=$row AND med_dlkID=$dlkID AND med_lnkID=$lnkID";
 	try { 
