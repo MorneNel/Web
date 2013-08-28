@@ -110,7 +110,7 @@ switch ($_REQUEST['destination']) {
                   $rowcount = odbc_num_rows($result);
                   // Only one row can exist with the unique above database row parameters
                   if ($rowcount >= 1) {
-                      echo "Row already exists for this group/item combination with the specified Daily Link/Link parameters.";
+                      echo "You are trying to insert a duplicate row which is not allowed.";
                   } else {
                       $query = "INSERT INTO CareLevel (CareLevelItem_ID,CL_dlkID,lnk_ID) VALUES ($sanitisedItemID,$sanitisedDLKID,$sanitisedLnkID)";
                       try { 
@@ -233,7 +233,7 @@ switch ($_REQUEST['destination']) {
                   $rowcount = odbc_num_rows($result);
                   // Only one row can exist with the unique above database row parameters
                   if ($rowcount >= 1) {
-                      echo "Row already exists for this group/item combination with the specified Daily Link/Link parameters.";
+                      echo "You are trying to insert a duplicate row which is not allowed.";
                   } else {
                       $query = "INSERT INTO DailyOutcome (DailyOutcome_ID,DailyOutcome_DLnkID,DailyOutcome_LnkID) VALUES ($sanitisedItemID,$sanitisedDLKID,$sanitisedLnkID)";
                       try { 
@@ -422,7 +422,7 @@ switch ($_REQUEST['destination']) {
                   $rowcount = odbc_num_rows($result);
                   // Only one row can exist with the unique above database row parameters
                   if ($rowcount >= 1) {
-                      echo "Row already exists for this group/item combination with the specified Daily Link/Link parameters.";
+                      echo "You are trying to insert a duplicate row which is not allowed.";
                   } else {
                       $query = "INSERT INTO CareLevel (CareLevelItem_ID,CL_dlkID,lnk_ID) VALUES ($sanitisedItemID,$sanitisedDLKID,$sanitisedLnkID)";
                       try { 

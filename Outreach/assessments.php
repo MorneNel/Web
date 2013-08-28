@@ -87,7 +87,7 @@
             <th class="pl_header"><p><a href="#">Duration</a></p></th>
             <th class="pl_header"><p><a href="#">Location</a></p></th>
             <th class="pl_header"><p><a href="#">Follow-Up</a></p></th>
-            <?php if ($appName == "AcutePain") { ?>
+            <?php if ($appName == "Outreach") { ?>
                 <th class="pl_header"><p><a href="#">Appointment Type</a></p></th>
                 <th class="pl_header"><p><a href="#">Visit Type</a></p></th>
             <?php } ?>
@@ -116,7 +116,7 @@
                                 <td data-href='assessment.php?lnkID=".$patient['LNK_ID']."&assessment=".$assessments['DLK_ID']."'>".$assessments['OTR_WARD']."</td>
                                 <td data-href='assessment.php?lnkID=".$patient['LNK_ID']."&assessment=".$assessments['DLK_ID']."'>".$assessments['OTR_SUGGESTEDNEXTASSESS']."</td>";
                                 
-                                if ($appName == "AcutePain") {
+                                if ($appName == "Outreach") {
                                     print "<td data-href='assessment.php?lnkID=".$patient['LNK_ID']."&assessment=".$assessments['DLK_ID']."'>".$assessments['CHR_APPOINTMENTTYPE']."</td>
                                     <td data-href='assessment.php?lnkID=".$patient['LNK_ID']."&assessment=".$assessments['DLK_ID']."'>".$assessments['CHR_VISITTYPE']."</td>";
                                 }

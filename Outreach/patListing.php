@@ -33,7 +33,7 @@ include './MelaClass/authInitScript.php';
 
 	   
 
-	$('tbody tr[data-href] td:not(:last-child)').addClass('clickable').click( function() { 
+	$('tbody tr[data-href]').addClass('clickable').click( function() { //td:not(:last-child)
 	    var data = $(this).data();
 	    var href = data['href'];
 	    var lnkid = data['lnkid'];
@@ -261,8 +261,8 @@ flush();
 
 
 <?php
-// include './patListing_Normal.php';
-include './patListing_Desktop.php';
+ include './patListing_Normal.php';
+//include './patListing_Desktop.php';
 ?>
 
 </body>
