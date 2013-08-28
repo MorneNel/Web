@@ -303,7 +303,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('painAssessment.php');
+				if ($appName == "AcutePain" && $preferences['ShowPainAss'] == 'true') include('painAssessment.php');
 			    ?>
 			    </td>
 			</tr>
@@ -316,7 +316,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('physicalexamination.php');
+				if ($appName == "Outreach" && $preferences['prf_Physical_Examination'] == 'true') include('physicalexamination.php');
 			    ?>
 			    </td>
 			</tr>
@@ -492,7 +492,8 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('comorbidity.php');
+				// Don't know why this is here - can't see an option for it on the menus at all
+				//include('comorbidity.php');
 			    ?>
 			    </td>
 			</tr>
@@ -504,7 +505,8 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('scarOutcome.php');
+				// Don't know why this is here - can't see an option for it on the menus at all
+				//include('scarOutcome.php');
 			    ?>
 			    </td>
 			</tr>

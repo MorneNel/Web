@@ -320,10 +320,12 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							if ($preferences['prf_UseOPCSCodes'] == 'true') {
-								include('surgeryOPCS.php');	
-							} else {
-								include('surgery.php');
+							if ($preferences['prf_ShowSurgery'] == 'true') {
+								if ($preferences['prf_UseOPCSCodes'] == 'true') {
+									include('surgeryOPCS.php');	
+								} else {
+									include('surgery.php');
+								}
 							}
 							?>
 							</td>
@@ -337,7 +339,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							include('comorbidity.php');
+								if ($preferences['prf_ShowComorbidity'] == 'true') include('comorbidity.php');
 							?>
 							</td>
 						    </tr>
@@ -350,7 +352,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							include('pmh.php');
+								if ($appName == "Outreach" && $preferences['prf_PMH'] == 'true') include('pmh.php');
 							?>
 							</td>
 						    </tr>
@@ -400,7 +402,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							include('discharge.php');
+								if ($preferences['prf_ShowDischarge'] == 'true') include('discharge.php');
 							?>
 							</td>
 						    </tr>
@@ -424,7 +426,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							    include('ICD10.php');
+							    if ($preferences['prf_ShowICD10'] == 'true') include('ICD10.php');
 							?>
 							</td>
 						    </tr>
@@ -436,7 +438,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							    include('CCMDS.php');
+							    if ($appName == "Outreach") include('CCMDS.php');
 							?>
 							</td>
 						    </tr>
@@ -448,7 +450,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    <tr>
 							<td>
 							<?php
-							    include('respiteCare.php');
+							    if ($preferences['Show_RespiteCare'] == 'true') include('respiteCare.php');
 							?>
 							</td>
 						    </tr>
