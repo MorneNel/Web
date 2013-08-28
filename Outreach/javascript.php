@@ -546,8 +546,32 @@
 			var ValsArr = msg.split('	');
 			console.debug(ValsArr);
 			console.debug("Score is " + ValsArr[0]);
+			$('#phys-NEWSScore').val(ValsArr[0]);
 			if (ValsArr[0] >= '6') { // NEWS Total
 			    popitup('NEWSPopup.php','NEWS',query,550,1025);    
+			}
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) {
+			 rowID = 'Invalid';
+			 alert(" Status: " + textStatus + "\n Error message: "+ errorThrown); 
+		    } 
+		});
+	    });
+	    
+	    $('.calculateMEWS').change(function() {
+		var ID = $('#patDLKID').val();
+		var user = $('#hiddenUsername').val();
+		$.ajax({
+		    type: "POST",
+		    url: "calculateMEWS.php",
+		    data: "page=PHYS&id=" + ID + "&user=" + user,
+		    async: false,
+		    success: function(msg){
+			//$('#testdiv').text(msg);
+			var ValsArr = msg.split('	');
+			$('#phys-EWSSScore').val(ValsArr[0]);
+			if (ValsArr[0] >= '3') { // NEWS Total
+			    $.prompt("EWS Score: " + ValsArr[0] + ". Medical intervention required!");    
 			}
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) {

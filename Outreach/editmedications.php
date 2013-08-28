@@ -62,7 +62,7 @@ $dlkID = filter_var($_REQUEST['dlk'], FILTER_SANITIZE_NUMBER_INT);
 $lnkID = filter_var($_REQUEST['lnk'], FILTER_SANITIZE_NUMBER_INT);
 
 // Get relevant data to fill out form
-$query = "SELECT med.itm_ID, med.med_AssignedDate, med.med_Time, med.End_Date, med.End_Time,
+$query = "SELECT med.itm_ID, DATE_TO_CHAR(med.med_AssignedDate,'yyyy-Mm-Dd') AS MED_ASSIGNEDDATE, med.med_Time, DATE_TO_CHAR(med.End_Date,'yyyy-Mm-Dd') AS END_DATE, med.End_Time,
 	  med.med_Comments, med.med_PrescribedBy, med.med_Dose, med.med_Strength, med.med_NextRefill,
 	  med.Pump_No, med.No_Of_Tries, med.No_Of_Goods, med.med_Frequency, med.med_Route, med.`Duration`,
 	  med.Unit AS Medication_Unit,

@@ -3,6 +3,10 @@
 $NEWSCSS = array('calculateNEWS','checkPhysiology');
 // Purely for physiology checking
 $PhysCSS = array('checkPhysiology');
+// MEWS, NEWS and Phys
+$MEWSCSS = array('calculateNEWS', 'calculateMEWS','checkPhysiology');
+// Mews & Phys
+$MEWPhysCSS = array('calculateMEWS', 'checkPhysiology');
 ?>
 <!-- <fieldset> -->
 
@@ -19,7 +23,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>
                                 <?php
                                     $tempDataTags = array('code' => 'temp', 'type' => 'T', 'label' => 'Temperature', 'identifier' => 'phys-temperature');
-                                    $physTemperature = $Form->textBoxPhysiology('phys-temperature',$patient['PAT_TEMPERATURE'],'',0,$NEWSCSS, $tempDataTags);
+                                    $physTemperature = $Form->textBoxPhysiology('phys-temperature',$patient['PAT_TEMPERATURE'],'',0,$MEWSCSS, $tempDataTags);
                                     echo $physTemperature . $unitsArray[0];
                                     echo $physTemperatureHidden = $Form->hiddenField('phys-temperatureHidden',$patient['PAT_TEMPERATURE']);
                                 ?>    
@@ -30,7 +34,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>
                                 <?php
                                     $sysDataTags = array('code' => 'sys', 'type' => 'T', 'label' => 'Systolic BP', 'identifier' => 'phys-systolicBP');
-                                    $physSystolicBP = $Form->textBoxPhysiology('phys-systolicBP',$patient['PAT_SYSTOLIC_BP'],'',0,$NEWSCSS, $sysDataTags);
+                                    $physSystolicBP = $Form->textBoxPhysiology('phys-systolicBP',$patient['PAT_SYSTOLIC_BP'],'',0,$MEWSCSS, $sysDataTags);
                                     echo $physSystolicBP . $unitsArray[1];
                                     echo $physSystolicBPHidden = $Form->hiddenField('phys-systolicBPHidden',$patient['PAT_SYSTOLIC_BP']);
                                 ?>    
@@ -61,7 +65,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>
                                 <?php
                                     $hrDataTags = array('code' => 'hr', 'type' => 'T', 'label' => 'Heart Rate', 'identifier' => 'phys-heartRate1');
-                                    $physHeartRate = $Form->textBoxPhysiology('phys-heartRate1',$patient['PAT_HEARTRATE'],'',0,$PhysCSS,$hrDataTags);
+                                    $physHeartRate = $Form->textBoxPhysiology('phys-heartRate1',$patient['PAT_HEARTRATE'],'',0,$MEWPhysCSS,$hrDataTags);
                                     echo $physHeartRate . $unitsArray[2];
                                     echo $physHeartRateHidden = $Form->hiddenField('phys-heartRate1Hidden',$patient['PAT_HEARTRATE']);
                                 ?>    
@@ -72,7 +76,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>
                                 <?php
                                     $rrDataTags = array('code' => 'rr', 'type' => 'T', 'label' => 'Respiratory Rate', 'identifier' => 'phys-respRate');
-                                    $physRespRate = $Form->textBoxPhysiology('phys-respRate',$patient['PAT_RESPIRATORYRATE'],'',0,$NEWSCSS,$rrDataTags);
+                                    $physRespRate = $Form->textBoxPhysiology('phys-respRate',$patient['PAT_RESPIRATORYRATE'],'',0,$MEWSCSS,$rrDataTags);
                                     echo $physRespRate . $unitsArray[3];
                                     echo $physRespRateHidden = $Form->hiddenField('phys-respRateHidden',$patient['PAT_RESPIRATORYRATE']);
                                 ?>
@@ -83,7 +87,7 @@ $PhysCSS = array('checkPhysiology');
                             <td>
                                 <?php
                                     $spo2DataTags = array('code' => 'SpO2', 'type' => 'T', 'label' => 'SpO2', 'identifier' => 'phys-SpO2');
-                                    $physSpO2 = $Form->textBoxPhysiology('phys-SpO2',$patient['PAT_O2SATURATION'],'',0,$NEWSCSS,$spo2DataTags);
+                                    $physSpO2 = $Form->textBoxPhysiology('phys-SpO2',$patient['PAT_O2SATURATION'],'',0,$MEWSCSS,$spo2DataTags);
                                     echo $physSpO2 . $unitsArray[4];
                                     echo $physSpO2Hidden = $Form->hiddenField('phys-SpO2Hidden',$patient['PAT_O2SATURATION']);
                                 ?>    
@@ -162,7 +166,7 @@ $PhysCSS = array('checkPhysiology');
                                         array_push($physAVPUDDArray,$physAVPUDDSQL[$i]['Long_Name']);
                                     }
                         
-                                    $physAVPUDD = $Form->dropDown('phys-AVPU',$physAVPUDDArray,$physAVPUDDArray,$patient['PAT_AVPU'],'physiologyDropDown calculateNEWS');
+                                    $physAVPUDD = $Form->dropDown('phys-AVPU',$physAVPUDDArray,$physAVPUDDArray,$patient['PAT_AVPU'],'physiologyDropDown calculateNEWS calculateMEWS');
                                     echo $physAVPUDD;
                                 ?>
                             </td>
