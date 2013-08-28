@@ -1039,6 +1039,11 @@
 	     * Show hide sepsis based on likeliness
 	     */
 	    $('#sepsis').hide();
+	    var sepsisValue = $('#sps-sepsisOnArrival').val();
+	    
+	    if (sepsisValue === 'Likely' || sepsisValue === 'Very likely') {
+		$('#sepsis').show();
+	    }
 	    
 	    $('#sps-sepsisOnArrival').change(function() {
 		var sepsisArrival = $(this).val();
