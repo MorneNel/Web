@@ -476,6 +476,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 	</body>
 </html>
 <?php
-
+include('javascriptCommon.php');
+include('javascriptDemographics.php');
 include('footer.php');
 ?>

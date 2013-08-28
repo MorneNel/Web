@@ -526,5 +526,7 @@ catch (RuntimeException $e) {
     </body>
 </html>
 <?php
+include('javascriptCommon.php');
+include('javascriptAssessments.php');
 include('footer.php');
 ?>
