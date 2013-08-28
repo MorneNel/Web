@@ -1429,7 +1429,7 @@ font-size: small;
 
 
 #Icon-wrapper{ 
-  background-color: #eee; 
+  background: rgb(254, 255, 234); 
   height: 80px;
   text-align: center;
   margin-bottom: 5px;
@@ -1445,3 +1445,10 @@ font-size: small;
   position: absolute;
   opacity: 0;
 }
+
+.active_row td{
+  border-top:1px solid #FFD9A1;
+  border-bottom:1px solid #FFD9A1;
+  background-color: #fff2df;
+}
+

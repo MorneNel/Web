@@ -33,7 +33,8 @@ include './MelaClass/authInitScript.php';
 
 	   
 
-	$('tbody tr[data-href]').addClass('clickable').click( function() { //td:not(:last-child)
+	// $('tbody tr[data-href]').addClass('clickable').click( function() { //td:not(:last-child)
+	$('.normal tr[data-href]').addClass('clickable').click( function() { //td:not(:last-child)
 	    var data = $(this).data();
 	    var href = data['href'];
 	    var lnkid = data['lnkid'];
@@ -57,6 +58,29 @@ include './MelaClass/authInitScript.php';
 	    });
 	    
 	});
+
+
+
+
+	$('.desktop tr[data-href]').addClass('clickable').click( function() { //td:not(:last-child)
+	    var data = $(this).data();
+	    var href = data['href'];
+	    var lnkid = data['lnkid'];
+	    var user = $('#userID').val();
+
+	    
+
+	});
+
+    $('.desktop tr').click(function() {
+	$('.desktop tr.active_row').removeClass('active_row');
+	$(this).closest('.desktop tr').addClass('active_row');
+    });
+ 
+
+
+
+
      
 
 	$('input[name="search"]').focus(function(){
@@ -261,8 +285,8 @@ flush();
 
 
 <?php
- include './patListing_Normal.php';
-//include './patListing_Desktop.php';
+ // include './patListing_Normal.php';
+include './patListing_Desktop.php';
 ?>
 
 </body>
