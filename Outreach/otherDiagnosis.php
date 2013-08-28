@@ -32,10 +32,9 @@
                 <td colspan='2'>
                         <button type='button' style='font-size:small;' id='sdi-search-diagnosis'>Search diagnosis</button>
                         <div id='sdi-diagnosis-search-form' data-page='secondary' title='Search diagnosis'>                       
-                            <form>
-                            <fieldset>
+
                                 <div class="textBox">  
-                                        <input type="search" value="" maxlength="500" name='sdi-searchDiag' id='sdi-searchDiag'>
+                                        Search <input type="search" value="" maxlength="500" name='sdi-searchDiag' id='sdi-searchDiag'>
                                             
                                         <!--<div class="diagnosisSearchBtn">  
                                             &nbsp;  
@@ -44,9 +43,7 @@
                             
                                         </div>
                                 </div>
-                            </fieldset>
-                            </form>
-                            
+
                         </div>
                         
                 </td>

@@ -40,8 +40,6 @@
                 <td colspan='2'>
                         <button type='button' style='font-size:small;' id='search-diagnosis'>Search diagnosis</button>
                         <div id='diagnosis-search-form' data-page='primary' title='Search diagnosis'>                       
-<!--                             <form>
-                            <fieldset> -->
                                 <div class="textBox">  
                                         Search <input type="search" value="" maxlength="500" name='searchDiag' id='searchDiag'><br/>
                                             
@@ -52,8 +50,6 @@
                             
                                         </div>
                                 </div>
-<!--                             </fieldset>
-                            </form> -->
                             
                         </div>
                         
