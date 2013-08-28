@@ -321,8 +321,8 @@ asort($patListingColumns_dsktp);
 
 
 				<td class='desktop_summary_column'>
-					<div class='desktop_summary_column_div'>
-						
+					<div class='desktop_summary_column_div dsk_head_out'>
+						Patient Overview
 					</div>
 				</td>
 			</tr>
