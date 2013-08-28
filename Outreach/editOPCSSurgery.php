@@ -11,7 +11,11 @@
 <script type="text/javascript">    
     $(document).ready(function() {
         function resetField(field) {
-		$(field).val('');
+		//$(field).val('');
+		//$(field + ' option:eq(0)').attr('selected','selected');
+		//$($field).attr('selected');
+		//$('#' + field + ' option[value=""]').attr('selected', true);
+		$(field).get(0).selectedIndex = 0;
 	}
             
         $('.resetButton').click(function() {
@@ -96,10 +100,7 @@ include './MelaClass/authInitScript.php';
 // Need post data for this
 //if (!$_POST || !$_REQUEST) die("No operation data specified");
 
-
-
-
-
+// $preferences['OPCS_Outcome'];
 
 
 
@@ -191,7 +192,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
             <span class="ui-button-text">Cancel</span>
             </button>
 
-            <button style="font-size: small; color: green;" type="submit" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onClick="return CloseAndRefresh()">
+            <button style="font-size: small; color: green;" type="submit" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
             <span class="ui-button-text">Save</span>
             </button>
         </div>
@@ -214,7 +215,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
                                 <td>Anaesthetist 1</td>
                                 <td>
                                     <?php $anaesthetist1 = $Mela_SQL->getAnaesthetistDropdown('anaesthetist1','',$operationData['ANEA1']); echo $anaesthetist1; ?>
-                                    <button style="font-size: small;" type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-target='#anaesthetist1'>
+                                    <button style="font-size: small;" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only resetbutton" data-target='#anaesthetist1'>
                                     <span class="ui-button-text">Reset</span>
                                     </button>
                                 </td>
@@ -222,7 +223,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
                                 <td>Anaesthetist 2</td>
                                 <td>
                                     <?php $anaesthetist2 = $Mela_SQL->getAnaesthetistDropdown('anaesthetist2','',$operationData['ANEA2']); echo $anaesthetist2; ?>
-                                    <button style="font-size: small;" type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-target='#anaesthetist2'>
+                                    <button style="font-size: small;" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only resetbutton" data-target='#anaesthetist2'>
                                     <span class="ui-button-text">Reset</span>
                                     </button>
                                 </td>
@@ -279,21 +280,8 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
                                 </td>
                             </tr>
 
-
+			    
                             <tr>
-                                <td>Outcome</td>
-                                <td>
-                                    <?php
-                                        $srgOutcomeDDSQL = $Mela_SQL->tbl_LoadItems('Surgery Outcome');
-                                        $srgOutcomeDDArray = array();
-                                        for ($i = 1; $i < (count($srgOutcomeDDSQL)+1); $i++) {
-                                            array_push($srgOutcomeDDArray,$srgOutcomeDDSQL[$i]['Long_Name']);
-                                        }
-                            
-                                        $srgOutcomeDD = $Form->dropDown('outcome',$srgOutcomeDDArray,$srgOutcomeDDArray,$operationData['OUTCOME']);
-                                        echo $srgOutcomeDD;                             
-                                    ?>
-                                </td>
                                 <td>Technique</td>
                                 <td>
                                     <?php
@@ -307,6 +295,21 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
                                         echo $srgTechniqueDD;                             
                                     ?>
                                 </td>
+				<?php if ($preferences['OPCS_Outcome'] == 'true') { ?>
+                                <td>Outcome</td>
+                                <td>
+                                    <?php
+                                        $srgOutcomeDDSQL = $Mela_SQL->tbl_LoadItems('Surgery Outcome');
+                                        $srgOutcomeDDArray = array();
+                                        for ($i = 1; $i < (count($srgOutcomeDDSQL)+1); $i++) {
+                                            array_push($srgOutcomeDDArray,$srgOutcomeDDSQL[$i]['Long_Name']);
+                                        }
+                            
+                                        $srgOutcomeDD = $Form->dropDown('outcome',$srgOutcomeDDArray,$srgOutcomeDDArray,$operationData['OUTCOME']);
+                                        echo $srgOutcomeDD;                             
+                                    ?>
+                                </td>
+				<?php } ?>
                             </tr>
                         </table>
                         
@@ -337,7 +340,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
     $srgAnea2SQL = "";
     if (isset($_POST['anaesthetist2']) && strlen($_POST['anaesthetist2']) != 0) {
         $anea2 = filter_var($_POST['anaesthetist2'], FILTER_SANITIZE_NUMBER_INT);
-	$srgAnea2SQL = "Anea2='".$anea2."',";
+	$srgAnea2SQL = "Anea2=".$anea2.",";
     }
     
     $srgDateSQL = "";
@@ -349,7 +352,7 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
     $srgClassificationSQL = "";
     if (strlen($_POST['classification']) != 0) {
         $classification = filter_var($_POST['classification'], FILTER_SANITIZE_STRING);
-	$srgClassificationSQL = "OPER_Classification='".$classification."'";
+	$srgClassificationSQL = "OPER_Classification='".$classification."',";
     }
     
     $srgIncisionTypeSQL = "";
@@ -379,15 +382,16 @@ $Form = new Mela_Forms('surgeryEdit','','POST','surgeryEdit_form');
     $srgNotesSQL = "";
     if (isset($_POST['surgeryNotes']) && strlen($_POST['surgeryNotes']) != 0) {
         $notes = filter_var($_POST['surgeryNotes'], FILTER_SANITIZE_STRING);
-        $srgTechniqueSQL = "OPER_Comments='$notes',";
+        $srgNotesSQL = "OPER_Comments='$notes',";
     }
     
     $sql = "UPDATE OPER_PatOperations SET $srgAnea2SQL $srgDateSQL $srgClassificationSQL $srgIncisionTypeSQL $srgTypeSQL
-	    $srgOutcomeSQL $srgTechniqueSQL $srgTechniqueSQL Anea1=$ana1 WHERE OPER_ID=$operationID AND OPER_lnkID=$lnkID";
+	    $srgOutcomeSQL $srgTechniqueSQL $srgNotesSQL Anea1=$ana1 WHERE OPER_ID=$operationID AND OPER_lnkID=$lnkID";
     //$sql = "UPDATE OPER_PatOperations SET IncisionType='1' WHERE OPER_ID=$operationID";
+    echo $sql;
     try { 
         $result = odbc_exec($connect,$sql);
-        if($result){ 
+        if ($result) { 
             ?>
             <script type="text/javascript">
                 CloseAndRefresh(); 

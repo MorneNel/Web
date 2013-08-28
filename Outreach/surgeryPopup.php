@@ -27,6 +27,16 @@
     }
     
     $(document).ready(function() {
+	function resetField(field) {
+	    $(field).get(0).selectedIndex = 0;
+	}
+            
+        $('.resetbutton').click(function() {
+                var data = $(this).data();
+                var target = data['target'];
+                resetField(target);
+        });
+	
         $.validator.addMethod("noFutureDates", function(value, element) {
 	    // Check that the date given is not in the future
 	    var myDate = value;
@@ -265,14 +275,14 @@ if ($_POST) {
                     <td>Anaesthetist 1</td>
                     <td>
                         <?php $anaesthetist1 = $Mela_SQL->getAnaesthetistDropdown('anaesthetist1',''); echo $anaesthetist1; ?>
-                        <button style="font-size: small;" type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <button style="font-size: small;" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only resetbutton">
                         <span class="ui-button-text">Reset</span>
                         </button>
                     </td>
 
                     <td>Anaesthetist 2</td>
                     <td><?php $anaesthetist2 = $Mela_SQL->getAnaesthetistDropdown('anaesthetist2',''); echo $anaesthetist2; ?>
-                        <button style="font-size: small;" type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <button style="font-size: small;" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only resetbutton">
                         <span class="ui-button-text">Reset</span>
                         </button>
                     </td>
@@ -327,7 +337,21 @@ if ($_POST) {
                     </td>
                 </tr>
                 <tr> 
-                    <td>Outcome</td>
+                    <td>Technique</td>
+                    <td>
+                        <?php
+                            $srgTechniqueDDSQL = $Mela_SQL->tbl_LoadItems('Technique');
+                            $srgTechniqueDDArray = array();
+                            for ($i = 1; $i < (count($srgTechniqueDDSQL)+1); $i++) {
+                            array_push($srgTechniqueDDArray,$srgTechniqueDDSQL[$i]['Long_Name']);
+                            }
+                    
+                            $srgTechniqueDD = $Form->dropDown('technique',$srgTechniqueDDArray,$srgTechniqueDDArray);
+                            echo $srgTechniqueDD;
+                        ?>
+                    </td>
+		    <?php if ($preferences['OPCS_Outcome'] == 'true') { ?>
+		    <td>Outcome</td>
                     <td>
                         <?php
                             $srgOutcomeDDSQL = $Mela_SQL->tbl_LoadItems('Surgery Outcome');
@@ -340,20 +364,7 @@ if ($_POST) {
                             echo $srgOutcomeDD;                             
                         ?>
                     </td>
-                    <td>Technique</td>
-                    <td>
-                        <?php
-                            $srgTechniqueDDSQL = $Mela_SQL->tbl_LoadItems('Technique');
-                            $srgTechniqueDDArray = array();
-                            for ($i = 1; $i < (count($srgTechniqueDDSQL)+1); $i++) {
-                            array_push($srgTechniqueDDArray,$srgTechniqueDDSQL[$i]['Long_Name']);
-                            }
-                    
-                            $srgTechniqueDD = $Form->dropDown('technique',$srgTechniqueDDArray,$srgTechniqueDDArray);
-                            echo $srgTechniqueDD;
-                            //echo "The 4D code points to a 'Technique' row in Table_Lists which does not exist and I can find no approximation";
-                        ?>
-                    </td>
+		    <?php } ?>
                 </tr>
             </table>
             
