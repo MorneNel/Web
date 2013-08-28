@@ -625,34 +625,36 @@ if ($Mela_SQL->Exec4DSQL("SQLLock_IsLocked", $_POST['patLNK']) == 1) {
      
      // Surgery
      
+    if ($preferences['prf_ShowComorbidity'] == 'true') {
+	// Co-morbidity 
+	// Co-morbidity is groups/items so results will have to be looped through and each one added to the database
+	if (!empty($_POST['COnotes'])) {
+	      foreach ($_POST['COnotes'] AS $key => $val) {
+		   //print "<b>Value</b>: $key as ".$val."<br />";
+			   
+		   $como_updQuery = "UPDATE Co_Morbidity SET com_Notes='$val' WHERE com_ID=$key AND lnk_ID=".$_POST['patLNK']."";
+		   try { 
+		       $como_updResult = odbc_exec($connect,$como_updQuery); 
+		   } 
+		   catch (RuntimeException $e) { 
+		       print("Exception caught: $e");
+		   }
+	       }
+	}
+    }
      
-     // Co-morbidity 
-     // Co-morbidity is groups/items so results will have to be looped through and each one added to the database
-     if (!empty($_POST['COnotes'])) {
-	   foreach ($_POST['COnotes'] AS $key => $val) {
-		//print "<b>Value</b>: $key as ".$val."<br />";
-			
-		$como_updQuery = "UPDATE Co_Morbidity SET com_Notes='$val' WHERE com_ID=$key AND lnk_ID=".$_POST['patLNK']."";
-		try { 
-		    $como_updResult = odbc_exec($connect,$como_updQuery); 
-		} 
-		catch (RuntimeException $e) { 
-		    print("Exception caught: $e");
-		}
-	    }
-     }
-     
-     
-    // PMH
-    
-    $pmh_updQuery = "UPDATE ICNARC_PMH SET icn_EPMH='".$_POST['pmh-evidenceAvailableToAssess']."', icn_PMHP='".$_POST['pmh-pastMedicalHistory']."', icn_BPC='".$_POST['pmh-biopsyProvenCirrhosis']."', icn_RADIOX='".$_POST['pmh-radiotherapy']."', icn_PH='".$_POST['pmh-portalHypertension']."',
-    icn_CHEMOX='".$_POST['pmh-chemotherapy']."', icn_HE='".$_POST['pmh-hepaticEncephalopathy']."', icn_META='".$_POST['pmh-metastaticDisease']."', icn_VSCD='".$_POST['pmh-verySevereCardiovascularDisease']."',
-    icn_AMLALLMM='".$_POST['pmh-acuteMyelogenousLeukaemia']."', icn_SRD='".$_POST['pmh-severeRespiratoryDisease']."', icn_CMLCLL='".$_POST['pmh-chronicMyelogenousLeukaemia']."',
-    icn_HV='".$_POST['pmh-homeVentilation']."', icn_LYM='".$_POST['pmh-lymphoma']."', icn_CRRX='".$_POST['pmh-chronicRenalReplacementTherapy']."', icn_CICIDS='".$_POST['pmh-congenitalImmunohormonal']."',
-    icn_AIDS='".$_POST['pmh-AIDS']."', icn_STERX='".$_POST['pmh-steroidTreatment']."'
-    WHERE icn_ID=".$_POST['lnk_icnID']."";
-    $pmh_update = odbc_prepare($connect, $pmh_updQuery);
-    $pmh_updResult = odbc_execute($pmh_update) or die(odbc_errormsg());
+    if ($appName == "Outreach" && $preferences['prf_PMH'] == 'true') { 
+	// PMH
+	
+	$pmh_updQuery = "UPDATE ICNARC_PMH SET icn_EPMH='".$_POST['pmh-evidenceAvailableToAssess']."', icn_PMHP='".$_POST['pmh-pastMedicalHistory']."', icn_BPC='".$_POST['pmh-biopsyProvenCirrhosis']."', icn_RADIOX='".$_POST['pmh-radiotherapy']."', icn_PH='".$_POST['pmh-portalHypertension']."',
+	icn_CHEMOX='".$_POST['pmh-chemotherapy']."', icn_HE='".$_POST['pmh-hepaticEncephalopathy']."', icn_META='".$_POST['pmh-metastaticDisease']."', icn_VSCD='".$_POST['pmh-verySevereCardiovascularDisease']."',
+	icn_AMLALLMM='".$_POST['pmh-acuteMyelogenousLeukaemia']."', icn_SRD='".$_POST['pmh-severeRespiratoryDisease']."', icn_CMLCLL='".$_POST['pmh-chronicMyelogenousLeukaemia']."',
+	icn_HV='".$_POST['pmh-homeVentilation']."', icn_LYM='".$_POST['pmh-lymphoma']."', icn_CRRX='".$_POST['pmh-chronicRenalReplacementTherapy']."', icn_CICIDS='".$_POST['pmh-congenitalImmunohormonal']."',
+	icn_AIDS='".$_POST['pmh-AIDS']."', icn_STERX='".$_POST['pmh-steroidTreatment']."'
+	WHERE icn_ID=".$_POST['lnk_icnID']."";
+	$pmh_update = odbc_prepare($connect, $pmh_updQuery);
+	$pmh_updResult = odbc_execute($pmh_update) or die(odbc_errormsg());
+    }
      
      
      // Discharge
