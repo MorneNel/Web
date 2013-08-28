@@ -194,7 +194,7 @@ asort($patListingColumns_dsktp);
 								print "</tr>
 						    </thead>
 					    	
-					    	<tbody id='patlisting'>";
+					    	<tbody id='patlisting' class='desktop'>";
 					    	
 
 						$sql = "SELECT dmg.dmg_ID,
@@ -262,7 +262,6 @@ asort($patListingColumns_dsktp);
 									    switch ($patListingColumns_dsktp[$i]) {
 
 										case "Hospital Number":
-											// print "<td class='listing_cell'><div class='plCell_desktop'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</div></td>";
 											print "<td class='listing_cell'><div class='plCell_desktop'>
 												   <input type='radio' class='' data-lnk_ID='".$listingFields['LNK_ID']."' data-group='".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."'>
 												   <label for='".$listingFields['LNK_ID']."'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</label>
@@ -270,7 +269,6 @@ asort($patListingColumns_dsktp);
 											break;
 
 										case "First Name":
-											// print "<td class='listing_cell'><div class='plCell_desktop'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</div></td>";
 											print "<td class='listing_cell'><div class='plCell_desktop'>
 												   <input type='radio' class='' data-lnk_ID='".$listingFields['LNK_ID']."' data-group='".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."'>
 												   <label for='".$listingFields['LNK_ID']."'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</label>
@@ -278,7 +276,6 @@ asort($patListingColumns_dsktp);
 											break;
 
 										case "Surname":
-											// print "<td class='listing_cell'><div class='plCell_desktop'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</div></td>";
 											print "<td class='listing_cell'><div class='plCell_desktop'>
 												   <input type='radio' class='' data-lnk_ID='".$listingFields['LNK_ID']."' data-group='".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."'>
 												   <label for='".$listingFields['LNK_ID']."'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</label>
@@ -286,16 +283,11 @@ asort($patListingColumns_dsktp);
 											break;
 
 										case "Location":
-											// print "<td class='listing_cell'><div class='plCell_desktop'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</div></td>";
 											print "<td class='listing_cell'><div class='plCell_desktop'>
 												   <input type='radio' class='' data-lnk_ID='".$listingFields['LNK_ID']."' data-group='".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."'>
 												   <label for='".$listingFields['LNK_ID']."'>".$listingFields[$dbColumns[$patListingColumns_dsktp[$i]]]."</label>
 												   </div></td>";
 											break;
-
-										// case "x":
-										// 	print "<td class='listing_cell'><div class='plCell_desktop'><input type='radio' name='selected' value='".$listingFields['LNK_ID']."'></div></td>";
-										// 	break;
 
 										case "Next Assessment date":
 										case "Discharge Date":

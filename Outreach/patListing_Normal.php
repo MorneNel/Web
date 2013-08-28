@@ -127,7 +127,7 @@ try {
 								print "</tr>
 						    </thead>
 					    	
-					    	<tbody id='patlisting'>";
+					    	<tbody id='patlisting' class='normal'>";
 					    	
 
 						$sql = "SELECT dmg.dmg_ID,
