@@ -329,7 +329,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('physiology1A.php');
+				if ($preferences['prf_ShowPhys1'] == 'true') include('physiology1A.php');
 			    ?>
 			    </td>
 			</tr>
@@ -341,7 +341,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('physiology1B.php');
+				if ($preferences['prf_ShowPhys1'] == 'true') include('physiology1B.php');
 			    ?>
 			    </td>
 			</tr>
@@ -353,7 +353,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('physiology2.php');
+				if ($preferences['Physiology2'] == 'true') include('physiology2.php');
 			    ?>
 			    </td>
 			</tr>
@@ -365,7 +365,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('sepsis.php');
+			    if ($preferences['prf_Infection'] == 'true') include('sepsis.php');
 			    ?>
 			    </td>
 			</tr>
@@ -377,11 +377,13 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    if ($appName == "Outreach") {
-				include('medicationsOR.php');
-			    }
-			    else {
-				include('medications.php');
+			    if ($preferences['prf_Show_Medication'] == 'true') {
+				if ($appName == "Outreach") {
+				    include('medicationsOR.php');
+				}
+				else {
+				    include('medications.php');
+				}
 			    }
 			    ?>
 			    </td>
@@ -395,7 +397,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('interventions.php');
+				if ($preferences['prf_Show_Interventions'] == 'true') include('interventions.php');
 			    ?>
 			    </td>
 			</tr>
@@ -420,7 +422,7 @@ catch (RuntimeException $e) {
 			    //include('resuscitation.php'); // Incomplete, medical staff/team leader need filling in but don't know how it selects from resus_tables
 			    //include('painAssessment.php');
 			    //include('careLevel.php');
-			    include('criticalIncidents.php');
+				if ($preferences['ShowCritIncidents'] == 'true') include('criticalIncidents.php');
 			    //include('respiteCare.php');
 			    ?>
 			    </td>
@@ -433,10 +435,12 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    if ($preferences['prf_UseOPCSCodes'] == 'true') {
-				    include('surgeryOPCS.php');	
-			    } else {
-				    include('surgery.php');
+			    if ($preferences['prf_ShowSurgery_Ass'] == 'true') {
+				if ($preferences['prf_UseOPCSCodes'] == 'true') {
+					include('surgeryOPCS.php');	
+				} else {
+					include('surgery.php');
+				}
 			    }
 			    ?>
 			    </td>
@@ -451,7 +455,7 @@ catch (RuntimeException $e) {
 			    <td>
 			    <?php
 			    //<!--#4DSCRIPT/htm_PatDmg_PMH/XXX-->
-			    include('dailyOutcome.php');
+				if ($preferences['show_daily_outcome'] == 'true') include('dailyOutcome.php');
 			    ?>
 			    </td>
 			</tr>
@@ -464,7 +468,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('tasks.php');
+				if ($preferences['Show_Tasks'] == 'true') include('tasks.php');
 			    ?>
 			    </td>
 			</tr>
@@ -476,7 +480,7 @@ catch (RuntimeException $e) {
 			<tr>
 			    <td>
 			    <?php
-			    include('modalities.php');
+				if ($preferences['ModalityInAss'] == 'true') include('modalities.php');
 			    ?>
 			    </td>
 			</tr>
