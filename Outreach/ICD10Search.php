@@ -112,7 +112,7 @@ echo "<br />
 <td class='selected_table'>";
 
 
-  echo "<table class='ICD10Records_pop'>
+  echo "<table class='ICD10Records_pop ICD10_list'>
     <thead>
         <tr>
             <th>Description</th>

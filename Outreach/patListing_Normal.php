@@ -98,7 +98,7 @@ try {
 
 
 		<div id='dialog-form' title='Add new patient'>
-		<p class='validateTips'>All form fields are required.</p>
+			<!--<p class='validateTips'>All form fields are required.</p>-->
 	       
 		    <form>
 		    <fieldset>

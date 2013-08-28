@@ -191,7 +191,6 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						<li class="tabs_item"><a href="#page-13"><span>ICD10 Diagnosis</span></a></li>
 						<li class="tabs_item"><a href="#page-14"><span>CCMDS</span></a></li>
 						<li class="tabs_item"><a href="#page-15"><span>Respite Care</span></a></li>
-						<li class="tabs_item"><a href="#page-16"><span>Desktop</span></a></li>
 					</ul>
 				<?php
 				// In acute pain there is a post op usergroup which
@@ -202,8 +201,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 					    <div class="cssmenu">	
 						<ul>
 						<!-- =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   -->
-							<li class='tabs_item' id='tabDesktop'><a href='#page-16' class='active_pat_tab'><span>Desktop</span></a></li>
-							<li class='tabs_item' id='tabDemographic'><a href='#page-1'><span>Demographics</span></a></li>
+							<li class='tabs_item' id='tabDemographic'><a href='#page-1' class='active_pat_tab'><span>Demographics</span></a></li>
 							<li class='tabs_item' id='tabSurgery2'><a href='#page-5'><span><?php if ($preferences['CustomSurgeryName_Name'] !='') echo $preferences['CustomSurgeryName_Name']; else echo "Surgery"; ?></span></a></li>
 							<li class='tabs_item' id='tabModalities'><a href='#page-10'><span>Modalities</span></a></li>
 						<!-- =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   -->
@@ -216,8 +214,7 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						<div class="cssmenu">	
 							<ul>
 							<!-- =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   -->
-								<li class='tabs_item' id='tabDesktop'><a href='#page-16' class='active_pat_tab'><span>Desktop</span></a></li>
-								<li class='tabs_item' id='tabDemographic'><a href='#page-1'><span>Demographics</span></a></li>
+								<li class='tabs_item' id='tabDemographic'><a href='#page-1' class='active_pat_tab'><span>Demographics</span></a></li>
 							<!-- =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   =   -->
 						<?php if ($preferences['prf_ShowMedicalStaff'] == 'false') { ?>
 								<li class='tabs_item' id='tabAdmission'><a href='#page-2'><span>Admission</span></a></li>
@@ -457,18 +454,6 @@ if (!isset($patient['DLK_ID'])) $patient['DLK_ID'] = 0;
 						    </tr>
 						</table>
 					</div>  <!-- Respite Care -->
-
-					<div id="page-16" class="desktop">  <!-- Desktop -->
-						<table width="100%">
-						    <tr>
-							<td>
-							<?php
-							    include('desktop.php');
-							?>
-							</td>
-						    </tr>
-						</table>
-					</div>  <!-- Desktop -->
 
 				</div> <!--  <div id="tabs">  -->
 			</form>
