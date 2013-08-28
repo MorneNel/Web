@@ -254,8 +254,10 @@ switch ($_REQUEST['dd']) {
                 $identifier = $tableName['LIST_NAME'];
                 $detailDDSQL = $Mela_SQL->tbl_LoadItems($identifier);
                 $detailDDArray = array();
+                $selected = "";
                 for ($i = 1; $i < (count($detailDDSQL)+1); $i++) {
-                    echo "<option value='".$detailDDSQL[$i]['Long_Name']."'>".$detailDDSQL[$i]['Long_Name']."</option>";
+                    if (isset($_REQUEST['defaultVal']) && $_REQUEST['defaultVal'] == preg_replace('/\s+/', '', $detailDDSQL[$i]['Long_Name'])) $selected = "selected";
+                    echo "<option value='".$detailDDSQL[$i]['Long_Name']."' $selected>".$detailDDSQL[$i]['Long_Name']."</option>";
                 }    
             }
         }

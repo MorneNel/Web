@@ -165,6 +165,9 @@
 
             $detailDD = $Form->dropDown('ass-detail',$detailDDArray,$detailDDArray,$patient['OTR_FOLLOWUP']);
             echo $detailDD;
+            // This is used by jQuery as the detail dropdown can change depending on assessment reason.
+            // Dropdown is changed on page load so it uses this field to select the default value
+            echo $Form->hiddenField('hiddenOTRFollowUp',$patient['OTR_FOLLOWUP']);
         ?>
         </td>
     </tr>

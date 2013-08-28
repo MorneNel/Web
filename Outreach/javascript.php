@@ -1314,19 +1314,18 @@
 	     * Select = ID of dropdown list to be changed and also the switch case to use in changeDropdown.php
 	     * options = Specific option selected from dropdown
 	     * specifier = Added later. In very few instances like daily outcome which dropdown list to change can depend on option select, so use this to specify which
+	     * defaultVal = set the default selected option of new dropdown list
 	     */ 
 	    
-	    function changeDropDown(select, options, specifier) {
+	    function changeDropDown(select, options, specifier, defaultVal) {
 		var dropdown = $("select#" + select + "");
-		/*var optionData = $('select#' + options +'').val().data();
-		var optionID = optionData['id'];*/
 		var val = $('#' + options + '').val();
 		var optionID = $('#' + options + ' option').filter(function() {
 		    return this.value == val;
 		}).data('id');
 		//console.debug("Option is: " + options + " and ID is " + optionID + " and val is " + val);
-		dropdown.empty();    
-		dropdown.load("changeDropdown.php?dd=" + select + "&id=" + $('#' + options + '').val() + "&specifier=" + specifier);
+		dropdown.empty();
+		dropdown.load("changeDropdown.php?dd=" + select + "&id=" + $('#' + options + '').val() + "&specifier=" + specifier + "&defaultVal=" + defaultVal);
 		//dropdown.load("changeDropdown.php?dd=" + select + "&id=" + optionID);
 	    }
 	    
@@ -1462,26 +1461,35 @@
 		var description = $('#sdi-Condition option:selected').text();
 		getDiagnosisCode('sdi-Code', '' + proc + '', '' + description + '');
 	    });
-	    
+	    getOTRFollowUp();
 	    $('#ass-assessmentReason').change(function() {
-		var selectedOption = $(this).find(":selected").text().replace(/ /g,"_"); // Replace whitespace with _ for URL transportation
-		console.debug(selectedOption);
+		getOTRFollowUp();				
+	    });
+	    
+	    function getOTRFollowUp() {
+		var selectedOption = $('#ass-assessmentReason').find(":selected").text().replace(/ /g,"_"); // Replace whitespace with _ for URL transportation
 		$.ajax({
 		    type: "GET",
 		    url: "otrFollowUp.php",
 		    data: { "followup": selectedOption },
 		    async: false,
 		    success: function(msg){
-			console.debug(msg);
+			var followUpVal = $('#hiddenOTRFollowUp').val().replace(/ /g,'');
 			$('#ass-detail').empty('');
-			changeDropDown('ass-detail','0',msg);
+			changeDropDown('ass-detail','0',msg,followUpVal);
+			
+			//$('#ass-detail').val(followUpVal);
+			//$('#ass-detail option[value="' + followUpVal + '"]').attr('selected', true);
+			//$('select[name="ass-detail"]').find('option:contains(' + followUpVal + ')').attr("selected",true);
+			//$('select[name="ass-detail"]').val('Critical Incident');
+			console.debug(followUpVal);
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) {
 			rowID = 'Invalid';
 			alert(" Status: " + textStatus + "\n Error message: "+ errorThrown); 
 		    } 
-		});				
-	    });
+		});	
+	    }
 	    
 	    /*
 	     * End primary/secondary diagnosis dropdown auto-fills
