@@ -1452,4 +1452,43 @@ font-size: small;
 }
 
 
+.ccmds_header_label{
+  width: 147px;
+  padding-left: 10px;
+}
 
+.ccmds_header{
+  width: 100px;
+  background-color: #FDFFE0;
+}
+
+.support_days{
+  padding:5px;
+  margin: 10px;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+
+.ccmds_dd{
+  padding:5px;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.ccmds_totals{
+  padding:5px;
+  margin: 10px;
+}
+
+.label_column{
+  width:160px;
+}
+
+.ccmds_num_col{
+  width: 100px;
+  background-color: #fff;
+}
+
+.ccmds_dd_col{
+  width: 490px;
+}
