@@ -70,7 +70,8 @@
 				    <td>
 					<?php
 					    // Disabled form fields don't get submitted so a hidden form field is needed to submit data
-					    $lengthOfCare = $Form->textBox('otr-lengthOfCare',$patient['OTC_LOS'],3,1);
+						$los_field = array('los_field');
+					    $lengthOfCare = $Form->textBox('otr-lengthOfCare',$patient['OTC_LOS'],3,1,$los_field);
 					    $lengthOfCareHidden = $Form->hiddenField('otr-lengthOfCareHidden',$patient['OTC_LOS']);
 					    echo $lengthOfCare." day(s)";
 					    echo $lengthOfCareHidden;
