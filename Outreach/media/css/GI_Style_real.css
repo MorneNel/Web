@@ -303,12 +303,35 @@
 				/*overflow-x: none;*//*Horizontal*/
 			}
 
+
+			.selected_table_diag table{
+				margin-top: 10px;
+				width: 750px;
+				vertical-align: top;
+				text-align: left;
+				height:auto;
+				overflow-y: auto;
+			}
+
+
+			.ICD10_list{
+				margin-left: 0 !important;
+				width: 750px !important;
+				font-size: 14px;
+			}
+
+
+
+
 			.selected_table table th,
-			.selected_table table td{
+			.selected_table table td,
+			.selected_table_diag table th,
+			.selected_table_diag table td{
 				border: 1px solid #ccc;
 			}
 
-			.selected_table table tr th{
+			.selected_table table tr th,
+			.selected_table_diag table tr th{
 				/*background: #66A3FF url("../img/glossyback2.gif") repeat-x left;*/
 				background: #66A3FF;
 				border:1px solid #a1a1a1;
@@ -319,13 +342,20 @@
 			}
 
 
-			.selected_table table tbody tr td{
+			.selected_table table tbody tr td,
+			.selected_table_diag table tbody tr td{
 				border: 1px solid #ccc;
 				max-height:30px;
 				vertical-align: top;
 				background: #fff;
 				color: #444;
 			}
+
+
+.selected_table_diag table tbody tr:hover td{
+	background-color: #fffacd
+}
+
 
 			.selected_tr_height{
 				height:30px;

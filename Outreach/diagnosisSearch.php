@@ -1,7 +1,7 @@
 <style type="text/css">
 .searchRow:hover {
-    color: red;
-    cursor: pointer;
+/*    color: red;
+    cursor: pointer;*/
 }
 </style>
 <script language="javascript">
@@ -79,16 +79,41 @@ else exit;
 
 $update = odbc_exec($connect, $sql);
 
+print      "<table class='CO_Table'>
+                <tr class='CO_TableRow'>
+                    <td class='selected_table_diag'>
+                        <table class='MOTable temp SelTable' id='tasks'>
+                            <thead>
+                                <tr>
+                                    <th>Diagnosis</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
+
 $rowCount = 0;
 while ($row = odbc_fetch_array($update))
 
 {
-  echo "<span class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['COND_VALUE']."' data-condid='".$row['COND_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."', data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."', data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</span><br />";
+  // echo "<span class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['COND_VALUE']."' data-condid='".$row['COND_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."', data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."', data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</span><br />";
+  
+print      "        <tr>
+                        <td class='searchRow' data-condesc='".$row['CON_DESCRIPTION']."' data-conval='".$row['COND_VALUE']."' data-condid='".$row['COND_ID']."' data-prodesc='".$row['PRO_DESCRIPTION']."' data-proval='".$row['PRO_VALUE']."' data-proID='".$row['PROC_ID']."', data-sitdesc='".$row['SIT_DESCRIPTION']."' data-sitval='".$row['SIT_VALUE']."' data-sitID='".$row['SITE_ID']."', data-sysdesc='".$row['SYS_DESCRIPTION']."' data-sysval='".$row['SYS_VALUE']."' data-sysID='".$row['SYS_ID']."'>".$row['CON_DESCRIPTION']."</td>
+                    </tr>";
+
   $rowCount++;
   }
   
+
+
 if ($rowCount == 0) {
     print "<tr class='each_rec'><td colspan=2>No results found</td></tr>";
 }
+
+print      "                </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>";
+
 
 ?>
